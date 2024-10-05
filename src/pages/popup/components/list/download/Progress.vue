@@ -1,0 +1,81 @@
+<script setup lang="ts">
+  import { getCacheAsync } from "@/utils/cache";
+  import { getFileExtension } from "@/utils/path";
+  import { state } from "@/utils/state";
+  import { deletedStyle, downloadStyle } from "@/utils/styles";
+  import { useThemeVars } from "naive-ui";
+  import browser from "webextension-polyfill";
+
+  interface Props {
+    download: browser.Downloads.DownloadItem;
+  }
+
+  const { download } = defineProps<Props>();
+  const colors = useThemeVars();
+
+  // Progress cycle
+  const progressClass = computed(() => ({
+    "progress": true,
+    "no-progress": !state.ongoing(download)
+  }));
+  const percentage = computed(() => {
+    if (download.totalBytes > 0) {
+      return Math.round((download.bytesReceived / download.totalBytes) * 100);
+    } else {
+      return 0;
+    }
+  });
+
+  // File Icon
+  const src = ref<string | undefined>(undefined);
+  onBeforeMount(async () => {
+    const cacheKey = "file-icon:" + (download.mime || getFileExtension(download.filename));
+    const icon = await getCacheAsync(cacheKey, () => {
+      return browser.downloads.getFileIcon(download.id, { size: 32 });
+    });
+    src.value = icon;
+  });
+</script>
+
+<template>
+  <NFlex :size="5">
+    <NProgress
+      :class="progressClass"
+      type="circle"
+      :color="downloadStyle(download, colors).color"
+      :offset-degree="180"
+      :percentage="percentage"
+    >
+      <NAvatar
+        v-if="src"
+        :size="32"
+        color="transparent"
+        :style="deletedStyle(download, colors)"
+        :src="src"
+      />
+      <NIcon v-if="!src" :size="32" :style="deletedStyle(download, colors)">
+        <Icon icon="mdi:file-question-outline" />
+      </NIcon>
+    </NProgress>
+    <NDivider class="divider" vertical />
+  </NFlex>
+</template>
+
+<style scoped lang="scss">
+  .progress {
+    width: 52px;
+    align-self: center;
+    :deep(img) {
+      user-select: none;
+      -webkit-user-drag: none;
+    }
+  }
+  .no-progress {
+    :deep(.n-progress-graph) {
+      opacity: 0;
+    }
+  }
+  .divider {
+    height: 52px;
+  }
+</style>

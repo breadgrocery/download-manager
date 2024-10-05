@@ -1,0 +1,23 @@
+{
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "yaml.schemas": {
+    "https://json.schemastore.org/github-workflow": ".github/workflows/*.yml",
+    "https://json.schemastore.org/prettierrc": ".prettierrc.yaml"
+  },
+  "json.schemas": [
+    {
+      "fileMatch": ["manifest.json"],
+      "url": "https://json.schemastore.org/chrome-manifest"
+    }
+  ],
+  "files.exclude": {
+    ".eslint*": true,
+    ".git*": true,
+    ".husky": true,
+    ".prettier*": true,
+    "{package-lock.json,pnpm-lock.yaml,yarn.lock,bun.lockb}": true
+  },
+  "search.exclude": {
+    "dist": true
+  }
+}

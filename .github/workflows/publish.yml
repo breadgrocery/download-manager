@@ -1,0 +1,93 @@
+name: publish
+
+on:
+  push:
+    tags:
+      - "v*.*.*"
+  workflow_dispatch:
+    inputs:
+      chrome:
+        type: boolean
+        required: false
+        description: Publish to Chrome Web Store
+      edge:
+        type: boolean
+        required: false
+        description: Publish to Microsoft Edge Add-ons
+      upload_only:
+        type: choice
+        required: true
+        description: Upload without publishing
+        options: [true, false]
+
+permissions: write-all
+
+concurrency:
+  group: "${{ github.workflow }} - ${{ github.head_ref || github.ref }}"
+  cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
+
+jobs:
+  publish:
+    env:
+      ZIP_PATH: out/download-manager.zip
+    runs-on: ubuntu-latest
+    steps:
+      # Checkout the repository
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      # Install pnpm using the version specified in the package.json `packageManager` field
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+
+      # Install Node.js and cache pnpm packages
+      - name: Install Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "pnpm"
+
+      # Install dependencies and build
+      - name: Install and Build
+        run: |
+          pnpm install
+          pnpm run build
+
+      # Bundle the web extension
+      - name: Bundle
+        uses: vimtor/action-zip@v1.2
+        with:
+          files: dist
+          dest: ${{ env.ZIP_PATH }}
+
+      # Publish to GitHub Release (Triggered by tag)
+      - name: GitHub Release
+        uses: softprops/action-gh-release@v2
+        if: ${{ startsWith(github.ref, 'refs/tags/') }}
+        with:
+          prerelease: false
+          make_latest: true
+          files: out/*
+
+      # Publish to Chrome Web Store (Triggered by tag or workflow_dispatch)
+      - name: Publish to Chrome Web Store
+        if: ${{ startsWith(github.ref, 'refs/tags/') || inputs.chrome }}
+        uses: wdzeng/chrome-extension@v1
+        with:
+          zip-path: ${{ env.ZIP_PATH }}
+          extension-id: ${{ secrets.CHROME_EXT_ID }}
+          client-id: ${{ secrets.CHROME_CLIENT_ID }}
+          client-secret: ${{ secrets.CHROME_CLIENT_SECRET }}
+          refresh-token: ${{ secrets.CHROME_REFRESH_TOKEN }}
+          upload-only: ${{ !startsWith(github.ref, 'refs/tags/') && inputs.upload_only }}
+
+      # Publish to Microsoft Edge Add-ons (Triggered by tag or workflow_dispatch)
+      - name: Publish to Microsoft Edge Add-ons
+        if: ${{ startsWith(github.ref, 'refs/tags/') || inputs.edge }}
+        uses: wdzeng/edge-addon@v2
+        with:
+          zip-path: ${{ env.ZIP_PATH }}
+          product-id: ${{ secrets.EDGE_PRODUCT_ID }}
+          api-key: ${{ secrets.EDGE_API_KEY }}
+          client-id: ${{ secrets.EDGE_CLIENT_ID }}
+          upload-only: ${{ !startsWith(github.ref, 'refs/tags/') && inputs.upload_only }}

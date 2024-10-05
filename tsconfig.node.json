@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "composite": true,
+    "module": "ESNext",
+    "moduleResolution": "Node",
+    "allowSyntheticDefaultImports": true,
+    "types": ["vite/client", "@types/node"]
+  },
+  "include": ["vite.config.ts", "plugins/**/*.ts", "plugins/yaml-locale.2ts"]
+}

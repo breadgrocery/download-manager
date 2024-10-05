@@ -1,0 +1,177 @@
+extension:
+  name: 下载管理器
+  description: 轻量、高效的下载管理
+
+common:
+  confirm: 确认
+  cancel: 取消
+
+lag: 检测到卡顿，建议清理不必要的下载记录
+empty: 您下载的文件会显示在此处
+
+search:
+  placeholder: 搜索文件
+
+categories:
+  all: 全部
+  documents: 文档
+  music: 音乐
+  pictures: 图片
+  videos: 视频
+  archives: 压缩包
+  executables: 可执行文件
+  others: 其他
+
+toolbar:
+  create_downloads:
+    tooltip: 新建下载
+    placeholder: 添加多个下载链接时，请确保每行只有一个下载链接。
+    completed: 已创建$1个下载
+    failed: 未发现可用下载链接
+    timeout: $1个下载任务创建超时
+  delete_downloads:
+    all: 删除全部
+    failed: 删除下载失败
+    missing: 删除文件不存在
+    completed: 已删除$1个下载
+  open_download_folder: 打开下载文件夹
+  extension_settings: 插件设置
+
+download:
+  open: 点击打开文件
+  link:
+    copy: 复制下载链接
+    copied: 已复制
+    qrcode: 创建二维码
+    data_too_long: 数据过长
+    scan_qr_code: 扫描二维码
+    download_qr_code: 下载二维码
+  retry: 重新下载
+  pause: 暂停下载
+  resume: 继续下载
+  cancel: 取消下载
+  show: 在文件夹中显示
+  delete:
+    history: 从下载记录中删除
+    disk: 从本地磁盘中删除
+    completed: 已删除
+  dangerous:
+    keep: 保留危险文件
+    remove: 移除危险文件
+
+options:
+  appearance:
+    menu: 外观
+    theme:
+      title: 主题
+      scheme:
+        title: 配色方案
+        auto: 自动
+        light: 浅色
+        dark: 深色
+    bounds:
+      title: 页面大小
+      width: 宽度
+      height: 高度
+  interactions:
+    menu: 交互
+    filter:
+      title: 文件过滤
+      search:
+        title: 文件名称搜索
+        description: 根据文件名称进行查找
+      categories:
+        title: 文件类别过滤
+        description: 根据文件类别进行筛选查找
+  notifications:
+    menu: 提醒
+    popup: 显示下载界面
+    sound: 提示音
+    state:
+      created: 创建下载任务时
+      completed: 下载任务完成时
+      interrupted: 下载任务中断时
+      dangerous: 下载危险内容时
+  sync:
+    menu: 同步
+    enabled:
+      title: 同步插件设置
+      description: 登录浏览器账户后，插件设置可在不同支持 WebExtensions API 的浏览器之间同步
+    reset:
+      title: 重置插件设置
+      description: 重置插件设置为默认值
+      completed: 插件设置已重置
+  misc:
+    menu: 杂项
+    browser:
+      title: 浏览器设置
+      download:
+        title: 修改下载设置
+        description: 修改浏览器下载设置（如默认下载位置、下载前询问每个文件的保存位置等）
+      parallel:
+        title: 启用并行下载
+        description: 启用并行下载以加快下载速度
+      toolbar:
+        title: 隐藏工具栏下载按钮
+        description: 外观 > 选择要在工具栏上显示的按钮
+      smartscreen:
+        title: 关闭 Microsoft Defender Smartscreen
+        description: Microsoft Defender SmartScreen 可能会阻止或延缓下载任务的创建
+  about:
+    menu: 关于
+    version: 版本
+    rate:
+      title: 给我们评分
+      github: 访问 Github 仓库
+      chrome: 访问 Chrome 应用商店
+      edge: 访问 Microsoft Edge 插件市场
+
+danger:
+  file: 下载的文件名可疑
+  url: 该下载的URL已知为恶意
+  content: 下载的文件已知为恶意
+  uncommon: 该下载的URL不常见，可能存在危险
+  host: 该下载来源于已知分发恶意程序的主机，可能具有危险性。
+  unwanted: 该下载可能是不必要或不安全的（例如：可能会更改浏览器或计算机设置）
+  safe: 该下载对用户的计算机没有已知的危险
+  accepted: 用户已接受此危险下载
+  allowlistedByPolicy: 该下载来自安全政策允许的来源
+  asyncScanning: 该下载正在异步扫描以检测潜在威胁
+  asyncLocalPasswordScanning: 该下载正在异步扫描以检查本地密码保护
+  passwordProtected: 下载的文件受到密码保护，需要输入密码才能打开
+  blockedTooLarge: 下载已被阻止，因为文件大小超过了允许的限制
+  sensitiveContentWarning: 下载的内容可能包含敏感信息，需要谨慎处理
+  sensitiveContentBlock: 该下载因包含敏感内容而被阻止
+  deepScannedFailed: 下载的深度扫描过程失败，表明可能存在风险
+  deepScannedSafe: 该下载通过深度扫描，被认为是安全的
+  deepScannedOpenedDangerous: 该下载在深度扫描过程中被识别为危险
+  promptForScanning: 系统提示用户对下载进行威胁检查
+  promptForLocalPasswordScanning: 系统提示用户对下载进行本地密码安全检查
+  accountCompromise: 该下载可能表明用户账户已被泄露
+  blockedScanFailed: 该下载因扫描过程失败而被阻止
+
+error:
+  FILE_FAILED: 文件下载失败
+  FILE_ACCESS_DENIED: 文件访问被拒绝
+  FILE_NO_SPACE: 没有足够的空间下载文件
+  FILE_NAME_TOO_LONG: 文件名过长
+  FILE_TOO_LARGE: 文件过大，无法下载
+  FILE_VIRUS_INFECTED: 文件因感染病毒被阻止
+  FILE_TRANSIENT_ERROR: 文件下载时发生临时错误
+  FILE_BLOCKED: 文件下载被阻止
+  FILE_SECURITY_CHECK_FAILED: 文件未通过安全检查
+  FILE_TOO_SHORT: 文件过短
+  NETWORK_FAILED: 下载过程中网络失败
+  NETWORK_TIMEOUT: 下载超时
+  NETWORK_DISCONNECTED: 下载过程中网络连接丢失
+  NETWORK_SERVER_DOWN: 服务器不可用
+  NETWORK_INVALID_REQUEST: 请求无效
+  SERVER_FAILED: 服务器未响应
+  SERVER_NO_RANGE: 服务器不支持范围请求
+  SERVER_BAD_CONTENT: 服务器返回了错误内容
+  SERVER_UNAUTHORIZED: 服务器未授权访问
+  SERVER_CERT_PROBLEM: 服务器证书问题
+  SERVER_FORBIDDEN: 服务器访问被禁止
+  USER_CANCELED: 用户取消了下载
+  USER_SHUTDOWN: 下载过程中用户关闭了应用
+  CRASH: 下载过程中应用崩溃

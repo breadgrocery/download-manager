@@ -1,0 +1,177 @@
+extension:
+  name: Download Manager
+  description: Lightweight and efficient download management
+
+common:
+  confirm: Confirm
+  cancel: Cancel
+
+lag: Lag detected, consider clearing unnecessary download history
+empty: Files you download appear here
+
+search:
+  placeholder: Search files
+
+categories:
+  all: All
+  documents: Documents
+  music: Music
+  pictures: Pictures
+  videos: Videos
+  archives: Archives
+  executables: Executables
+  others: Others
+
+toolbar:
+  create_downloads:
+    tooltip: Create new downloads
+    placeholder: Ensure that each link is on a separate line when adding multiple download links
+    completed: $1 download(s) created
+    failed: No download links found
+    timeout: $1 download(s) took too long to create
+  delete_downloads:
+    all: Delete all
+    failed: Delete failed downloads
+    missing: Delete downloads with file missing
+    completed: $1 download(s) deleted
+  open_download_folder: Open download folder
+  extension_settings: Extension settings
+
+download:
+  open: Click to open file
+  link:
+    copy: Copy download link
+    copied: Copied
+    qrcode: Create QR code
+    data_too_long: The data is too long
+    scan_qr_code: Scan QR code
+    download_qr_code: Download QR code
+  retry: Retry
+  pause: Pause
+  resume: Resume
+  cancel: Cancel
+  show: Show in folder
+  delete:
+    history: Delete from history
+    disk: Delete from disk
+    completed: Deleted
+  dangerous:
+    keep: Keep dangerous file
+    remove: Remove dangerous file
+
+options:
+  appearance:
+    menu: Appearance
+    theme:
+      title: Theme
+      scheme:
+        title: Color scheme
+        auto: Auto
+        light: Light
+        dark: Dark
+    bounds:
+      title: Popup bounds
+      width: Width
+      height: Height
+  interactions:
+    menu: Interactions
+    filter:
+      title: File Filtering
+      search:
+        title: File Name Search
+        description: Search based on file name
+      categories:
+        title: File Category Filtering
+        description: Filter based on file category
+  notifications:
+    menu: Notifications
+    popup: Show Download Popup
+    sound: Notification Sound
+    state:
+      created: When downloads are created
+      completed: When downloads are completed
+      interrupted: When downloads are interrupted
+      dangerous: When downloads are dangerous
+  sync:
+    menu: Synchronization
+    enabled:
+      title: Sync Extension Settings
+      description: After logging into your browser account, extension settings can be synced across different browsers that support the WebExtensions API
+    reset:
+      title: Reset Extension Settings
+      description: Reset extension settings to their default values
+      completed: Extension settings have been reset
+  misc:
+    menu: Miscellaneous
+    browser:
+      title: Browser Settings
+      download:
+        title: Adjust Download Settings
+        description: Adjust browser download settings (such as default download location, prompting for each file's save location before downloading, etc.)
+      parallel:
+        title: Enable Parallel Downloading
+        description: Enable parallel downloading to accelerate download speed
+      toolbar:
+        title: Hide the downloads button displayed on the toolbar
+        description: Appearance > Select which buttons to show on the toolbar
+      smartscreen:
+        title: Disable Microsoft Defender Smartscreen
+        description: Microsoft Defender SmartScreen may block or delay the creation of downloads
+  about:
+    menu: About
+    version: Version
+    rate:
+      title: Rate us
+      github: Visit Github Repository
+      chrome: Visit Chrome Web Store
+      edge: Visit Microsoft Edge Add-ons
+
+danger:
+  file: The download's filename is suspicious.
+  url: The download's URL is known to be malicious.
+  content: The downloaded file is known to be malicious.
+  uncommon: The download's URL is not commonly downloaded and could be dangerous.
+  host: The download came from a host known to distribute malicious binaries and is likely dangerous.
+  unwanted: The download is potentially unwanted or unsafe. E.g. it could make changes to browser or computer settings.
+  safe: The download presents no known danger to the user's computer.
+  accepted: The user has accepted the dangerous download.
+  allowlistedByPolicy: The download is from a source that is allowlisted by security policies.
+  asyncScanning: The download is being scanned asynchronously for potential threats.
+  asyncLocalPasswordScanning: The download is being scanned for local password protection asynchronously.
+  passwordProtected: The downloaded file is password protected and requires a password to open.
+  blockedTooLarge: The download has been blocked because the file size exceeds allowed limits.
+  sensitiveContentWarning: The downloaded content may contain sensitive information that requires caution.
+  sensitiveContentBlock: The download has been blocked due to containing sensitive content.
+  deepScannedFailed: The deep scanning process for the download failed, indicating potential risks.
+  deepScannedSafe: The download passed deep scanning and is considered safe.
+  deepScannedOpenedDangerous: The download was opened and identified as dangerous during deep scanning.
+  promptForScanning: The user is prompted to scan the download for threats.
+  promptForLocalPasswordScanning: The user is prompted to scan for local password protection on the download.
+  accountCompromise: The download may indicate a compromise of the user's account.
+  blockedScanFailed: The download was blocked due to a failure in the scanning process.
+
+error:
+  FILE_FAILED: The file failed to download.
+  FILE_ACCESS_DENIED: Access to the file was denied.
+  FILE_NO_SPACE: There is no space left to download the file.
+  FILE_NAME_TOO_LONG: The file name is too long.
+  FILE_TOO_LARGE: The file is too large to download.
+  FILE_VIRUS_INFECTED: The file was blocked due to being infected with a virus.
+  FILE_TRANSIENT_ERROR: A temporary error occurred while downloading the file.
+  FILE_BLOCKED: The file download was blocked.
+  FILE_SECURITY_CHECK_FAILED: The download failed the security check.
+  FILE_TOO_SHORT: The file is too short.
+  NETWORK_FAILED: The network failed during the download.
+  NETWORK_TIMEOUT: The download timed out.
+  NETWORK_DISCONNECTED: The network connection was lost during the download.
+  NETWORK_SERVER_DOWN: The server is down.
+  NETWORK_INVALID_REQUEST: The request to the server was invalid.
+  SERVER_FAILED: The server failed to respond.
+  SERVER_NO_RANGE: The server does not support range requests.
+  SERVER_BAD_CONTENT: The server returned bad content.
+  SERVER_UNAUTHORIZED: Unauthorized access to the server.
+  SERVER_CERT_PROBLEM: There was a problem with the server certificate.
+  SERVER_FORBIDDEN: Access to the server is forbidden.
+  USER_CANCELED: The user canceled the download.
+  USER_SHUTDOWN: The user shut down the application during the download.
+  CRASH: The application crashed during the download.
