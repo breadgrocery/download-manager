@@ -39,7 +39,7 @@
 1. 全局安装`pnpm`（如果已安装请忽略）。
 
    ```bash
-   pnpm i pnpm -g
+   npm i pnpm -g
    ```
 
 2. 安装项目依赖。

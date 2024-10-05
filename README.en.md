@@ -39,7 +39,7 @@ English | [简体中文](README.md)
 1. Install `pnpm` globally (ignore if already installed).
 
    ```bash
-   pnpm i pnpm -g
+   npm i pnpm -g
    ```
 
 2. Install dependencies.
