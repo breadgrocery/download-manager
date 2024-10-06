@@ -15,21 +15,26 @@ export const defaults = {
     categories: ["documents", "pictures", "archives", "executables", "others"] as Category[]
   },
   notifications: {
-    created: {
-      sound: false,
-      popup: false
+    download: {
+      created: {
+        sound: false,
+        popup: false
+      },
+      completed: {
+        sound: true,
+        popup: false
+      },
+      interrupted: {
+        sound: false,
+        popup: true
+      },
+      dangerous: {
+        sound: true,
+        popup: true
+      }
     },
-    completed: {
-      sound: true,
-      popup: false
-    },
-    interrupted: {
-      sound: false,
-      popup: true
-    },
-    dangerous: {
-      sound: true,
-      popup: true
+    messages: {
+      lag: true
     }
   },
   sync: {

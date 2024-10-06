@@ -26,24 +26,24 @@ loadSettings().then(() => {
   });
   addDownloadListeners({
     onCreated: () => {
-      settings.notifications.created.sound && audio.created();
-      settings.notifications.created.popup && browser.action.openPopup();
+      settings.notifications.download.created.sound && audio.created();
+      settings.notifications.download.created.popup && browser.action.openPopup();
       notifyPopup();
     },
     onErased: () => notifyPopup(),
     onChanged: () => notifyPopup(),
     onCompleted: () => {
-      settings.notifications.completed.sound && audio.completed();
-      settings.notifications.completed.popup && browser.action.openPopup();
+      settings.notifications.download.completed.sound && audio.completed();
+      settings.notifications.download.completed.popup && browser.action.openPopup();
     },
     onInterrupted: () => {
-      settings.notifications.interrupted.sound && audio.interrupted();
-      settings.notifications.interrupted.popup && browser.action.openPopup();
+      settings.notifications.download.interrupted.sound && audio.interrupted();
+      settings.notifications.download.interrupted.popup && browser.action.openPopup();
       notifyPopup();
     },
     onDangerous: () => {
-      settings.notifications.dangerous.sound && audio.dangerous();
-      settings.notifications.dangerous.popup && browser.action.openPopup();
+      settings.notifications.download.dangerous.sound && audio.dangerous();
+      settings.notifications.download.dangerous.popup && browser.action.openPopup();
       notifyPopup();
     },
     onStatistics: statistics => {

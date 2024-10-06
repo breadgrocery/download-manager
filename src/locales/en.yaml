@@ -6,7 +6,6 @@ common:
   confirm: Confirm
   cancel: Cancel
 
-lag: Lag detected, consider clearing unnecessary download history
 empty: Files you download appear here
 
 search:
@@ -86,13 +85,17 @@ options:
         description: Filter based on file category
   notifications:
     menu: Notifications
-    popup: Show Download Popup
-    sound: Notification Sound
-    state:
-      created: When downloads are created
-      completed: When downloads are completed
-      interrupted: When downloads are interrupted
-      dangerous: When downloads are dangerous
+    download:
+      popup: Show Download Popup
+      sound: Notification Sound
+      state:
+        created: When downloads are created
+        completed: When downloads are completed
+        interrupted: When downloads are interrupted
+        dangerous: When downloads are dangerous
+    messages:
+      title: Message Notifications
+      lag: Suggest users clear download history when lag is detected
   sync:
     menu: Synchronization
     enabled:
@@ -132,6 +135,9 @@ options:
       github: Visit Github Repository
       chrome: Visit Chrome Web Store
       edge: Visit Microsoft Edge Add-ons
+
+messages:
+  lag: Lag detected, consider clearing unnecessary download history
 
 danger:
   file: The download's filename is suspicious.

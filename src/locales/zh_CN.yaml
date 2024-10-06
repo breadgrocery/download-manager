@@ -6,7 +6,6 @@ common:
   confirm: 确认
   cancel: 取消
 
-lag: 检测到卡顿，建议清理不必要的下载记录
 empty: 您下载的文件会显示在此处
 
 search:
@@ -86,13 +85,17 @@ options:
         description: 根据文件类别进行筛选查找
   notifications:
     menu: 提醒
-    popup: 显示下载界面
-    sound: 提示音
-    state:
-      created: 创建下载任务时
-      completed: 下载任务完成时
-      interrupted: 下载任务中断时
-      dangerous: 下载危险内容时
+    download:
+      popup: 显示下载界面
+      sound: 提示音
+      state:
+        created: 创建下载任务时
+        completed: 下载任务完成时
+        interrupted: 下载任务中断时
+        dangerous: 下载危险内容时
+    messages:
+      title: 消息提醒
+      lag: 检测到卡顿时，建议用户清理下载记录
   sync:
     menu: 同步
     enabled:
@@ -132,6 +135,9 @@ options:
       github: 访问 Github 仓库
       chrome: 访问 Chrome 应用商店
       edge: 访问 Microsoft Edge 插件市场
+
+messages:
+  lag: 检测到卡顿，建议清理不必要的下载记录
 
 danger:
   file: 下载的文件名可疑

@@ -43,7 +43,10 @@
     if (PerformanceObserver) {
       const observer = new PerformanceObserver(list => {
         if (list.getEntries()[0].duration >= 1000) {
-          message.warning(t(`lag`));
+          // Wait for settings to load before showing lag warning
+          setTimeout(() => {
+            settings.value.notifications.messages.lag && message.warning(t(`messages_lag`));
+          }, 200);
         }
       });
       observer.observe({ entryTypes: ["longtask"] });

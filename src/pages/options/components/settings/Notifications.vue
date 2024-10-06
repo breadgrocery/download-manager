@@ -7,23 +7,34 @@
 
   const settings = useSettings();
 
-  const popups = computed(() => {
-    return Object.keys(settings.value.notifications).map(key => {
-      const state = key as keyof typeof settings.value.notifications;
+  const sounds = computed(() => {
+    return Object.keys(settings.value.notifications.download).map(key => {
+      const state = key as keyof typeof settings.value.notifications.download;
       return {
-        title: t(`options_notifications_state_${state}`),
-        proxy: settings.value.notifications[state]
+        title: t(`options_notifications_download_state_${state}`),
+        proxy: settings.value.notifications.download[state],
+        audio: () => audio[state as keyof typeof audio]()
       };
     });
   });
 
-  const sounds = computed(() => {
-    return Object.keys(settings.value.notifications).map(key => {
-      const state = key as keyof typeof settings.value.notifications;
+  const popups = computed(() => {
+    return Object.keys(settings.value.notifications.download).map(key => {
+      const state = key as keyof typeof settings.value.notifications.download;
       return {
-        title: t(`options_notifications_state_${state}`),
-        proxy: settings.value.notifications[state],
-        audio: () => audio[state as keyof typeof audio]()
+        title: t(`options_notifications_download_state_${state}`),
+        proxy: settings.value.notifications.download[state]
+      };
+    });
+  });
+
+  const messages = computed(() => {
+    return Object.keys(settings.value.notifications.messages).map(key => {
+      const type = key as keyof typeof settings.value.notifications.messages;
+      return {
+        title: t(`options_notifications_messages_${type}`),
+        proxy: settings.value.notifications.messages,
+        type
       };
     });
   });
@@ -31,7 +42,20 @@
 
 <template>
   <SettingWrapper>
-    <SettingItem :title="t(`options_notifications_popup`)" icon="mdi:app-badge-outline">
+    <SettingItem
+      :title="t(`options_notifications_download_sound`)"
+      icon="mdi:bell-notification-outline"
+    >
+      <SettingDetail v-for="(sound, index) in sounds" :key="index" :title="sound.title">
+        <IconButton icon="mdi:volume-high" @click="sound.audio" />
+        <NSwitch
+          :default-value="sound.proxy.sound"
+          :on-update:value="value => (sound.proxy.sound = value)"
+        />
+      </SettingDetail>
+    </SettingItem>
+
+    <SettingItem :title="t(`options_notifications_download_popup`)" icon="mdi:app-badge-outline">
       <SettingDetail v-for="(popup, index) in popups" :key="index" :title="popup.title">
         <NSwitch
           :default-value="popup.proxy.popup"
@@ -40,12 +64,14 @@
       </SettingDetail>
     </SettingItem>
 
-    <SettingItem :title="t(`options_notifications_sound`)" icon="mdi:bell-notification-outline">
-      <SettingDetail v-for="(sound, index) in sounds" :key="index" :title="sound.title">
-        <IconButton icon="mdi:volume-high" @click="sound.audio" />
+    <SettingItem
+      :title="t(`options_notifications_messages_title`)"
+      icon="mdi:message-badge-outline"
+    >
+      <SettingDetail v-for="(message, index) in messages" :key="index" :title="message.title">
         <NSwitch
-          :default-value="sound.proxy.sound"
-          :on-update:value="value => (sound.proxy.sound = value)"
+          :default-value="message.proxy[message.type]"
+          :on-update:value="value => (message.proxy[message.type] = value)"
         />
       </SettingDetail>
     </SettingItem>
