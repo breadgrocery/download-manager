@@ -1,0 +1,16 @@
+assert_lefthook_installed: true
+
+commit-msg:
+  commands:
+    commitlint:
+      run: npx --no-install commitlint --edit
+
+pre-commit:
+  parallel: true
+  commands:
+    eslint:
+      glob: "*.{js,jsx,cjs,mjs,ts,tsx,cts,mts,vue}"
+      run: npx eslint {staged_files}
+    prettier:
+      glob: "*.*"
+      run: npx prettier --write {staged_files}
