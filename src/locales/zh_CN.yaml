@@ -113,7 +113,7 @@ options:
     menu: 同步
     enabled:
       title: 同步插件设置
-      description: 登录浏览器账户后，插件设置可在不同支持 WebExtensions API 的浏览器之间同步
+      description: 登录账户且开启同步功能后，插件设置可在支持 WebExtensions API 的浏览器之间同步
     reset:
       title: 重置插件设置
       description: 重置插件设置为默认值

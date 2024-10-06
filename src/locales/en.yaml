@@ -113,7 +113,7 @@ options:
     menu: Synchronization
     enabled:
       title: Sync Extension Settings
-      description: After logging into your browser account, extension settings can be synced across different browsers that support the WebExtensions API
+      description: Extension settings can be synced across browsers that support the WebExtensions API once you have logged in and enabled sync
     reset:
       title: Reset Extension Settings
       description: Reset extension settings to their default values

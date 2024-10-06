@@ -117,6 +117,7 @@
     }
     .empty {
       flex-grow: 1;
+      user-select: none;
     }
   }
 </style>
