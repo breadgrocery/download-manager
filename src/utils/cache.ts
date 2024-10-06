@@ -1,3 +1,11 @@
+export const clearCache = (storageKey?: string): void => {
+  if (typeof storageKey === "string" && storageKey) {
+    localStorage.removeItem(storageKey);
+  } else {
+    localStorage.clear();
+  }
+};
+
 export const getCacheSync = <T>(storageKey: string, fetcher: (key: string) => T): T => {
   const cachedData = getCachedData<T>(storageKey);
   if (cachedData !== null) {

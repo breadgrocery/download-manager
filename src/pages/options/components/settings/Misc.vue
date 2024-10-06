@@ -1,10 +1,14 @@
 <script setup lang="ts">
+  import { clearCache } from "@/utils/cache";
   import { t } from "@/utils/i18n";
   import Bowser from "bowser";
+  import { useMessage } from "naive-ui";
   import browser from "webextension-polyfill";
   import SettingDetail from "../layout/SettingDetail.vue";
   import SettingItem from "../layout/SettingItem.vue";
   import SettingWrapper from "../layout/SettingList.vue";
+
+  const message = useMessage();
 
   const agent = Bowser.getParser(window.navigator.userAgent);
 
@@ -19,6 +23,11 @@
       }
     })();
     browser.tabs.create({ url: `${protocol}${path}` });
+  };
+
+  const handleClearCache = () => {
+    clearCache();
+    message.success(t(`options_misc_storage_cache_completed`));
   };
 </script>
 
@@ -62,6 +71,18 @@
       >
         <NButton secondary @click="localResource(`settings/?search=Smartscreen`)">
           <template #icon><Icon icon="mdi:external-link" /> </template>
+        </NButton>
+      </SettingDetail>
+    </SettingItem>
+
+    <SettingItem :title="t(`options_misc_storage_title`)" icon="mdi:storage">
+      <SettingDetail
+        :title="t(`options_misc_storage_cache_title`)"
+        icon="mdi:database-refresh-outline"
+        :description="t(`options_misc_storage_cache_description`)"
+      >
+        <NButton secondary @click="handleClearCache">
+          <template #icon><Icon icon="mdi:refresh" /></template>
         </NButton>
       </SettingDetail>
     </SettingItem>

@@ -118,6 +118,12 @@ options:
       smartscreen:
         title: Disable Microsoft Defender Smartscreen
         description: Microsoft Defender SmartScreen may block or delay the creation of downloads
+    storage:
+      title: Storage Settings
+      cache:
+        title: Refresh Cache
+        description: Refresh cache for icons, file extensions, etc
+        completed: Cache has been refreshed
   about:
     menu: About
     version: Version

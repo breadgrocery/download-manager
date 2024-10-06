@@ -118,6 +118,12 @@ options:
       smartscreen:
         title: 关闭 Microsoft Defender Smartscreen
         description: Microsoft Defender SmartScreen 可能会阻止或延缓下载任务的创建
+    storage:
+      title: 存储设置
+      cache:
+        title: 刷新缓存
+        description: 刷新图标、文件扩展名等缓存
+        completed: 缓存已刷新
   about:
     menu: 关于
     version: 版本
