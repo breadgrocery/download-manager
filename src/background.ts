@@ -21,7 +21,9 @@ loadSettings().then(() => {
   let lastIcon: string = "/images/icon-idle.png";
 
   // Define download listeners
-  const notifyPopup = debounce(() => send({ channel: "background-to-popup:update" }), 500);
+  const notifyPopup = debounce(() => send({ channel: "background-to-popup:update" }), 200, {
+    maxWait: 1000
+  });
   addDownloadListeners({
     onCreated: () => {
       settings.notifications.created.sound && audio.created();

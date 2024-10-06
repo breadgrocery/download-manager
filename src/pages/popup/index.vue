@@ -29,7 +29,7 @@
   refresh().then(() => listen("background-to-popup:update", refresh));
   // Refresh regularly to prevent unexpected exceptions
   onMounted(() => {
-    const intervalId = setInterval(refresh, 5000);
+    const intervalId = setInterval(refresh, 1000);
     return () => clearInterval(intervalId);
   });
 

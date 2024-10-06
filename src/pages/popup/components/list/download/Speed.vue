@@ -7,15 +7,17 @@
   }
   const { download } = defineProps<Props>();
 
-  const downloadSpeed = computed(() => {
-    if (download.estimatedEndTime) {
-      const remaining = (new Date(download.estimatedEndTime).getTime() - Date.now()) / 1000;
-      if (remaining > 0) {
-        const speed = bytes((download.totalBytes - download.bytesReceived) / remaining);
-        return `${speed}/s`;
-      }
+  const bps = ref<number>(0);
+  const lastUpdate = ref<number>(Date.now());
+  watch(
+    () => download.bytesReceived,
+    (newVal, oldVal) => {
+      if (newVal === oldVal) return;
+      const now = Date.now();
+      bps.value = (newVal - oldVal) / ((now - lastUpdate.value) / 1000);
+      lastUpdate.value = now;
     }
-  });
+  );
 </script>
 
 <template>
@@ -23,12 +25,14 @@
     <!-- Download progress -->
     <NFlex class="progress" :size="0">
       <NText>{{ bytes(download.bytesReceived) }}</NText>
-      <NDivider vertical />
-      <NText> {{ bytes(download.totalBytes) }}</NText>
+      <span v-if="download.totalBytes > 0">
+        <NDivider vertical />
+        <NText> {{ bytes(download.totalBytes) }}</NText>
+      </span>
     </NFlex>
 
     <!-- Download speed -->
-    <NText class="speed">{{ downloadSpeed }}</NText>
+    <NText class="speed">{{ `${bytes(bps)}/s` }}</NText>
 
     <!-- Estimated remaining -->
     <NTime

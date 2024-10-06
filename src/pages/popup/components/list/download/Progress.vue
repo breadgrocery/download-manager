@@ -16,13 +16,14 @@
   // Progress cycle
   const progressClass = computed(() => ({
     "progress": true,
-    "no-progress": !state.ongoing(download)
+    "no-progress": !state.ongoing(download),
+    "fade": download.totalBytes === 0 && state.downloading(download)
   }));
   const percentage = computed(() => {
     if (download.totalBytes > 0) {
       return Math.round((download.bytesReceived / download.totalBytes) * 100);
     } else {
-      return 0;
+      return 100;
     }
   });
 
@@ -77,5 +78,19 @@
   }
   .divider {
     height: 52px;
+  }
+  @keyframes fade-animation {
+    0%,
+    100% {
+      opacity: 0.5;
+    }
+    50% {
+      opacity: 1;
+    }
+  }
+  :deep(.fade) {
+    svg {
+      animation: fade-animation 2s ease-in-out infinite;
+    }
   }
 </style>

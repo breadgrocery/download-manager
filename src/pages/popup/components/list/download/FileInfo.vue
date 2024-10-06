@@ -50,6 +50,9 @@
       <template v-else-if="state.ongoing(download)" #default>
         {{ download.filename }}
       </template>
+      <template v-else-if="state.deleted(download)" #default>
+        {{ t(`download_gone`) }}
+      </template>
       <template v-else-if="state.completed(download)" #default>
         {{ t(`download_open`) }}
       </template>

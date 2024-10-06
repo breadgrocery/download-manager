@@ -39,6 +39,7 @@ toolbar:
 
 download:
   open: Click to open file
+  gone: File no longer exists
   link:
     copy: Copy download link
     copied: Copied

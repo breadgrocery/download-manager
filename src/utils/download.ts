@@ -58,7 +58,8 @@ const updateStatistics = debounce(
     ) as Record<State, number>;
     callback && callback(statistics);
   },
-  500
+  500,
+  { maxWait: 2000 }
 );
 
 export const getDownloads = () => {
