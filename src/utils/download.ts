@@ -45,6 +45,8 @@ export const addDownloadListeners = (listeners: Listeners) => {
 
     updateStatistics(listeners.onStatistics);
   });
+  // Periodically update statistics for missed background events
+  setInterval(() => updateStatistics(listeners.onStatistics), 10 * 1000);
 };
 
 const updateStatistics = debounce(
@@ -59,7 +61,7 @@ const updateStatistics = debounce(
     callback && callback(statistics);
   },
   500,
-  { maxWait: 2000 }
+  { maxWait: 1000 }
 );
 
 export const getDownloads = () => {
