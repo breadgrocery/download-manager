@@ -12,7 +12,12 @@ export const defaults = {
   },
   interactions: {
     search: true,
-    categories: ["documents", "pictures", "archives", "executables", "others"] as Category[]
+    categories: ["documents", "pictures", "archives", "executables", "others"] as Category[],
+    download: {
+      timeout: 30,
+      retries: 1,
+      conflict: "uniquify" as "uniquify" | "overwrite" | "prompt"
+    }
   },
   notifications: {
     download: {

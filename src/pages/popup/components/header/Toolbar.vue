@@ -3,6 +3,7 @@
   import { t } from "@/utils/i18n";
   import { useModal } from "naive-ui";
   import { useMessage } from "naive-ui";
+  import pQueue from "p-queue";
   import pRetry from "p-retry";
   import pTimeout from "p-timeout";
   import browser from "webextension-polyfill";
@@ -15,6 +16,7 @@
 
   const modal = useModal();
   const message = useMessage();
+  const settings = useSettings();
 
   const cleanOptions: DropdownIconOption[] = [
     { key: "all", label: "toolbar_delete_downloads_all", icon: "mdi:file-outline" },
@@ -29,28 +31,40 @@
         message.warning(t(`toolbar_create_downloads_failed`));
         return;
       }
-
-      loading(true);
+      // Remove duplicate links
+      links = Array.from(new Set(links));
       // Create download tasks with timeout handling
+      const { timeout, retries, conflict } = settings.value.interactions.download;
+      const limit = conflict !== "uniquify" ? 1 : Infinity;
+      const queue = new pQueue({
+        concurrency: limit,
+        intervalCap: limit,
+        interval: 1000 // Prevent conflict prompt when creating downloads too frequently
+      });
+      let failures = 0;
+      loading(true);
+      queue
+        .onIdle()
+        .catch(() => failures++)
+        .finally(() => {
+          loading(false);
+          handle.destroy();
+          if (failures > 0) {
+            message.warning(t(`toolbar_create_downloads_timeout`, [`${failures}`]));
+          } else {
+            message.success(t(`toolbar_create_downloads_completed`, [`${links.length}`]));
+          }
+        });
       const createTask = (link: string) => {
         return pRetry(
-          () => pTimeout(browser.downloads.download({ url: link }), { milliseconds: 30 * 1000 }),
-          { retries: 1 }
+          () =>
+            pTimeout(browser.downloads.download({ url: link, conflictAction: conflict }), {
+              milliseconds: timeout * 1000
+            }),
+          { retries }
         );
       };
-      const tasks = links.map(link => createTask(link));
-      Promise.allSettled(tasks)
-        .then(results => {
-          loading(false);
-          // Display an error message if there is any rejected task
-          const rejected = results.filter(result => result.status === "rejected");
-          if (rejected.length > 0) {
-            message.error(t(`toolbar_create_downloads_timeout`, [`${rejected.length}`]));
-          } else {
-            message.success(t(`toolbar_create_downloads_completed`, [`${results.length}`]));
-          }
-        })
-        .finally(handle.destroy);
+      queue.addAll(links.map(link => () => createTask(link)));
     };
     const handle = modal.create({
       preset: "card",

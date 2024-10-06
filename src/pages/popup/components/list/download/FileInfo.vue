@@ -45,7 +45,7 @@
         />
       </template>
       <template v-if="state.dangerous(download)" #default>
-        {{ `${t("danger_" + download.danger)}` }}
+        {{ `${t(`danger_${download.danger}`)}` }}
       </template>
       <template v-else-if="state.ongoing(download)" #default>
         {{ download.filename }}

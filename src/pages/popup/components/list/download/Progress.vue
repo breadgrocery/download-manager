@@ -30,7 +30,7 @@
   // File Icon
   const src = ref<string | undefined>(undefined);
   onBeforeMount(async () => {
-    const cacheKey = "file-icon:" + (download.mime || getFileExtension(download.filename));
+    const cacheKey = `file-icon:${download.mime || getFileExtension(download.filename)}`;
     const icon = await getCacheAsync(cacheKey, () => {
       return browser.downloads.getFileIcon(download.id, { size: 32 });
     });

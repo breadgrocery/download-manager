@@ -3,7 +3,7 @@ import mime from "mime-db";
 
 // Retrieve all extensions based on specified types
 export const getAllExtensions = (types: string[]): string[] => {
-  const cacheKey = "mime-type-extensions:" + types.join(",");
+  const cacheKey = `mime-type-extensions:${types.join(",")}`;
   return getCacheSync(cacheKey, () => {
     const extensions = new Set<string>(
       Object.keys(mime)

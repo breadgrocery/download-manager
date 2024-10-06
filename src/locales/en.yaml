@@ -6,6 +6,10 @@ common:
   confirm: Confirm
   cancel: Cancel
 
+unit:
+  millis: ms
+  seconds: s
+
 empty: Files you download appear here
 
 search:
@@ -83,6 +87,15 @@ options:
       categories:
         title: File Category Filtering
         description: Filter based on file category
+    download:
+      title: Create Download
+      timeout: Creation Timeout
+      retries: Creation retries
+      conflict:
+        title: File Conflict
+        uniquify: Add a number to distinguish
+        overwrite: Overwrite existing file
+        prompt: Prompt user to rename
   notifications:
     menu: Notifications
     download:
@@ -122,7 +135,7 @@ options:
         title: Disable Microsoft Defender Smartscreen
         description: Microsoft Defender SmartScreen may block or delay the creation of downloads
     storage:
-      title: Storage Settings
+      title: Storage
       cache:
         title: Refresh Cache
         description: Refresh cache for icons, file extensions, etc

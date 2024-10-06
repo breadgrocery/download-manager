@@ -44,6 +44,9 @@
     .actions {
       flex-grow: 1;
       align-self: center;
+      & > * {
+        justify-content: end;
+      }
     }
   }
 </style>
