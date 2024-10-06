@@ -42,7 +42,7 @@
   onMounted(() => {
     if (PerformanceObserver) {
       const observer = new PerformanceObserver(list => {
-        if (list.getEntries()[0].duration >= 800) {
+        if (list.getEntries()[0].duration >= 1000) {
           message.warning(t(`lag`));
         }
       });

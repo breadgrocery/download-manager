@@ -13,8 +13,8 @@
   "files.exclude": {
     ".eslint*": true,
     ".git*": true,
-    ".husky": true,
     ".prettier*": true,
+    "lefthook.*": true,
     "{package-lock.json,pnpm-lock.yaml,yarn.lock,bun.lockb}": true
   },
   "search.exclude": {
