@@ -2,7 +2,7 @@ import { Directive } from "vue";
 
 /**
  * Directive Name: v-assert-children
- * Description: Hide a container element if it has no child elements.
+ * Description: Hide a container element if it has no child elements
  */
 const process = (el: HTMLElement) => {
   const hasChildNodes = Array.from(el.childNodes).some(node => node.nodeType === Node.ELEMENT_NODE);

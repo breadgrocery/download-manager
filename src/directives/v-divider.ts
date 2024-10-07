@@ -2,7 +2,7 @@ import { Directive, DirectiveBinding, VNodeChild, createVNode, render } from "vu
 
 /**
  * Directive Name: v-divider
- * Description: Transform a container element by inserting dividers between its child elements.
+ * Description: Transform a container element by inserting dividers between its child elements
  */
 const wrapperTag = "v-divider-wrapper";
 const process = (el: HTMLElement, binding: DirectiveBinding<() => VNodeChild>) => {
