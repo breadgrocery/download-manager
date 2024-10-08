@@ -81,7 +81,7 @@ export const proxiedSettings = async (): Promise<Settings> => {
         // Save the updated settings to local storage
         browser.storage.local.set(settings);
         // Save to sync storage
-        if (prevSyncEnabled !== currSyncEnabled) {
+        if (prevSyncEnabled || currSyncEnabled) {
           browser.storage.sync.set(settings);
         }
 
