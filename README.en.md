@@ -62,6 +62,6 @@ English | [简体中文](README.md)
 
 > [!NOTE]
 >
-> The project uses [lint-staged](https://github.com/lint-staged/lint-staged) to automatically format documents, so you don’t need to worry about any formatting issues.
+> The project uses [lefthook](https://github.com/evilmartians/lefthook) to automatically format documents, so you don’t need to worry about any formatting issues.
 >
 > The project employs [commitlint](https://github.com/conventional-changelog/commitlint) to enforce commit message conventions. For specific rules, please refer to [@commitlint/config-conventional](https://github.com/conventional-changelog/commitlint/tree/master/@commitlint/config-conventional).

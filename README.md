@@ -62,6 +62,6 @@
 
 > [!NOTE]
 >
-> 项目使用了[lint-staged](https://github.com/lint-staged/lint-staged)来自动格式化文档，你无需担心任何格式问题。
+> 项目使用了[lefthook](https://github.com/evilmartians/lefthook)来自动格式化文档，你无需担心任何格式问题。
 >
 > 项目使用了[commitlint](https://github.com/conventional-changelog/commitlint)进行提交规范约束，具体规则请参考[@commitlint/config-conventional](https://github.com/conventional-changelog/commitlint/tree/master/@commitlint/config-conventional)。
