@@ -22,7 +22,12 @@
 
 <template>
   <NFlex vertical>
-    <NQrCode v-if="renderable" id="qr-code" :value="value" :size="180" error-correction-level="H" />
-    <NButton @click="handleDownload">{{ t(`download_link_download_qr_code`) }}</NButton>
+    <NQrCode v-if="renderable" id="qr-code" :value="value" :size="180" error-correction-level="M" />
+    <NButton @click="handleDownload">
+      <template #icon>
+        <Icon icon="mdi:tray-download" />
+      </template>
+      {{ t(`download_link_download_qr_code`) }}
+    </NButton>
   </NFlex>
 </template>
