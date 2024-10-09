@@ -27,7 +27,7 @@
         v-model:collapsed="collapsed"
         collapse-mode="width"
         :collapsed-width="49"
-        :width="250"
+        :width="300"
         bordered
         show-trigger
       >

@@ -1,0 +1,203 @@
+extension:
+  name: مدير التنزيل
+  description: مدير تنزيل خفيف وفعال
+
+common:
+  confirm: تأكيد
+  cancel: إلغاء
+
+unit:
+  millis: ميلي ثانية
+  seconds: ثواني
+
+empty: ستظهر الملفات التي تم تنزيلها هنا
+
+search:
+  placeholder: البحث عن الملفات
+
+categories:
+  all: الكل
+  documents: مستندات
+  music: موسيقى
+  pictures: صور
+  videos: فيديوهات
+  archives: أرشيفات
+  executables: ملفات تنفيذية
+  others: أخرى
+
+toolbar:
+  create_downloads:
+    tooltip: إنشاء تنزيل جديد
+    placeholder: عند إضافة روابط تنزيل متعددة، تأكد من أن كل رابط موجود في سطر منفصل.
+    completed: تم إنشاء $1 عمليات تنزيل
+    failed: لم يتم العثور على روابط تنزيل صالحة
+    timeout: تعذر إكمال $1 عمليات تنزيل بسبب انتهاء المهلة
+  delete_downloads:
+    all: حذف الكل
+    failed: فشل في حذف التنزيلات
+    missing: الملف غير موجود
+    completed: تم حذف $1 عمليات تنزيل
+  open_download_folder: فتح مجلد التنزيل
+  extension_settings: إعدادات الامتداد
+
+download:
+  open: انقر لفتح الملف
+  gone: الملف غير موجود
+  link:
+    copy: نسخ رابط التنزيل
+    copied: تم نسخ الرابط
+    qrcode: إنشاء رمز QR
+    data_too_long: البيانات طويلة جدًا
+    scan_qr_code: مسح رمز QR
+    download_qr_code: تنزيل رمز QR
+  retry: إعادة المحاولة
+  pause: إيقاف مؤقت
+  resume: استئناف
+  cancel: إلغاء
+  show: عرض في المجلد
+  delete:
+    history: حذف من السجل
+    disk: حذف من القرص
+    completed: تم الحذف
+  dangerous:
+    keep: الاحتفاظ بالملف الخطير
+    remove: حذف الملف الخطير
+
+options:
+  appearance:
+    menu: المظهر
+    theme:
+      title: السمة
+      scheme:
+        title: نظام الألوان
+        auto: تلقائي
+        light: فاتح
+        dark: داكن
+    bounds:
+      title: حجم الصفحة
+      width: العرض
+      height: الارتفاع
+  interactions:
+    menu: التفاعل
+    filter:
+      title: تصفية الملفات
+      search:
+        title: البحث بالاسم
+        description: البحث بالاسم
+      categories:
+        title: تصفية حسب الفئة
+        description: تصفية والبحث حسب الفئات المختلفة للملفات
+    download:
+      title: تنزيل جديد
+      timeout: انتهاء المهلة
+      retries: عدد المحاولات
+      conflict:
+        title: تعارض الملفات
+        uniquify: إضافة رقم فريد
+        overwrite: الكتابة فوق الملف الموجود
+        prompt: طلب اسم جديد من المستخدم
+  notifications:
+    menu: الإشعارات
+    download:
+      popup: عرض واجهة التنزيل
+      sound: صوت التنبيه
+      state:
+        created: عند إنشاء التنزيل
+        completed: عند اكتمال التنزيل
+        interrupted: عند انقطاع التنزيل
+        dangerous: عند اكتشاف محتوى خطير
+    messages:
+      title: إشعارات الرسائل
+      lag: اكتشاف تأخير، يوصى بتفريغ السجل
+  sync:
+    menu: المزامنة
+    enabled:
+      title: مزامنة إعدادات الامتداد
+      description: عند تسجيل الدخول وتفعيل المزامنة، سيتم مزامنة إعدادات الامتداد بين المتصفحات التي تدعم API الخاص بملحقات الويب.
+    reset:
+      title: إعادة ضبط الإعدادات
+      description: إعادة ضبط إعدادات الامتداد إلى الوضع الافتراضي
+      completed: تم إعادة ضبط الإعدادات
+  misc:
+    menu: متنوع
+    browser:
+      title: إعدادات المتصفح
+      download:
+        title: تعديل إعدادات التنزيل
+        description: تعديل إعدادات التنزيل الخاصة بالمتصفح (مثل مجلد الحفظ الافتراضي أو طلب المكان الذي يتم فيه الحفظ)
+      parallel:
+        title: تفعيل التنزيلات المتوازية
+        description: تسريع التنزيلات من خلال تفعيل التنزيلات المتوازية
+      toolbar:
+        title: إخفاء زر التنزيل من شريط الأدوات
+        description: المظهر > اختر الأزرار التي تظهر في شريط الأدوات
+      smartscreen:
+        title: تعطيل Microsoft Defender SmartScreen
+        description: قد يقوم Microsoft Defender SmartScreen بحظر أو إبطاء إنشاء التنزيلات
+    storage:
+      title: التخزين
+      cache:
+        title: تحديث ذاكرة التخزين المؤقت
+        description: تحديث ذاكرة التخزين المؤقت للأيقونات وامتدادات الملفات وما إلى ذلك.
+        completed: تم تحديث ذاكرة التخزين المؤقت
+  about:
+    menu: حول
+    version: الإصدار
+    rate:
+      title: قيمنا
+      github: زيارة مستودع GitHub
+      chrome: زيارة متجر Chrome الإلكتروني
+      edge: زيارة متجر Microsoft Edge Add-ons
+
+messages:
+  lag: تم اكتشاف تأخير، يوصى بتفريغ سجل التنزيلات
+
+danger:
+  file: اسم الملف الذي تم تنزيله يبدو مشبوهًا
+  url: عنوان URL هذا التنزيل معروف بأنه ضار
+  content: الملف الذي تم تنزيله معروف بأنه ضار
+  uncommon: عنوان URL هذا التنزيل نادر وقد يكون خطيرًا
+  host: مصدر هذا التنزيل من مضيف معروف بنشر البرامج الضارة
+  unwanted: قد يكون هذا التنزيل غير مرغوب فيه أو خطيرًا (مثل تغيير إعدادات المتصفح أو الحاسوب)
+  safe: هذا التنزيل لا يحتوي على أي تهديدات معروفة
+  accepted: وافق المستخدم على هذا التنزيل الخطير
+  allowlistedByPolicy: هذا التنزيل مسموح به وفقًا لسياسة الأمان
+  asyncScanning: يتم فحص هذا التنزيل بحثًا عن التهديدات
+  asyncLocalPasswordScanning: يتم فحص هذا التنزيل بحثًا عن حماية محلية بكلمة مرور
+  passwordProtected: الملف محمي بكلمة مرور ويحتاج إلى كلمة مرور لفتحه
+  blockedTooLarge: تم حظر التنزيل لأن حجم الملف يتجاوز الحد المسموح به
+  sensitiveContentWarning: قد يحتوي هذا الملف على محتوى حساس
+  sensitiveContentBlock: تم حظر التنزيل بسبب محتوى حساس
+  deepScannedFailed: فشل الفحص العميق للملف، مما قد يشير إلى وجود خطر
+  deepScannedSafe: تم اجتياز الفحص العميق لهذا الملف وهو آمن
+  deepScannedOpenedDangerous: تم اكتشاف أن هذا الملف خطير بعد الفحص العميق
+  promptForScanning: طلب من المستخدم فحص التنزيل للتهديدات
+  promptForLocalPasswordScanning: طلب من المستخدم فحص الحماية المحلية بكلمة المرور
+  accountCompromise: قد يشير هذا التنزيل إلى احتمال اختراق الحساب
+  blockedScanFailed: تم حظر التنزيل بسبب فشل الفحص
+
+error:
+  FILE_FAILED: فشل في تنزيل الملف
+  FILE_ACCESS_DENIED: تم رفض الوصول إلى الملف
+  FILE_NO_SPACE: لا توجد مساحة كافية لتنزيل الملف
+  FILE_NAME_TOO_LONG: اسم الملف طويل جدًا
+  FILE_TOO_LARGE: حجم الملف كبير جدًا
+  FILE_VIRUS_INFECTED: تم حظر الملف بسبب وجود فيروس
+  FILE_TRANSIENT_ERROR: خطأ مؤقت أثناء التنزيل
+  FILE_BLOCKED: تم حظر تنزيل الملف
+  FILE_SECURITY_CHECK_FAILED: فشل في اجتياز فحص الأمان
+  FILE_TOO_SHORT: الملف قصير جدًا
+  NETWORK_FAILED: فشل في الاتصال بالشبكة أثناء التنزيل
+  NETWORK_TIMEOUT: انتهت مهلة التنزيل
+  NETWORK_DISCONNECTED: تم فقد الاتصال بالشبكة أثناء التنزيل
+  NETWORK_SERVER_DOWN: الخادم غير متاح
+  NETWORK_INVALID_REQUEST: طلب غير صالح
+  SERVER_FAILED: الخادم لم يرد
+  SERVER_NO_RANGE: الخادم لا يدعم طلبات النطاق
+  SERVER_BAD_CONTENT: تم تلقي محتوى غير صالح من الخادم
+  SERVER_UNAUTHORIZED: الوصول إلى الخادم غير مصرح به
+  SERVER_CERT_PROBLEM: مشكلة في شهادة الخادم
+  SERVER_FORBIDDEN: تم حظر الوصول إلى الخادم
+  USER_CANCELED: تم إلغاء التنزيل من قبل المستخدم
+  USER_SHUTDOWN: قام المستخدم بإيقاف البرنامج أثناء التنزيل
+  CRASH: تعطل البرنامج أثناء التنزيل

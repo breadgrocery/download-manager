@@ -7,7 +7,7 @@ export const defaults = {
     theme: {
       scheme: "auto" as "auto" | "light" | "dark"
     },
-    width: 647,
+    width: 665,
     height: 400
   },
   interactions: {

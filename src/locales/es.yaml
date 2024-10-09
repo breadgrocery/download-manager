@@ -1,0 +1,203 @@
+extension:
+  name: Gestor de Descargas
+  description: Gestión de descargas ligera y eficiente
+
+common:
+  confirm: Confirmar
+  cancel: Cancelar
+
+unit:
+  millis: Milisegundos
+  seconds: Segundos
+
+empty: Tus archivos descargados aparecerán aquí
+
+search:
+  placeholder: Buscar archivos
+
+categories:
+  all: Todos
+  documents: Documentos
+  music: Música
+  pictures: Imágenes
+  videos: Videos
+  archives: Archivos
+  executables: Archivos ejecutables
+  others: Otros
+
+toolbar:
+  create_downloads:
+    tooltip: Crear una nueva descarga
+    placeholder: Cuando añadas múltiples enlaces de descarga, asegúrate de que cada enlace esté en una línea separada.
+    completed: $1 descarga(s) creada(s)
+    failed: No se encontraron enlaces de descarga válidos
+    timeout: $1 descarga(s) fallaron por tiempo de espera
+  delete_downloads:
+    all: Eliminar todo
+    failed: Error al eliminar las descargas
+    missing: Archivo no encontrado
+    completed: $1 descarga(s) eliminada(s)
+  open_download_folder: Abrir carpeta de descargas
+  extension_settings: Configuración de la extensión
+
+download:
+  open: Haz clic para abrir el archivo
+  gone: Archivo no encontrado
+  link:
+    copy: Copiar enlace de descarga
+    copied: Enlace copiado
+    qrcode: Crear código QR
+    data_too_long: Datos demasiado largos
+    scan_qr_code: Escanear código QR
+    download_qr_code: Descargar código QR
+  retry: Reintentar
+  pause: Pausar
+  resume: Reanudar
+  cancel: Cancelar
+  show: Mostrar en la carpeta
+  delete:
+    history: Eliminar del historial de descargas
+    disk: Eliminar del disco local
+    completed: Eliminado
+  dangerous:
+    keep: Mantener archivo peligroso
+    remove: Eliminar archivo peligroso
+
+options:
+  appearance:
+    menu: Apariencia
+    theme:
+      title: Tema
+      scheme:
+        title: Esquema de color
+        auto: Automático
+        light: Claro
+        dark: Oscuro
+    bounds:
+      title: Tamaño de página
+      width: Ancho
+      height: Alto
+  interactions:
+    menu: Interacciones
+    filter:
+      title: Filtrado de archivos
+      search:
+        title: Buscar por nombre de archivo
+        description: Buscar por nombre de archivo
+      categories:
+        title: Filtrar por categorías
+        description: Filtrar y buscar por categoría de archivo
+    download:
+      title: Nueva descarga
+      timeout: Tiempo de espera
+      retries: Reintentos
+      conflict:
+        title: Conflicto de archivos
+        uniquify: Añadir un número único
+        overwrite: Sobrescribir archivo existente
+        prompt: Preguntar al usuario por un nuevo nombre
+  notifications:
+    menu: Notificaciones
+    download:
+      popup: Mostrar la interfaz de descarga
+      sound: Sonido de notificación
+      state:
+        created: Al crear una descarga
+        completed: Al completar una descarga
+        interrupted: Al interrumpir una descarga
+        dangerous: Al descargar contenido peligroso
+    messages:
+      title: Notificaciones de mensajes
+      lag: Retraso detectado, sugiere limpiar el historial de descargas al usuario
+  sync:
+    menu: Sincronización
+    enabled:
+      title: Sincronizar la configuración de la extensión
+      description: Cuando inicies sesión y la sincronización esté habilitada, la configuración de la extensión se sincronizará entre navegadores compatibles con la API de WebExtensions
+    reset:
+      title: Restablecer la configuración
+      description: Restablecer la configuración de la extensión a los valores predeterminados
+      completed: Configuración restablecida
+  misc:
+    menu: Misceláneo
+    browser:
+      title: Configuración del navegador
+      download:
+        title: Cambiar la configuración de descarga
+        description: Cambiar la configuración de descargas del navegador (como la carpeta predeterminada o preguntar dónde guardar cada archivo)
+      parallel:
+        title: Habilitar descargas paralelas
+        description: Acelerar las descargas habilitando descargas paralelas
+      toolbar:
+        title: Ocultar botón de descarga en la barra de herramientas
+        description: Apariencia > Selecciona los botones a mostrar en la barra de herramientas
+      smartscreen:
+        title: Desactivar Microsoft Defender SmartScreen
+        description: Microsoft Defender SmartScreen podría bloquear o ralentizar la creación de descargas
+    storage:
+      title: Almacenamiento
+      cache:
+        title: Actualizar caché
+        description: Actualizar la caché de íconos, extensiones de archivos, etc.
+        completed: Caché actualizada
+  about:
+    menu: Acerca de
+    version: Versión
+    rate:
+      title: Califícanos
+      github: Visitar el repositorio en Github
+      chrome: Visitar Chrome Web Store
+      edge: Visitar Microsoft Edge Add-ons Store
+
+messages:
+  lag: Retraso detectado, se recomienda limpiar el historial de descargas
+
+danger:
+  file: El nombre del archivo descargado parece sospechoso
+  url: La URL de esta descarga es conocida por ser maliciosa
+  content: El archivo descargado es conocido por ser malicioso
+  uncommon: La URL de esta descarga es poco común y puede ser peligrosa
+  host: Esta descarga proviene de un anfitrión conocido por distribuir software malicioso
+  unwanted: Esta descarga podría ser no deseada o peligrosa (ej. podría cambiar la configuración de tu navegador o computadora)
+  safe: Esta descarga no tiene peligros conocidos
+  accepted: El usuario ha aceptado esta descarga peligrosa
+  allowlistedByPolicy: Esta descarga proviene de una fuente permitida por la política de seguridad
+  asyncScanning: Esta descarga está siendo escaneada para detectar posibles amenazas
+  asyncLocalPasswordScanning: Esta descarga está siendo escaneada para comprobar si está protegida por contraseña
+  passwordProtected: El archivo está protegido por contraseña y requiere una contraseña para abrirlo
+  blockedTooLarge: Descarga bloqueada porque el archivo excede el tamaño permitido
+  sensitiveContentWarning: Este archivo puede contener información sensible
+  sensitiveContentBlock: Descarga bloqueada debido a contenido sensible
+  deepScannedFailed: El análisis profundo del archivo falló, lo que puede indicar un riesgo
+  deepScannedSafe: Esta descarga ha pasado el análisis profundo y se considera segura
+  deepScannedOpenedDangerous: Este archivo ha sido identificado como peligroso tras un análisis profundo
+  promptForScanning: Solicitar al usuario que verifique las amenazas de la descarga
+  promptForLocalPasswordScanning: Solicitar al usuario que verifique la protección por contraseña local
+  accountCompromise: Esta descarga puede indicar una posible compromisión de la cuenta del usuario
+  blockedScanFailed: Descarga bloqueada debido a fallo en el escaneo
+
+error:
+  FILE_FAILED: Error al descargar el archivo
+  FILE_ACCESS_DENIED: Acceso denegado al archivo
+  FILE_NO_SPACE: Espacio insuficiente para descargar el archivo
+  FILE_NAME_TOO_LONG: Nombre de archivo demasiado largo
+  FILE_TOO_LARGE: El archivo es demasiado grande para descargar
+  FILE_VIRUS_INFECTED: Archivo bloqueado por infección de virus
+  FILE_TRANSIENT_ERROR: Error transitorio al descargar el archivo
+  FILE_BLOCKED: Descarga del archivo bloqueada
+  FILE_SECURITY_CHECK_FAILED: El archivo no pasó la verificación de seguridad
+  FILE_TOO_SHORT: Archivo demasiado corto
+  NETWORK_FAILED: Fallo de red durante la descarga
+  NETWORK_TIMEOUT: Tiempo de descarga agotado
+  NETWORK_DISCONNECTED: Conexión de red perdida durante la descarga
+  NETWORK_SERVER_DOWN: Servidor no disponible
+  NETWORK_INVALID_REQUEST: Solicitud inválida
+  SERVER_FAILED: El servidor no respondió
+  SERVER_NO_RANGE: El servidor no admite solicitudes de rango
+  SERVER_BAD_CONTENT: Contenido incorrecto recibido del servidor
+  SERVER_UNAUTHORIZED: Acceso no autorizado al servidor
+  SERVER_CERT_PROBLEM: Problema con el certificado del servidor
+  SERVER_FORBIDDEN: Acceso prohibido al servidor
+  USER_CANCELED: Descarga cancelada por el usuario
+  USER_SHUTDOWN: El usuario cerró la aplicación durante la descarga
+  CRASH: La aplicación se bloqueó durante la descarga

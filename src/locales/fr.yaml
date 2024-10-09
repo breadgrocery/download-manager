@@ -1,0 +1,203 @@
+extension:
+  name: Gestionnaire de Téléchargement
+  description: Gestion des téléchargements légère et efficace
+
+common:
+  confirm: Confirmer
+  cancel: Annuler
+
+unit:
+  millis: Millisecondes
+  seconds: Secondes
+
+empty: Vos fichiers téléchargés apparaîtront ici
+
+search:
+  placeholder: Rechercher des fichiers
+
+categories:
+  all: Tous
+  documents: Documents
+  music: Musique
+  pictures: Images
+  videos: Vidéos
+  archives: Archives
+  executables: Fichiers exécutables
+  others: Autres
+
+toolbar:
+  create_downloads:
+    tooltip: Créer un nouveau téléchargement
+    placeholder: Lorsque vous ajoutez plusieurs liens de téléchargement, assurez-vous qu'il y a un lien par ligne.
+    completed: $1 téléchargement(s) créé(s)
+    failed: Aucun lien de téléchargement valide trouvé
+    timeout: $1 téléchargement(s) ont expiré lors de la création
+  delete_downloads:
+    all: Supprimer tout
+    failed: Échec de la suppression des téléchargements
+    missing: Fichier introuvable
+    completed: $1 téléchargement(s) supprimé(s)
+  open_download_folder: Ouvrir le dossier de téléchargements
+  extension_settings: Paramètres de l'extension
+
+download:
+  open: Cliquez pour ouvrir le fichier
+  gone: Fichier introuvable
+  link:
+    copy: Copier le lien de téléchargement
+    copied: Lien copié
+    qrcode: Créer un code QR
+    data_too_long: Données trop longues
+    scan_qr_code: Scanner le code QR
+    download_qr_code: Télécharger le code QR
+  retry: Réessayer
+  pause: Mettre en pause
+  resume: Reprendre
+  cancel: Annuler
+  show: Afficher dans le dossier
+  delete:
+    history: Supprimer de l'historique des téléchargements
+    disk: Supprimer du disque local
+    completed: Supprimé
+  dangerous:
+    keep: Conserver le fichier dangereux
+    remove: Supprimer le fichier dangereux
+
+options:
+  appearance:
+    menu: Apparence
+    theme:
+      title: Thème
+      scheme:
+        title: Schéma de couleurs
+        auto: Automatique
+        light: Clair
+        dark: Sombre
+    bounds:
+      title: Taille de la page
+      width: Largeur
+      height: Hauteur
+  interactions:
+    menu: Interactions
+    filter:
+      title: Filtrage des fichiers
+      search:
+        title: Recherche par nom de fichier
+        description: Trouver en fonction du nom de fichier
+      categories:
+        title: Filtrage par catégories
+        description: Filtrer et rechercher par catégorie de fichier
+    download:
+      title: Nouveau téléchargement
+      timeout: Délai d’expiration
+      retries: Nombre de tentatives
+      conflict:
+        title: Conflit de fichiers
+        uniquify: Ajouter un numéro pour différencier
+        overwrite: Écraser le fichier existant
+        prompt: Demander à l'utilisateur de renommer
+  notifications:
+    menu: Notifications
+    download:
+      popup: Afficher l'interface de téléchargement
+      sound: Son de notification
+      state:
+        created: Lors de la création d'un téléchargement
+        completed: Lors de la fin d'un téléchargement
+        interrupted: En cas d'interruption d'un téléchargement
+        dangerous: Lors du téléchargement d'un contenu dangereux
+    messages:
+      title: Notifications de messages
+      lag: Délai détecté, suggérez à l'utilisateur de nettoyer l'historique des téléchargements
+  sync:
+    menu: Synchronisation
+    enabled:
+      title: Synchroniser les paramètres de l'extension
+      description: Une fois connecté et la synchronisation activée, les paramètres de l'extension seront synchronisés entre les navigateurs supportant l'API WebExtensions
+    reset:
+      title: Réinitialiser les paramètres
+      description: Réinitialiser les paramètres de l'extension aux valeurs par défaut
+      completed: Paramètres réinitialisés
+  misc:
+    menu: Divers
+    browser:
+      title: Paramètres du navigateur
+      download:
+        title: Modifier les paramètres de téléchargement
+        description: Modifier les paramètres de téléchargement du navigateur (comme l'emplacement par défaut ou demander l'emplacement pour chaque fichier)
+      parallel:
+        title: Activer les téléchargements parallèles
+        description: Accélérer les téléchargements en activant les téléchargements parallèles
+      toolbar:
+        title: Masquer le bouton de téléchargement dans la barre d'outils
+        description: Apparence > Sélectionner les boutons à afficher dans la barre d'outils
+      smartscreen:
+        title: Désactiver Microsoft Defender Smartscreen
+        description: Microsoft Defender SmartScreen pourrait bloquer ou ralentir la création des téléchargements
+    storage:
+      title: Stockage
+      cache:
+        title: Actualiser le cache
+        description: Actualiser le cache des icônes, extensions de fichiers, etc.
+        completed: Cache actualisé
+  about:
+    menu: À propos
+    version: Version
+    rate:
+      title: Donnez-nous une note
+      github: Visiter le dépôt Github
+      chrome: Visiter le Chrome Web Store
+      edge: Visiter le Microsoft Edge Add-ons Store
+
+messages:
+  lag: Délai détecté, il est recommandé de nettoyer l'historique des téléchargements
+
+danger:
+  file: Le nom du fichier téléchargé semble suspect
+  url: L'URL de ce téléchargement est connue pour être malveillante
+  content: Le fichier téléchargé est connu pour être malveillant
+  uncommon: L'URL de ce téléchargement est peu courante et peut être dangereuse
+  host: Ce téléchargement provient d'un hôte distribuant des logiciels malveillants connus
+  unwanted: Ce téléchargement pourrait être indésirable ou dangereux (ex. il pourrait modifier les paramètres de votre navigateur ou ordinateur)
+  safe: Ce téléchargement ne présente aucun danger connu
+  accepted: L'utilisateur a accepté ce téléchargement dangereux
+  allowlistedByPolicy: Ce téléchargement provient d'une source autorisée par la politique de sécurité
+  asyncScanning: Ce téléchargement est en cours de scan pour détecter d'éventuelles menaces
+  asyncLocalPasswordScanning: Ce téléchargement est scanné pour vérifier la protection par mot de passe
+  passwordProtected: Le fichier est protégé par un mot de passe et nécessite un mot de passe pour être ouvert
+  blockedTooLarge: Téléchargement bloqué, car le fichier dépasse la limite de taille autorisée
+  sensitiveContentWarning: Ce fichier peut contenir des informations sensibles
+  sensitiveContentBlock: Téléchargement bloqué en raison de contenu sensible
+  deepScannedFailed: L'analyse approfondie du fichier a échoué, ce qui peut indiquer un risque
+  deepScannedSafe: Ce téléchargement a passé l'analyse approfondie et est jugé sûr
+  deepScannedOpenedDangerous: Ce fichier a été identifié comme dangereux lors de l'analyse approfondie
+  promptForScanning: Inviter l'utilisateur à vérifier les menaces de téléchargement
+  promptForLocalPasswordScanning: Inviter l'utilisateur à vérifier la protection locale par mot de passe
+  accountCompromise: Ce téléchargement peut indiquer une compromission du compte utilisateur
+  blockedScanFailed: Téléchargement bloqué en raison de l'échec de l'analyse
+
+error:
+  FILE_FAILED: Échec du téléchargement du fichier
+  FILE_ACCESS_DENIED: Accès au fichier refusé
+  FILE_NO_SPACE: Espace insuffisant pour télécharger le fichier
+  FILE_NAME_TOO_LONG: Nom de fichier trop long
+  FILE_TOO_LARGE: Fichier trop volumineux pour être téléchargé
+  FILE_VIRUS_INFECTED: Fichier bloqué en raison d'une infection virale
+  FILE_TRANSIENT_ERROR: Erreur transitoire lors du téléchargement du fichier
+  FILE_BLOCKED: Téléchargement du fichier bloqué
+  FILE_SECURITY_CHECK_FAILED: Le fichier n'a pas passé la vérification de sécurité
+  FILE_TOO_SHORT: Fichier trop court
+  NETWORK_FAILED: Échec du réseau lors du téléchargement
+  NETWORK_TIMEOUT: Délai de téléchargement dépassé
+  NETWORK_DISCONNECTED: Connexion réseau perdue pendant le téléchargement
+  NETWORK_SERVER_DOWN: Serveur indisponible
+  NETWORK_INVALID_REQUEST: Requête invalide
+  SERVER_FAILED: Le serveur n'a pas répondu
+  SERVER_NO_RANGE: Le serveur ne prend pas en charge les requêtes de plage
+  SERVER_BAD_CONTENT: Contenu incorrect renvoyé par le serveur
+  SERVER_UNAUTHORIZED: Accès au serveur non autorisé
+  SERVER_CERT_PROBLEM: Problème de certificat serveur
+  SERVER_FORBIDDEN: Accès au serveur interdit
+  USER_CANCELED: Téléchargement annulé par l'utilisateur
+  USER_SHUTDOWN: L'utilisateur a fermé l'application pendant le téléchargement
+  CRASH: L'application a planté pendant le téléchargement
