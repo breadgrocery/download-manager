@@ -30,7 +30,7 @@ export const defaults = {
         popup: false
       },
       interrupted: {
-        sound: false,
+        sound: true,
         popup: true
       },
       dangerous: {

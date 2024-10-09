@@ -23,13 +23,13 @@
       <!-- Progress icon -->
       <Progress :download="download" />
 
-      <NFlex vertical class="main">
+      <NFlex vertical style="flex-grow: 1">
         <NFlex justify="end" :wrap="false">
           <!-- File Info -->
           <FileInfo :download="download" :highlights="highlights" />
 
           <!-- Toolbar -->
-          <DownloadItemToolbar class="toolbar" :download="download" />
+          <DownloadItemToolbar style="flex-grow: 1" :download="download" />
         </NFlex>
 
         <!-- Footer -->
@@ -37,11 +37,11 @@
           <!-- Download speed -->
           <Speed v-if="state.ongoing(download)" :download="download" />
           <!-- File Size -->
-          <NFlex v-if="state.completed(download)" class="file-size" justify="space-between">
+          <NFlex v-if="state.completed(download)">
             <NText :style="deletedStyle(download, colors)" code>
               {{ bytes(download.fileSize) }}
             </NText>
-            <NText :style="deletedStyle(download, colors)" code>
+            <NText :style="deletedStyle(download, colors)" code style="margin-left: auto">
               {{ new Date(download.startTime).toLocaleString() }}
             </NText>
           </NFlex>
@@ -53,14 +53,7 @@
 
 <style scoped lang="scss">
   .download-item-wrapper {
-    .main {
-      flex-grow: 1;
-    }
-    .toolbar {
-      flex-grow: 1;
-    }
-    .file-size {
-      user-select: none;
-    }
+    user-select: none;
+    -webkit-user-drag: none;
   }
 </style>

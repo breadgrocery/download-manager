@@ -54,7 +54,7 @@
         :style="deletedStyle(download, colors)"
         :src="src"
       />
-      <NIcon v-if="!src" :size="32" :style="deletedStyle(download, colors)">
+      <NIcon v-else :size="32" :style="deletedStyle(download, colors)">
         <Icon icon="mdi:file-question-outline" />
       </NIcon>
     </NProgress>
@@ -66,10 +66,6 @@
   .progress {
     width: 52px;
     align-self: center;
-    :deep(img) {
-      user-select: none;
-      -webkit-user-drag: none;
-    }
   }
   .no-progress {
     :deep(.n-progress-graph) {
