@@ -1,17 +1,33 @@
-import { dateEnUS, dateZhCN, dateZhTW, enUS, zhCN, zhTW } from "naive-ui";
+import {
+  NDateLocale,
+  NLocale,
+  arDZ,
+  dateArDZ,
+  dateEnUS,
+  dateEsAR,
+  dateFrFR,
+  dateRuRU,
+  dateZhCN,
+  enUS,
+  esAR,
+  frFR,
+  ruRU,
+  zhCN
+} from "naive-ui";
 import browser from "webextension-polyfill";
 
-export const getLocale = () => {
-  switch (navigator.language) {
-    case "en-US":
-      return { dateLocale: dateEnUS, locale: enUS };
-    case "zh-CN":
-      return { dateLocale: dateZhCN, locale: zhCN };
-    case "zh-TW":
-      return { dateLocale: dateZhTW, locale: zhTW };
-    default:
-      return { dateLocale: dateEnUS, locale: enUS };
-  }
+const locales: { [key: string]: { locale: NLocale; dateLocale: NDateLocale } } = {
+  "ar": { locale: arDZ, dateLocale: dateArDZ },
+  "en": { locale: enUS, dateLocale: dateEnUS },
+  "es": { locale: esAR, dateLocale: dateEsAR },
+  "fr": { locale: frFR, dateLocale: dateFrFR },
+  "ru": { locale: ruRU, dateLocale: dateRuRU },
+  "zh": { locale: zhCN, dateLocale: dateZhCN }
+};
+
+export const getLocale = (lang: string) => {
+  lang = lang.substring(0, 2);
+  return locales[lang] || locales["en"];
 };
 
 export const t = (messageName: string, substitutions?: string[] | string) => {
