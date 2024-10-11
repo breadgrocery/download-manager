@@ -18,7 +18,7 @@ on:
         type: choice
         required: true
         description: Upload without publishing
-        options: [true, false]
+        options: ["true", "false"]
 
 permissions: write-all
 
@@ -54,11 +54,15 @@ jobs:
           pnpm run build
 
       # Bundle the web extension
-      - name: Bundle
+      - name: Bundle zip
         uses: vimtor/action-zip@v1.2
         with:
           files: dist
           dest: ${{ env.ZIP_PATH }}
+
+      - name: Bundle crx
+        run: |
+          npx crx pack --crx-version 3 --output out/download-manager.crx dist
 
       # Publish to GitHub Release (Triggered by tag)
       - name: GitHub Release
