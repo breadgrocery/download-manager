@@ -1,14 +1,16 @@
-import vue from "@vitejs/plugin-vue";
+import Vue from "@vitejs/plugin-vue";
 import { resolve } from "path";
 import { defineConfig } from "vite";
 import AutoComponents from "./plugins/auto-components";
 import AutoImport from "./plugins/auto-import";
+import Icons from "./plugins/icons";
 import WebExtension from "./plugins/web-extension";
 import YamlLocale from "./plugins/yaml-locale";
 
 export default defineConfig({
   plugins: [
-    vue(),
+    Vue(),
+    Icons(), // Iconify icons
     WebExtension(), // Construct web extension
     YamlLocale(), // // Convert locale messages from YAML format to JSON format
     AutoImport(), // Automatically import APIs on-demand

@@ -1,6 +1,13 @@
 <script setup lang="ts">
   import { Category, categoryEnums } from "@/pages/popup/components/header/Category";
   import { t } from "@/utils/i18n";
+  import MdiCategoryPlusOutline from "~icons/mdi/category-plus-outline";
+  import MdiContentDuplicate from "~icons/mdi/content-duplicate";
+  import MdiFileSearchOutline from "~icons/mdi/file-search-outline";
+  import MdiFilterOutline from "~icons/mdi/filter-outline";
+  import MdiLinkVariantPlus from "~icons/mdi/link-variant-plus";
+  import MdiTimerOutline from "~icons/mdi/timer-outline";
+  import MdiTimerRefreshOutline from "~icons/mdi/timer-refresh-outline";
   import SettingDetail from "../layout/SettingDetail.vue";
   import SettingItem from "../layout/SettingItem.vue";
   import SettingWrapper from "../layout/SettingList.vue";
@@ -21,10 +28,10 @@
 
 <template>
   <SettingWrapper>
-    <SettingItem :title="t(`options_interactions_filter_title`)" icon="mdi:filter-outline">
+    <SettingItem :title="t(`options_interactions_filter_title`)" :icon="MdiFilterOutline">
       <SettingDetail
         :title="t(`options_interactions_filter_search_title`)"
-        icon="mdi:file-search-outline"
+        :icon="MdiFileSearchOutline"
         :description="t(`options_interactions_filter_search_description`)"
       >
         <NSwitch
@@ -34,7 +41,7 @@
       </SettingDetail>
       <SettingDetail
         :title="t(`options_interactions_filter_categories_title`)"
-        icon="mdi:category-plus-outline"
+        :icon="MdiCategoryPlusOutline"
         :description="t(`options_interactions_filter_categories_description`)"
       >
         <NCheckboxGroup
@@ -51,8 +58,8 @@
       </SettingDetail>
     </SettingItem>
 
-    <SettingItem :title="t(`options_interactions_download_title`)" icon="mdi:link-variant-plus">
-      <SettingDetail :title="t(`options_interactions_download_timeout`)" icon="mdi:timer-outline">
+    <SettingItem :title="t(`options_interactions_download_title`)" :icon="MdiLinkVariantPlus">
+      <SettingDetail :title="t(`options_interactions_download_timeout`)" :icon="MdiTimerOutline">
         <NInputNumber
           class="input"
           :default-value="settings.interactions.download.timeout"
@@ -66,7 +73,7 @@
       </SettingDetail>
       <SettingDetail
         :title="t(`options_interactions_download_retries`)"
-        icon="mdi:timer-refresh-outline"
+        :icon="MdiTimerRefreshOutline"
       >
         <NInputNumber
           class="input"
@@ -78,7 +85,7 @@
       </SettingDetail>
       <SettingDetail
         :title="t(`options_interactions_download_conflict_title`)"
-        icon="mdi:content-duplicate"
+        :icon="MdiContentDuplicate"
       >
         <NSelect
           class="input"
@@ -91,7 +98,7 @@
   </SettingWrapper>
 </template>
 
-<style scoped lang="scss">
+<style scoped>
   .input {
     width: 250px;
   }

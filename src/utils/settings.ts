@@ -97,5 +97,9 @@ export const proxiedSettings = async (): Promise<Settings> => {
 export const reset = () => {
   const _settings = cloneDeep(defaults);
   browser.storage.local.set(_settings);
-  browser.storage.sync.set(_settings);
+  if (_settings.sync.enabled) {
+    browser.storage.sync.set(_settings);
+  } else {
+    browser.storage.sync.clear();
+  }
 };

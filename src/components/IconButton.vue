@@ -1,18 +1,18 @@
 <script setup lang="ts">
-  import { IconProps } from "@iconify/vue";
+  import { h } from "vue";
 
-  export type Picked = "icon" | "mode" | "color" | "width" | "height";
+  export type Icon = {
+    icon: Component;
+    color?: string;
+    size?: number | string;
+  };
 
-  export interface Props extends Pick<IconProps, Picked> {
+  export interface Props extends Icon {
     tooltip?: string;
     showArrow?: boolean;
   }
 
-  const props = withDefaults(defineProps<Props>(), {
-    tooltip: undefined,
-    width: 18,
-    showArrow: false
-  });
+  const { icon, color, size = 20, tooltip, showArrow } = defineProps<Props>();
 
   const emit = defineEmits<{
     click: [];
@@ -21,12 +21,14 @@
 </script>
 
 <template>
-  <NTooltip :show-arrow="props.showArrow" :disabled="props.tooltip === undefined">
+  <NTooltip :show-arrow="showArrow" :disabled="tooltip === undefined">
     <template #trigger>
       <NButton text @click="handleClick">
-        <Icon v-bind="props" />
+        <NIcon :color="color" :size="size">
+          <component :is="() => h(icon)" />
+        </NIcon>
       </NButton>
     </template>
-    <template #default> {{ props.tooltip }} </template>
+    <template #default> {{ tooltip }} </template>
   </NTooltip>
 </template>

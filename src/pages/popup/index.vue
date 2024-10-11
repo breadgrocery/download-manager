@@ -8,8 +8,8 @@
   import Header from "./components/header/Header.vue";
   import DownloadItem from "./components/list/DownloadItem.vue";
 
-  // Set title on mounted
-  onMounted(() => (document.title = t(`extension_name`)));
+  // Set document title
+  document.title = t(`toolbar_extension_settings`);
 
   // Theme and locale
   const { adaptive, theme } = useTheme();
@@ -90,7 +90,9 @@
           <!-- Empty Box -->
           <NFlex v-if="filtered.length === 0" class="empty" vertical justify="space-around">
             <NEmpty :description="t(`empty`)">
-              <template #icon> <Icon icon="mdi:tray-download" /> </template>
+              <template #icon>
+                <NIcon><IconMdiTrayDownload /> </NIcon>
+              </template>
             </NEmpty>
           </NFlex>
         </NFlex>
@@ -106,6 +108,8 @@
     min-height: 300px;
     max-height: 600px;
     overflow: hidden;
+    user-select: none;
+    -webkit-user-drag: none;
     .scroller {
       .item {
         position: absolute;
@@ -117,7 +121,6 @@
     }
     .empty {
       flex-grow: 1;
-      user-select: none;
     }
   }
 </style>

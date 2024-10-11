@@ -3,6 +3,10 @@
   import { t } from "@/utils/i18n";
   import Bowser from "bowser";
   import browser from "webextension-polyfill";
+  import MdiGithub from "~icons/mdi/github";
+  import MdiGoogleChrome from "~icons/mdi/google-chrome";
+  import MdiLike from "~icons/mdi/like";
+  import MdiMicrosoftEdge from "~icons/mdi/microsoft-edge";
   import SettingDetail from "../layout/SettingDetail.vue";
   import SettingItem from "../layout/SettingItem.vue";
   import SettingWrapper from "../layout/SettingList.vue";
@@ -23,28 +27,34 @@
       </NText>
       <NText>{{ t(`extension_description`) }} </NText>
     </NFlex>
-    <SettingItem :title="t(`options_about_rate_title`)" icon="mdi:like">
-      <SettingDetail :title="t(`options_about_rate_github`)" icon="mdi:github">
+    <SettingItem :title="t(`options_about_rate_title`)" :icon="MdiLike">
+      <SettingDetail :title="t(`options_about_rate_github`)" :icon="MdiGithub">
         <NButton secondary @click="openUrl(constants.about.github)">
-          <template #icon><Icon icon="mdi:external-link" /> </template>
+          <template #icon>
+            <NIcon> <IconMdiExternalLink /> </NIcon>
+          </template>
         </NButton>
       </SettingDetail>
       <SettingDetail
         v-if="agent.satisfies({ chrome: `>=71` })"
         :title="t(`options_about_rate_chrome`)"
-        icon="mdi:google-chrome"
+        :icon="MdiGoogleChrome"
       >
         <NButton secondary @click="openUrl(constants.about.chrome)">
-          <template #icon><Icon icon="mdi:external-link" /> </template>
+          <template #icon>
+            <NIcon> <IconMdiExternalLink /> </NIcon>
+          </template>
         </NButton>
       </SettingDetail>
       <SettingDetail
         v-if="agent.satisfies({ edge: `>=79` })"
         :title="t(`options_about_rate_edge`)"
-        icon="mdi:microsoft-edge"
+        :icon="MdiMicrosoftEdge"
       >
         <NButton secondary @click="openUrl(constants.about.edge)">
-          <template #icon><Icon icon="mdi:external-link" /> </template>
+          <template #icon>
+            <NIcon> <IconMdiExternalLink /> </NIcon>
+          </template>
         </NButton>
       </SettingDetail>
     </SettingItem>

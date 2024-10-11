@@ -18,7 +18,7 @@
 </script>
 
 <template>
-  <NCard ref="download-item" class="download-item-wrapper" size="small" hoverable>
+  <NCard ref="download-item" size="small" hoverable>
     <NFlex :size="10" justify="end" :wrap="false">
       <!-- Progress icon -->
       <Progress :download="download" />
@@ -50,10 +50,3 @@
     </NFlex>
   </NCard>
 </template>
-
-<style scoped lang="scss">
-  .download-item-wrapper {
-    user-select: none;
-    -webkit-user-drag: none;
-  }
-</style>

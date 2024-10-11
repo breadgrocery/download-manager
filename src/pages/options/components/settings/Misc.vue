@@ -4,6 +4,13 @@
   import Bowser from "bowser";
   import { useMessage } from "naive-ui";
   import browser from "webextension-polyfill";
+  import MdiDatabaseRefreshOutline from "~icons/mdi/database-refresh-outline";
+  import MdiHide from "~icons/mdi/hide";
+  import MdiParallel from "~icons/mdi/parallel";
+  import MdiSettingsOutline from "~icons/mdi/settings-outline";
+  import MdiShieldHalfFull from "~icons/mdi/shield-half-full";
+  import MdiStorage from "~icons/mdi/storage";
+  import MdiWebAsset from "~icons/mdi/web-asset";
   import SettingDetail from "../layout/SettingDetail.vue";
   import SettingItem from "../layout/SettingItem.vue";
   import SettingWrapper from "../layout/SettingList.vue";
@@ -33,56 +40,66 @@
 
 <template>
   <SettingWrapper>
-    <SettingItem :title="t(`options_misc_browser_title`)" icon="mdi:web-asset">
+    <SettingItem :title="t(`options_misc_browser_title`)" :icon="MdiWebAsset">
       <SettingDetail
         :title="t(`options_misc_browser_download_title`)"
-        icon="mdi:settings-outline"
+        :icon="MdiSettingsOutline"
         :description="t(`options_misc_browser_download_description`)"
       >
         <NButton secondary @click="localResource(`settings/downloads`)">
-          <template #icon> <Icon icon="mdi:external-link" /> </template>
+          <template #icon>
+            <NIcon> <IconMdiExternalLink /> </NIcon>
+          </template>
         </NButton>
       </SettingDetail>
       <SettingDetail
         v-if="agent.satisfies({ chrome: `>=64`, edge: `>=80` })"
         :title="t(`options_misc_browser_parallel_title`)"
-        icon="mdi:parallel"
+        :icon="MdiParallel"
         :description="t(`options_misc_browser_parallel_description`)"
       >
         <NButton secondary @click="localResource(`flags/#enable-parallel-downloading`)">
-          <template #icon><Icon icon="mdi:external-link" /> </template>
+          <template #icon>
+            <NIcon> <IconMdiExternalLink /> </NIcon>
+          </template>
         </NButton>
       </SettingDetail>
       <SettingDetail
         v-if="agent.satisfies({ edge: `>=113` })"
         :title="t(`options_misc_browser_toolbar_title`)"
-        icon="mdi:hide"
+        :icon="MdiHide"
         :description="t(`options_misc_browser_toolbar_description`)"
       >
         <NButton secondary @click="localResource(`settings/appearance`)">
-          <template #icon><Icon icon="mdi:external-link" /> </template>
+          <template #icon>
+            <NIcon> <IconMdiExternalLink /> </NIcon>
+          </template>
         </NButton>
       </SettingDetail>
       <SettingDetail
         v-if="agent.satisfies({ edge: `>=79` })"
         :title="t(`options_misc_browser_smartscreen_title`)"
-        icon="mdi:shield-half-full"
+        :icon="MdiShieldHalfFull"
         :description="t(`options_misc_browser_smartscreen_description`)"
       >
         <NButton secondary @click="localResource(`settings/?search=Smartscreen`)">
-          <template #icon><Icon icon="mdi:external-link" /> </template>
+          <template #icon>
+            <NIcon> <IconMdiExternalLink /> </NIcon>
+          </template>
         </NButton>
       </SettingDetail>
     </SettingItem>
 
-    <SettingItem :title="t(`options_misc_storage_title`)" icon="mdi:storage">
+    <SettingItem :title="t(`options_misc_storage_title`)" :icon="MdiStorage">
       <SettingDetail
         :title="t(`options_misc_storage_cache_title`)"
-        icon="mdi:database-refresh-outline"
+        :icon="MdiDatabaseRefreshOutline"
         :description="t(`options_misc_storage_cache_description`)"
       >
         <NButton secondary @click="handleClearCache">
-          <template #icon><Icon icon="mdi:refresh" /></template>
+          <template #icon>
+            <NIcon> <IconMdiRefresh /> </NIcon>
+          </template>
         </NButton>
       </SettingDetail>
     </SettingItem>

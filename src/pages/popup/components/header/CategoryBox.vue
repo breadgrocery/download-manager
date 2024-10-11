@@ -33,7 +33,9 @@
       <NTooltip v-for="button in categoryButtons" :key="button.id" :show-arrow="false">
         <template #trigger>
           <NButton @click="handleCategoryClick(button)">
-            <template #icon> <IconButton :icon="button.icon" /> </template>
+            <template #icon>
+              <IconButton :icon="button.icon" :size="18" />
+            </template>
           </NButton>
         </template>
         <template #default> {{ button.tooltip }} </template>

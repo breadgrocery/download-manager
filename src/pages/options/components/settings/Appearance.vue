@@ -2,6 +2,11 @@
   import { t } from "@/utils/i18n";
   import { debounce } from "lodash-es";
   import browser from "webextension-polyfill";
+  import MdiArrowExpandAll from "~icons/mdi/arrow-expand-all";
+  import MdiArrowExpandHorizontal from "~icons/mdi/arrow-expand-horizontal";
+  import MdiArrowExpandVertical from "~icons/mdi/arrow-expand-vertical";
+  import MdiMathCompassVariant from "~icons/mdi/math-compass-variant";
+  import MdiThemeLightDark from "~icons/mdi/theme-light-dark";
   import SettingDetail from "../layout/SettingDetail.vue";
   import SettingItem from "../layout/SettingItem.vue";
   import SettingWrapper from "../layout/SettingList.vue";
@@ -25,11 +30,8 @@
 
 <template>
   <SettingWrapper>
-    <SettingItem :title="t(`options_appearance_theme_title`)" icon="mdi:math-compass-variant">
-      <SettingDetail
-        :title="t(`options_appearance_theme_scheme_title`)"
-        icon="mdi:theme-light-dark"
-      >
+    <SettingItem :title="t(`options_appearance_theme_title`)" :icon="MdiMathCompassVariant">
+      <SettingDetail :title="t(`options_appearance_theme_scheme_title`)" :icon="MdiThemeLightDark">
         <NRadioGroup :value="settings.appearance.theme.scheme" :on-update:value="updateTheme">
           <NRadioButton v-for="scheme in [`auto`, `light`, `dark`]" :key="scheme" :value="scheme">
             {{ t(`options_appearance_theme_scheme_${scheme}`) }}
@@ -38,11 +40,8 @@
       </SettingDetail>
     </SettingItem>
 
-    <SettingItem :title="t(`options_appearance_bounds_title`)" icon="mdi:arrow-expand-all">
-      <SettingDetail
-        :title="t(`options_appearance_bounds_width`)"
-        icon="mdi:arrow-expand-horizontal"
-      >
+    <SettingItem :title="t(`options_appearance_bounds_title`)" :icon="MdiArrowExpandAll">
+      <SettingDetail :title="t(`options_appearance_bounds_width`)" :icon="MdiArrowExpandHorizontal">
         <NSlider
           :min="645"
           :max="800"
@@ -51,10 +50,7 @@
           :on-dragend="popup"
         />
       </SettingDetail>
-      <SettingDetail
-        :title="t(`options_appearance_bounds_height`)"
-        icon="mdi:arrow-expand-vertical"
-      >
+      <SettingDetail :title="t(`options_appearance_bounds_height`)" :icon="MdiArrowExpandVertical">
         <NSlider
           :min="300"
           :max="600"

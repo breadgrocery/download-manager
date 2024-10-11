@@ -17,7 +17,7 @@
     "paths": {
       "@/*": ["src/*"]
     },
-    "types": ["vite/client", "naive-ui/volar", "@types/chrome"]
+    "types": ["vite/client", "naive-ui/volar", "unplugin-icons/types/vue", "@types/chrome"]
   },
   "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue", "src/**/*.md"],
   "references": [{ "path": "./tsconfig.node.json" }]

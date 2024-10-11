@@ -1,8 +1,10 @@
 <script setup lang="ts">
   import { NText } from "naive-ui";
+  import { h } from "vue";
+  import MdiQuestionMarkCircle from "~icons/mdi/question-mark-circle";
 
   export interface Props {
-    icon?: string;
+    icon?: Component;
     title: string;
     description?: string;
     tooltip?: string;
@@ -15,9 +17,11 @@
   <NFlex class="setting-detail-wrapper" justify="space-between">
     <NFlex class="info" vertical>
       <NFlex :size="5">
-        <Icon v-if="icon" class="icon" :icon="icon" :width="18" />
+        <NIcon v-if="icon" class="icon">
+          <component :is="() => h(icon || MdiQuestionMarkCircle)" />
+        </NIcon>
         <NText>{{ title }}</NText>
-        <IconButton v-if="tooltip" icon="mdi:question-mark-circle" :tooltip="tooltip" />
+        <IconButton v-if="tooltip" :icon="MdiQuestionMarkCircle" :tooltip="tooltip" />
       </NFlex>
       <span v-if="description" class="description">{{ description }}</span>
     </NFlex>

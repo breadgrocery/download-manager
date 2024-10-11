@@ -55,7 +55,7 @@
         :src="src"
       />
       <NIcon v-else :size="32" :style="deletedStyle(download, colors)">
-        <Icon icon="mdi:file-question-outline" />
+        <IconMdiFileQuestionOutline />
       </NIcon>
     </NProgress>
     <NDivider class="divider" vertical />

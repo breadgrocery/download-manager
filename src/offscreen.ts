@@ -1,6 +1,6 @@
-import { offscreenSendListen } from "@/utils/message";
+import { offscreenListen } from "@/utils/message";
 
-offscreenSendListen((action: string, data: unknown) => {
+offscreenListen((action: string, data: unknown) => {
   switch (action) {
     case "audio":
       data && new Audio(data as string).play();

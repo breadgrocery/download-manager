@@ -40,12 +40,12 @@ export const is = {
 export const state: {
   [key in State]: (item: browser.Downloads.DownloadItem) => boolean;
 } = {
-  completed: item => is.completed(item.state),
-  downloading: item => is.downloading(item.state, item.paused),
-  paused: item => is.paused(item.paused, item.canResume),
-  interrupted: item => is.interrupted(item.state),
-  deleted: item => is.deleted(item.state, item.exists),
-  dangerous: item => is.dangerous(item.danger),
-  ongoing: item => is.ongoing(item.state, item.paused, item.canResume),
-  expired: item => is.expired(item.paused, item.canResume)
+  completed: download => is.completed(download.state),
+  downloading: download => is.downloading(download.state, download.paused),
+  paused: download => is.paused(download.paused, download.canResume),
+  interrupted: download => is.interrupted(download.state),
+  deleted: download => is.deleted(download.state, download.exists),
+  dangerous: download => is.dangerous(download.danger),
+  ongoing: download => is.ongoing(download.state, download.paused, download.canResume),
+  expired: download => is.expired(download.paused, download.canResume)
 };

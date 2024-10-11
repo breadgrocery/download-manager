@@ -2,10 +2,11 @@
   import { NText } from "naive-ui";
   import { NDivider } from "naive-ui";
   import { h } from "vue";
+  import MdiQuestionMarkCircle from "~icons/mdi/question-mark-circle";
 
   export interface Props {
     title: string;
-    icon?: string;
+    icon?: Component;
   }
 
   const { title, icon } = defineProps<Props>();
@@ -16,7 +17,7 @@
     <template #header>
       <NFlex>
         <NIcon v-if="icon" class="icon">
-          <Icon :icon="icon" />
+          <component :is="() => h(icon || MdiQuestionMarkCircle)" />
         </NIcon>
         <NText>{{ title }}</NText>
       </NFlex>

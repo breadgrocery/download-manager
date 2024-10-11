@@ -8,8 +8,13 @@ export {}
 declare module 'vue' {
   export interface GlobalComponents {
     DropdownIcon: typeof import('./components/DropdownIcon.vue')['default']
-    Icon: typeof import('@iconify/vue')['Icon']
     IconButton: typeof import('./components/IconButton.vue')['default']
+    IconMdiExternalLink: typeof import('~icons/mdi/external-link')['default']
+    IconMdiFileQuestionOutline: typeof import('~icons/mdi/file-question-outline')['default']
+    IconMdiRefresh: typeof import('~icons/mdi/refresh')['default']
+    IconMdiRestore: typeof import('~icons/mdi/restore')['default']
+    IconMdiSearch: typeof import('~icons/mdi/search')['default']
+    IconMdiTrayDownload: typeof import('~icons/mdi/tray-download')['default']
     NAvatar: typeof import('naive-ui')['NAvatar']
     NBackTop: typeof import('naive-ui')['NBackTop']
     NButton: typeof import('naive-ui')['NButton']

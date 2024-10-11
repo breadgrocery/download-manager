@@ -7,6 +7,19 @@
   import { useMessage } from "naive-ui";
   import { useModal } from "naive-ui";
   import browser from "webextension-polyfill";
+  import MdiDelete from "~icons/mdi/delete";
+  import MdiFileRestoreOutline from "~icons/mdi/file-restore-outline";
+  import MdiFolderOutline from "~icons/mdi/folder-outline";
+  import MdiGarbage from "~icons/mdi/garbage";
+  import MdiHarddisk from "~icons/mdi/harddisk";
+  import MdiHistory from "~icons/mdi/history";
+  import MdiLink from "~icons/mdi/link";
+  import MdiLinkVariant from "~icons/mdi/link-variant";
+  import MdiPause from "~icons/mdi/pause";
+  import MdiPlay from "~icons/mdi/play";
+  import MdiQrcode from "~icons/mdi/qrcode";
+  import MdiRemove from "~icons/mdi/remove";
+  import MdiReplay from "~icons/mdi/replay";
   import QRCode from "./QRCode.vue";
 
   interface Props {
@@ -18,8 +31,8 @@
 
   // Link select
   const linkOptions: DropdownIconOption[] = [
-    { key: "link", label: "download_link_copy", icon: "mdi:link" },
-    { key: "qrcode", label: "download_link_qrcode", icon: "mdi:qrcode" }
+    { key: "link", label: "download_link_copy", icon: MdiLink },
+    { key: "qrcode", label: "download_link_qrcode", icon: MdiQrcode }
   ];
   const handleLinkSelect = (key: string) => {
     switch (key) {
@@ -53,8 +66,8 @@
 
   // Delete select
   const deleteOptions = [
-    { key: "history", label: "download_delete_history", icon: "mdi:history" },
-    { key: "disk", label: "download_delete_disk", icon: "mdi:harddisk" }
+    { key: "history", label: "download_delete_history", icon: MdiHistory },
+    { key: "disk", label: "download_delete_disk", icon: MdiHarddisk }
   ];
   const handleDeleteSelect = (key: string) => {
     switch (key) {
@@ -100,17 +113,12 @@
 <template>
   <NFlex justify="end">
     <!-- Link select -->
-    <DropdownIcon
-      icon="mdi:link-variant"
-      width="18"
-      :options="linkOptions"
-      @select="handleLinkSelect"
-    />
+    <DropdownIcon :icon="MdiLinkVariant" :options="linkOptions" @select="handleLinkSelect" />
 
     <!-- Show in folder -->
     <IconButton
       v-if="state.completed(download) && !state.deleted(download)"
-      icon="mdi:folder-outline"
+      :icon="MdiFolderOutline"
       :tooltip="t(`download_show`)"
       @click="handleShowInFolder"
     />
@@ -119,25 +127,25 @@
     <NFlex v-if="!state.dangerous(download)" v-assert-children>
       <IconButton
         v-if="state.interrupted(download) || state.deleted(download)"
-        icon="mdi:replay"
+        :icon="MdiReplay"
         :tooltip="t(`download_retry`)"
         @click="handleRetry"
       />
       <IconButton
         v-if="state.downloading(download)"
-        icon="mdi:pause"
+        :icon="MdiPause"
         :tooltip="t(`download_pause`)"
         @click="handlePause"
       />
       <IconButton
         v-if="state.paused(download)"
-        icon="mdi:play"
+        :icon="MdiPlay"
         :tooltip="t(`download_resume`)"
         @click="handleResume"
       />
       <IconButton
         v-if="state.ongoing(download)"
-        icon="mdi:remove"
+        :icon="MdiRemove"
         :tooltip="t(`download_cancel`)"
         @click="handleCancel"
       />
@@ -147,13 +155,13 @@
     <NFlex v-if="state.dangerous(download)" v-assert-children>
       <IconButton
         v-if="state.ongoing(download)"
-        icon="mdi:file-restore-outline"
+        :icon="MdiFileRestoreOutline"
         :tooltip="t(`download_dangerous_keep`)"
         @click="handleAcceptDanger(download)"
       />
       <IconButton
         v-if="state.ongoing(download)"
-        icon="mdi:delete"
+        :icon="MdiDelete"
         :tooltip="t(`download_dangerous_remove`)"
         @click="deleteFromDisk"
       />
@@ -162,8 +170,7 @@
     <!-- Delete select -->
     <DropdownIcon
       v-if="state.completed(download) || state.interrupted(download) || state.expired(download)"
-      icon="mdi:garbage"
-      width="18"
+      :icon="MdiGarbage"
       :options="deleteOptions"
       @select="handleDeleteSelect"
     />

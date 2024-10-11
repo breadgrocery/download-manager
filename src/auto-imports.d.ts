@@ -7,6 +7,9 @@
 export {}
 declare global {
   const EffectScope: typeof import('vue')['EffectScope']
+  const IconMdiAccount: typeof import('~icons/mdi/account')['default']
+  const IconMdiAlarm: typeof import('~icons/mdi/alarm')['default']
+  const IconMdiLinkVariantPlus: typeof import('~icons/mdi/link-variant-plus')['default']
   const computed: typeof import('vue')['computed']
   const createApp: typeof import('vue')['createApp']
   const customRef: typeof import('vue')['customRef']

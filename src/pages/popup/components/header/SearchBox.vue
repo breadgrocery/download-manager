@@ -17,7 +17,7 @@
       @input="handleChange"
     >
       <template #prefix>
-        <Icon icon="mdi:search" />
+        <NIcon><IconMdiSearch /> </NIcon>
       </template>
     </NInput>
   </NFlex>

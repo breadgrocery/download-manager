@@ -2,8 +2,8 @@
   import { t } from "@/utils/i18n";
   import Settings from "./components/Settings.vue";
 
-  // Set title on mounted
-  onMounted(() => (document.title = t(`toolbar_extension_settings`)));
+  // Set document title
+  document.title = t(`toolbar_extension_settings`);
 
   // Theme and locale
   const { adaptive, theme } = useTheme();
@@ -31,7 +31,7 @@
   }
 </style>
 
-<style scoped lang="scss">
+<style scoped>
   .options-wrapper {
     width: 100%;
     height: 100%;

@@ -2,6 +2,14 @@ import { t } from "@/utils/i18n";
 import { extensions, getAllExtensions } from "@/utils/mime";
 import { getFileExtension } from "@/utils/path";
 import { intersection } from "lodash-es";
+import MdiEllipsisHorizontal from "~icons/mdi/ellipsis-horizontal";
+import MdiFileDocument from "~icons/mdi/file-document";
+import MdiFolderZip from "~icons/mdi/folder-zip";
+import MdiFormatListBulleted from "~icons/mdi/format-list-bulleted";
+import MdiImage from "~icons/mdi/image";
+import MdiJigsaw from "~icons/mdi/jigsaw";
+import MdiMovie from "~icons/mdi/movie";
+import MdiMusic from "~icons/mdi/music";
 
 export const categoryEnums = [
   "all",
@@ -18,7 +26,7 @@ export type Category = (typeof categoryEnums)[number];
 
 export interface CategoryDetails {
   id: Category;
-  icon: string;
+  icon: Component;
   tooltip: string | undefined;
   match: (filename: string, mime?: string) => boolean;
 }
@@ -27,13 +35,13 @@ export const categoryDetails = (categories?: Category[]): CategoryDetails[] => {
   return [
     {
       id: "all",
-      icon: "mdi:format-list-bulleted",
+      icon: MdiFormatListBulleted,
       tooltip: t(`categories_all`),
       match: () => true
     },
     {
       id: "documents",
-      icon: "mdi:file-document",
+      icon: MdiFileDocument,
       tooltip: t(`categories_documents`),
       match: (filename, mime) => {
         const exts = [getFileExtension(filename), ...(mime ? getAllExtensions([mime]) : [])];
@@ -42,7 +50,7 @@ export const categoryDetails = (categories?: Category[]): CategoryDetails[] => {
     },
     {
       id: "music",
-      icon: "mdi:music",
+      icon: MdiMusic,
       tooltip: t(`categories_music`),
       match: (filename, mime) => {
         const exts = [getFileExtension(filename), ...(mime ? getAllExtensions([mime]) : [])];
@@ -51,7 +59,7 @@ export const categoryDetails = (categories?: Category[]): CategoryDetails[] => {
     },
     {
       id: "pictures",
-      icon: "mdi:image",
+      icon: MdiImage,
       tooltip: t(`categories_pictures`),
       match: (filename, mime) => {
         const exts = [getFileExtension(filename), ...(mime ? getAllExtensions([mime]) : [])];
@@ -60,7 +68,7 @@ export const categoryDetails = (categories?: Category[]): CategoryDetails[] => {
     },
     {
       id: "videos",
-      icon: "mdi:movie",
+      icon: MdiMovie,
       tooltip: t(`categories_videos`),
       match: (filename, mime) => {
         const exts = [getFileExtension(filename), ...(mime ? getAllExtensions([mime]) : [])];
@@ -69,7 +77,7 @@ export const categoryDetails = (categories?: Category[]): CategoryDetails[] => {
     },
     {
       id: "archives",
-      icon: "mdi:folder-zip",
+      icon: MdiFolderZip,
       tooltip: t(`categories_archives`),
       match: (filename, mime) => {
         const exts = [getFileExtension(filename), ...(mime ? getAllExtensions([mime]) : [])];
@@ -78,7 +86,7 @@ export const categoryDetails = (categories?: Category[]): CategoryDetails[] => {
     },
     {
       id: "executables",
-      icon: "mdi:jigsaw",
+      icon: MdiJigsaw,
       tooltip: t(`categories_executables`),
       match: (filename, mime) => {
         const exts = [getFileExtension(filename), ...(mime ? getAllExtensions([mime]) : [])];
@@ -87,7 +95,7 @@ export const categoryDetails = (categories?: Category[]): CategoryDetails[] => {
     },
     {
       id: "others",
-      icon: "mdi:ellipsis-horizontal",
+      icon: MdiEllipsisHorizontal,
       tooltip: t(`categories_others`),
       match: (filename, mime) => {
         const exts = [getFileExtension(filename), ...(mime ? getAllExtensions([mime]) : [])];

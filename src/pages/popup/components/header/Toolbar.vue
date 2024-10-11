@@ -7,6 +7,13 @@
   import pRetry from "p-retry";
   import pTimeout from "p-timeout";
   import browser from "webextension-polyfill";
+  import MdiDeleteForever from "~icons/mdi/delete-forever";
+  import MdiFileOutline from "~icons/mdi/file-outline";
+  import MdiFileRefreshOutline from "~icons/mdi/file-refresh-outline";
+  import MdiFileRemoveOutline from "~icons/mdi/file-remove-outline";
+  import MdiFolderArrowDownOutline from "~icons/mdi/folder-arrow-down-outline";
+  import MdiLinkVariantPlus from "~icons/mdi/link-variant-plus";
+  import MdiSettingsOutline from "~icons/mdi/settings-outline";
   import DeleteDownload from "./DeleteDownload.vue";
   import NewDownload from "./NewDownload.vue";
 
@@ -19,9 +26,9 @@
   const settings = useSettings();
 
   const cleanOptions: DropdownIconOption[] = [
-    { key: "all", label: "toolbar_delete_downloads_all", icon: "mdi:file-outline" },
-    { key: "failed", label: "toolbar_delete_downloads_failed", icon: "mdi:file-refresh-outline" },
-    { key: "missing", label: "toolbar_delete_downloads_missing", icon: "mdi:file-remove-outline" }
+    { key: "all", label: "toolbar_delete_downloads_all", icon: MdiFileOutline },
+    { key: "failed", label: "toolbar_delete_downloads_failed", icon: MdiFileRefreshOutline },
+    { key: "missing", label: "toolbar_delete_downloads_missing", icon: MdiFileRemoveOutline }
   ];
 
   const handleCreateNewDownload = () => {
@@ -99,27 +106,19 @@
 <template>
   <NFlex justify="end" :wrap="false">
     <IconButton
-      icon="mdi:link-variant-plus"
+      :icon="MdiLinkVariantPlus"
       :tooltip="t(`toolbar_create_downloads_tooltip`)"
-      width="20"
       @click="handleCreateNewDownload"
     />
-    <DropdownIcon
-      icon="mdi:delete-forever"
-      :width="20"
-      :options="cleanOptions"
-      @select="handleDeleteSelect"
-    />
+    <DropdownIcon :icon="MdiDeleteForever" :options="cleanOptions" @select="handleDeleteSelect" />
     <IconButton
-      icon="mdi:folder-arrow-down-outline"
+      :icon="MdiFolderArrowDownOutline"
       :tooltip="t(`toolbar_open_download_folder`)"
-      width="20"
       @click="handleOpenDownloadFolder"
     />
     <IconButton
-      icon="mdi:settings-outline"
+      :icon="MdiSettingsOutline"
       :tooltip="t(`toolbar_extension_settings`)"
-      width="20"
       @click="handleExtensionSettings"
     />
   </NFlex>

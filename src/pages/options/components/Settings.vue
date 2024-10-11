@@ -1,7 +1,7 @@
 <script setup lang="ts">
   import { t } from "@/utils/i18n";
-  import { Icon } from "@iconify/vue";
   import { RouterLink, RouterView } from "vue-router";
+  import MdiMenu from "~icons/mdi/menu";
 
   const routes = useRouter().getRoutes();
 
@@ -16,7 +16,7 @@
     .map(route => ({
       label: () => h(RouterLink, { to: route.path }, { default: () => route.meta.name }),
       key: route.path,
-      icon: () => h(Icon, { icon: (route.meta.icon || "mdi:menu") as string })
+      icon: () => h(route.meta.icon || MdiMenu)
     }));
 </script>
 

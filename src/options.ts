@@ -3,6 +3,12 @@ import Options from "@/pages/options/index.vue";
 import { t } from "@/utils/i18n";
 import { createApp } from "vue";
 import { createMemoryHistory, createRouter } from "vue-router";
+import MdiAboutCircleOutline from "~icons/mdi/about-circle-outline";
+import MdiCloudSyncOutline from "~icons/mdi/cloud-sync-outline";
+import MdiInteractionTap from "~icons/mdi/interaction-tap";
+import MdiNotificationSettingsOutline from "~icons/mdi/notification-settings-outline";
+import MdiPaintOutline from "~icons/mdi/paint-outline";
+import MdiToolboxOutline from "~icons/mdi/toolbox-outline";
 
 const router = createRouter({
   history: createMemoryHistory(),
@@ -10,32 +16,32 @@ const router = createRouter({
     {
       path: "/appearance",
       component: () => import("@/pages/options/components/settings/Appearance.vue"),
-      meta: { name: t("options_appearance_menu"), icon: "mdi:paint-outline" }
+      meta: { name: t("options_appearance_menu"), icon: MdiPaintOutline }
     },
     {
       path: "/interactions",
       component: () => import("@/pages/options/components/settings/Interactions.vue"),
-      meta: { name: t("options_interactions_menu"), icon: "mdi:interaction-tap" }
+      meta: { name: t("options_interactions_menu"), icon: MdiInteractionTap }
     },
     {
       path: "/notifications",
       component: () => import("@/pages/options/components/settings/Notifications.vue"),
-      meta: { name: t("options_notifications_menu"), icon: "mdi:notification-settings-outline" }
+      meta: { name: t("options_notifications_menu"), icon: MdiNotificationSettingsOutline }
     },
     {
       path: "/sync",
       component: () => import("@/pages/options/components/settings/Sync.vue"),
-      meta: { name: t("options_sync_menu"), icon: "mdi:cloud-sync-outline" }
+      meta: { name: t("options_sync_menu"), icon: MdiCloudSyncOutline }
     },
     {
       path: "/misc",
       component: () => import("@/pages/options/components/settings/Misc.vue"),
-      meta: { name: t("options_misc_menu"), icon: "mdi:toolbox-outline" }
+      meta: { name: t("options_misc_menu"), icon: MdiToolboxOutline }
     },
     {
       path: "/about",
       component: () => import("@/pages/options/components/settings/About.vue"),
-      meta: { name: t("options_about_menu"), icon: "mdi:about-circle-outline" }
+      meta: { name: t("options_about_menu"), icon: MdiAboutCircleOutline }
     },
     { path: "", redirect: "/appearance" }
   ]

@@ -44,7 +44,7 @@ export const offscreenSend = async <T>(message: OffscreenMessage<T>) => {
   });
 };
 
-export const offscreenSendListen = <T>(callback: (action: string, data: T) => void) => {
+export const offscreenListen = <T>(callback: (action: string, data: T) => void) => {
   listen("offscreen", message => {
     if (message && typeof message === "object") {
       const msg = message as OffscreenMessage<T>;
