@@ -78,8 +78,8 @@ options:
       title: Размер страницы
       width: Ширина
       height: Высота
-  interactions:
-    menu: Взаимодействие
+  features:
+    menu: Функции
     filter:
       title: Фильтр файлов
       search:

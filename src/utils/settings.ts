@@ -10,7 +10,7 @@ export const defaults = {
     width: 665,
     height: 400
   },
-  interactions: {
+  features: {
     search: true,
     categories: ["documents", "pictures", "archives", "executables", "others"] as Category[],
     download: {

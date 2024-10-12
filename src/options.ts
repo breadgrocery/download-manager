@@ -5,7 +5,7 @@ import { createApp } from "vue";
 import { createMemoryHistory, createRouter } from "vue-router";
 import MdiAboutCircleOutline from "~icons/mdi/about-circle-outline";
 import MdiCloudSyncOutline from "~icons/mdi/cloud-sync-outline";
-import MdiInteractionTap from "~icons/mdi/interaction-tap";
+import MdiFeatureHighlight from "~icons/mdi/feature-highlight";
 import MdiNotificationSettingsOutline from "~icons/mdi/notification-settings-outline";
 import MdiPaintOutline from "~icons/mdi/paint-outline";
 import MdiToolboxOutline from "~icons/mdi/toolbox-outline";
@@ -19,9 +19,9 @@ const router = createRouter({
       meta: { name: t("options_appearance_menu"), icon: MdiPaintOutline }
     },
     {
-      path: "/interactions",
-      component: () => import("@/pages/options/components/settings/Interactions.vue"),
-      meta: { name: t("options_interactions_menu"), icon: MdiInteractionTap }
+      path: "/features",
+      component: () => import("@/pages/options/components/settings/Features.vue"),
+      meta: { name: t("options_features_menu"), icon: MdiFeatureHighlight }
     },
     {
       path: "/notifications",

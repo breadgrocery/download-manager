@@ -78,8 +78,8 @@ options:
       title: Popup bounds
       width: Width
       height: Height
-  interactions:
-    menu: Interactions
+  features:
+    menu: Features
     filter:
       title: File Filtering
       search:

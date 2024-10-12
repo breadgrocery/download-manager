@@ -78,8 +78,8 @@ options:
       title: حجم الصفحة
       width: العرض
       height: الارتفاع
-  interactions:
-    menu: التفاعل
+  features:
+    menu: الميزات
     filter:
       title: تصفية الملفات
       search:

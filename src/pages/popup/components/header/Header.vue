@@ -59,13 +59,13 @@
 <template>
   <NFlex class="popup-header-wrapper" justify="space-between" :wrap="false">
     <!-- Search Box -->
-    <SearchBox v-if="settings.interactions.search" class="search-box" @search="handleSearch" />
+    <SearchBox v-if="settings.features.search" class="search-box" @search="handleSearch" />
 
     <!-- Category Box -->
     <CategoryBox
-      v-if="!settings.interactions.categories || settings.interactions.categories.length > 0"
+      v-if="!settings.features.categories || settings.features.categories.length > 0"
       class="category-box"
-      :categories="settings.interactions.categories"
+      :categories="settings.features.categories"
       @category-click="handleCategoryCilck"
     />
 

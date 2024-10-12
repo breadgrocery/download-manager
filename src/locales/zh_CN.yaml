@@ -78,8 +78,8 @@ options:
       title: 页面大小
       width: 宽度
       height: 高度
-  interactions:
-    menu: 交互
+  features:
+    menu: 功能
     filter:
       title: 文件过滤
       search:

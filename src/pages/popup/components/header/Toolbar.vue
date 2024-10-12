@@ -43,7 +43,7 @@
       // Remove duplicate links
       links = Array.from(new Set(links));
       // Create download tasks with timeout handling
-      const { timeout, retries, conflict } = settings.value.interactions.download;
+      const { timeout, retries, conflict } = settings.value.features.download;
       const limit = conflict !== "uniquify" ? 1 : Infinity;
       const queue = new pQueue({
         concurrency: limit,

@@ -78,8 +78,8 @@ options:
       title: Taille de la page
       width: Largeur
       height: Hauteur
-  interactions:
-    menu: Interactions
+  features:
+    menu: Fonctionnalités
     filter:
       title: Filtrage des fichiers
       search:
