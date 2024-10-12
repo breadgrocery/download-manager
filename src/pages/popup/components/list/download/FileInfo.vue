@@ -34,7 +34,7 @@
 
 <template>
   <NFlex vertical>
-    <NTooltip :show-arrow="false" :delay="400">
+    <NTooltip :show-arrow="false" :delay="500">
       <template #trigger>
         <NText
           class="filename"

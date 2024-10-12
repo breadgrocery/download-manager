@@ -27,6 +27,7 @@
 
   const deleteFilters: { [key: string]: (download: browser.Downloads.DownloadItem) => boolean } = {
     all: () => true,
+    completed: download => state.completed(download),
     failed: download => state.interrupted(download) || state.expired(download),
     missing: download => state.deleted(download)
   };
@@ -34,7 +35,7 @@
     const deleteFilter = deleteFilters[key] || (() => false);
     const tasks = downloads.filter(deleteFilter).map(download => deleteDownload(download, disk));
     Promise.allSettled(tasks)
-      .then(ids => message.success(t(`toolbar_delete_downloads_completed`, [`${ids.length}`])))
+      .then(ids => message.success(t(`toolbar_delete_downloads_deleted`, [`${ids.length}`])))
       .finally(close);
   };
 

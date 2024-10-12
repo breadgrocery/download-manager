@@ -34,9 +34,10 @@ toolbar:
     timeout: تعذر إكمال $1 عمليات تنزيل بسبب انتهاء المهلة
   delete_downloads:
     all: حذف الكل
+    completed: حذف التنزيلات الفاشلة
     failed: فشل في حذف التنزيلات
     missing: الملف غير موجود
-    completed: تم حذف $1 عمليات تنزيل
+    deleted: تم حذف $1 عمليات تنزيل
   open_download_folder: فتح مجلد التنزيل
   extension_settings: إعدادات الامتداد
 

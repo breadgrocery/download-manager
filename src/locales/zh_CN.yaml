@@ -34,9 +34,10 @@ toolbar:
     timeout: $1个下载任务创建超时
   delete_downloads:
     all: 删除全部
+    completed: 删除下载完成
     failed: 删除下载失败
     missing: 删除文件不存在
-    completed: 已删除$1个下载
+    deleted: 已删除$1个下载
   open_download_folder: 打开下载文件夹
   extension_settings: 插件设置
 

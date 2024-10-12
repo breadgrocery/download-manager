@@ -1,4 +1,5 @@
 <script setup lang="ts">
+  import { useThemeVars } from "naive-ui";
   import { Category, CategoryDetails, categoryDetails } from "./Category";
 
   export interface Props {
@@ -9,7 +10,10 @@
   const emit = defineEmits<{
     categoryClick: [CategoryDetails];
   }>();
-  const handleCategoryClick = (category: CategoryDetails) => emit("categoryClick", category);
+  const handleCategoryClick = (category: CategoryDetails) => {
+    current.value = category.id;
+    emit("categoryClick", category);
+  };
 
   const categoryButtons = computed(() => {
     const list = categoryDetails(categories);
@@ -25,16 +29,23 @@
       return list.filter(category => category.id === "all" || categories.includes(category.id));
     }
   });
+
+  const current = ref(categoryButtons.value[0].id);
+  const colors = useThemeVars();
 </script>
 
 <template>
   <NFlex>
     <NButtonGroup>
-      <NTooltip v-for="button in categoryButtons" :key="button.id" :show-arrow="false" :delay="400">
+      <NTooltip v-for="button in categoryButtons" :key="button.id" :show-arrow="false" :delay="500">
         <template #trigger>
           <NButton @click="handleCategoryClick(button)">
             <template #icon>
-              <IconButton :icon="button.icon" :size="18" />
+              <IconButton
+                :icon="button.icon"
+                :size="18"
+                :color="button.id == current ? colors.primaryColor : undefined"
+              />
             </template>
           </NButton>
         </template>

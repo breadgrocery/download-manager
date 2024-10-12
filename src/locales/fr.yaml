@@ -34,9 +34,10 @@ toolbar:
     timeout: $1 téléchargement(s) ont expiré lors de la création
   delete_downloads:
     all: Supprimer tout
-    failed: Échec de la suppression des téléchargements
+    completed: Téléchargements terminés
+    failed: Téléchargements échoués
     missing: Fichier introuvable
-    completed: $1 téléchargement(s) supprimé(s)
+    deleted: $1 téléchargement(s) supprimé(s)
   open_download_folder: Ouvrir le dossier de téléchargements
   extension_settings: Paramètres de l'extension
 

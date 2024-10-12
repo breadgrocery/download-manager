@@ -108,8 +108,11 @@
     min-height: 300px;
     max-height: 600px;
     overflow: hidden;
-    user-select: none;
-    -webkit-user-drag: none;
+    &,
+    &:deep(img) {
+      user-select: none;
+      -webkit-user-drag: none;
+    }
     .scroller {
       .item {
         position: absolute;

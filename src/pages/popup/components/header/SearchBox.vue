@@ -4,7 +4,7 @@
 
   const emit = defineEmits<{ search: [string] }>();
 
-  const handleChange = debounce((value: string) => emit("search", value), 200);
+  const handleChange = debounce((value: string) => emit("search", value), 100);
 </script>
 
 <template>

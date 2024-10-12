@@ -34,9 +34,10 @@ toolbar:
     timeout: $1 download(s) took too long to create
   delete_downloads:
     all: Delete all
+    completed: Delete completed downloads
     failed: Delete failed downloads
     missing: Delete downloads with file missing
-    completed: $1 download(s) deleted
+    deleted: $1 download(s) deleted
   open_download_folder: Open download folder
   extension_settings: Extension settings
 

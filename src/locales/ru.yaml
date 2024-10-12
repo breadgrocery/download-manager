@@ -34,9 +34,10 @@ toolbar:
     timeout: $1 загрузок не удалось завершить из-за таймаута
   delete_downloads:
     all: Удалить все
+    completed: Удалить завершённые загрузки
     failed: Не удалось удалить загрузки
     missing: Файл не найден
-    completed: Удалено $1 загрузок
+    deleted: Удалено $1 загрузок
   open_download_folder: Открыть папку загрузок
   extension_settings: Настройки расширения
 

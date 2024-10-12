@@ -34,9 +34,10 @@ toolbar:
     timeout: $1 descarga(s) fallaron por tiempo de espera
   delete_downloads:
     all: Eliminar todo
-    failed: Error al eliminar las descargas
+    completed: Eliminar las descargas completadas
+    failed: Eliminar las descargas fallidas
     missing: Archivo no encontrado
-    completed: $1 descarga(s) eliminada(s)
+    deleted: $1 descarga(s) eliminada(s)
   open_download_folder: Abrir carpeta de descargas
   extension_settings: Configuración de la extensión
 

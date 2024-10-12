@@ -8,8 +8,9 @@
   import pTimeout from "p-timeout";
   import browser from "webextension-polyfill";
   import MdiDeleteForever from "~icons/mdi/delete-forever";
+  import MdiFileCheckOutline from "~icons/mdi/file-check-outline";
+  import MdiFileHidden from "~icons/mdi/file-hidden";
   import MdiFileOutline from "~icons/mdi/file-outline";
-  import MdiFileRefreshOutline from "~icons/mdi/file-refresh-outline";
   import MdiFileRemoveOutline from "~icons/mdi/file-remove-outline";
   import MdiFolderArrowDownOutline from "~icons/mdi/folder-arrow-down-outline";
   import MdiLinkVariantPlus from "~icons/mdi/link-variant-plus";
@@ -27,8 +28,9 @@
 
   const cleanOptions: DropdownIconOption[] = [
     { key: "all", label: "toolbar_delete_downloads_all", icon: MdiFileOutline },
-    { key: "failed", label: "toolbar_delete_downloads_failed", icon: MdiFileRefreshOutline },
-    { key: "missing", label: "toolbar_delete_downloads_missing", icon: MdiFileRemoveOutline }
+    { key: "completed", label: "toolbar_delete_downloads_completed", icon: MdiFileCheckOutline },
+    { key: "failed", label: "toolbar_delete_downloads_failed", icon: MdiFileRemoveOutline },
+    { key: "missing", label: "toolbar_delete_downloads_missing", icon: MdiFileHidden }
   ];
 
   const handleCreateNewDownload = () => {
@@ -83,9 +85,7 @@
 
   const handleDeleteSelect = (key: string) => {
     const deleteDownload = (disk: boolean, close?: () => void) => emit("delete", key, disk, close);
-    if (key === "missing") {
-      deleteDownload(false);
-    } else {
+    if (key !== "missing") {
       const handle = modal.create({
         preset: "card",
         style: { width: "auto" },
@@ -96,6 +96,8 @@
             onConfirm: (disk: boolean) => deleteDownload(disk, () => handle.destroy())
           })
       });
+    } else {
+      deleteDownload(false);
     }
   };
 
