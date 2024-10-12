@@ -19,13 +19,6 @@
     settings.value.appearance.theme.scheme = value;
     popup();
   };
-
-  const updateWidth = (width: number) => {
-    settings.value.appearance.width = width;
-  };
-  const updateHeight = (height: number) => {
-    settings.value.appearance.height = height;
-  };
 </script>
 
 <template>
@@ -46,7 +39,7 @@
           :min="645"
           :max="800"
           :value="settings.appearance.width"
-          :on-update:value="updateWidth"
+          :on-update:value="value => (settings.appearance.width = value)"
           :on-dragend="popup"
         />
       </SettingDetail>
@@ -55,7 +48,7 @@
           :min="300"
           :max="600"
           :value="settings.appearance.height"
-          :on-update:value="updateHeight"
+          :on-update:value="value => (settings.appearance.height = value)"
           :on-dragend="popup"
         />
       </SettingDetail>

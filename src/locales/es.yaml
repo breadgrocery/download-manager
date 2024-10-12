@@ -7,8 +7,9 @@ common:
   cancel: Cancelar
 
 unit:
-  millis: Milisegundos
-  seconds: Segundos
+  millis: ms
+  seconds: s
+  day: d
 
 empty: Tus archivos descargados aparecerán aquí
 
@@ -97,6 +98,10 @@ options:
         uniquify: Añadir un número único
         overwrite: Sobrescribir archivo existente
         prompt: Preguntar al usuario por un nuevo nombre
+    cleanup:
+      title: Limpieza automática
+      enabled: Habilitar limpieza automática de registros de descarga
+      retention: Período de retención de registros de descarga
   notifications:
     menu: Notificaciones
     download:

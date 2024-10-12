@@ -52,5 +52,11 @@
         justify-content: end;
       }
     }
+    :deep(.n-input-wrapper) {
+      width: 250px;
+    }
+    :deep(.n-select) {
+      width: 270px;
+    }
   }
 </style>

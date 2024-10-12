@@ -1,8 +1,14 @@
-import { addDownloadListeners, setDownloadManagerState } from "@/utils/download";
+import {
+  addDownloadListeners,
+  deleteDownload,
+  getDownloads,
+  setDownloadManagerState
+} from "@/utils/download";
 import { send } from "@/utils/message";
 import { audio } from "@/utils/notifications";
 import { Settings, mergedSettings } from "@/utils/settings";
 import { State } from "@/utils/state";
+import { differenceInDays } from "date-fns";
 import { debounce } from "lodash-es";
 import browser from "webextension-polyfill";
 
@@ -60,6 +66,18 @@ loadSettings().then(() => {
       browser.action.setBadgeText({ text });
       browser.action.setBadgeTextColor({ color: "#FFFFFF" });
       browser.action.setBadgeBackgroundColor({ color: "#2C4E5F" });
+
+      // Check for downloads that need to be automatically deleted
+      if (settings.features.cleanup.enabled) {
+        getDownloads().then(downloads => {
+          downloads
+            .filter(download => {
+              const diff = differenceInDays(Date.now(), download.startTime);
+              return diff >= settings.features.cleanup.retention;
+            })
+            .forEach(download => deleteDownload(download, settings.features.cleanup.revmove));
+        });
+      }
       notifyPopup();
     }
   });

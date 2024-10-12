@@ -12,9 +12,6 @@
   const settings = useSettings();
   const message = useMessage();
 
-  const updateEnabled = (value: boolean) => {
-    settings.value.sync.enabled = value;
-  };
   const resetSetting = () => {
     reset();
     message.success(t(`options_sync_reset_completed`));
@@ -29,7 +26,10 @@
         :icon="MdiMonitorAccount"
         :description="t(`options_sync_enabled_description`)"
       >
-        <NSwitch :default-value="settings.sync.enabled" :on-update:value="updateEnabled" />
+        <NSwitch
+          :default-value="settings.sync.enabled"
+          :on-update:value="value => (settings.sync.enabled = value)"
+        />
       </SettingDetail>
       <SettingDetail
         :title="t(`options_sync_reset_title`)"

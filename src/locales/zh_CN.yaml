@@ -9,6 +9,7 @@ common:
 unit:
   millis: 毫秒
   seconds: 秒
+  day: 天
 
 empty: 您下载的文件会显示在此处
 
@@ -97,6 +98,10 @@ options:
         uniquify: 添加序号以区分
         overwrite: 覆盖现有文件
         prompt: 提示用户重命名
+    cleanup:
+      title: 自动清理
+      enabled: 自动清理下载记录
+      retention: 下载记录保留跨度
   notifications:
     menu: 提醒
     download:

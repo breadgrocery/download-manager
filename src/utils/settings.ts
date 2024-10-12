@@ -17,6 +17,11 @@ export const defaults = {
       timeout: 30,
       retries: 1,
       conflict: "uniquify" as "uniquify" | "overwrite" | "prompt"
+    },
+    cleanup: {
+      enabled: false,
+      retention: 30,
+      revmove: false
     }
   },
   notifications: {

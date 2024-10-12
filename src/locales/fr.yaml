@@ -7,8 +7,9 @@ common:
   cancel: Annuler
 
 unit:
-  millis: Millisecondes
-  seconds: Secondes
+  millis: ms
+  seconds: s
+  day: j
 
 empty: Vos fichiers téléchargés apparaîtront ici
 
@@ -97,6 +98,10 @@ options:
         uniquify: Ajouter un numéro pour différencier
         overwrite: Écraser le fichier existant
         prompt: Demander à l'utilisateur de renommer
+    cleanup:
+      title: Nettoyage automatique
+      enabled: Activer le nettoyage automatique des enregistrements de téléchargement
+      retention: Durée de conservation des enregistrements de téléchargement
   notifications:
     menu: Notifications
     download:

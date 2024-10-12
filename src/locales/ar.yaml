@@ -7,8 +7,9 @@ common:
   cancel: إلغاء
 
 unit:
-  millis: ميلي ثانية
-  seconds: ثواني
+  millis: مللي ثانية
+  seconds: ثانية
+  day: يوم
 
 empty: ستظهر الملفات التي تم تنزيلها هنا
 
@@ -97,6 +98,10 @@ options:
         uniquify: إضافة رقم فريد
         overwrite: الكتابة فوق الملف الموجود
         prompt: طلب اسم جديد من المستخدم
+    cleanup:
+      title: التنظيف التلقائي
+      enabled: تفعيل التنظيف التلقائي لسجلات التنزيل
+      retention: فترة الاحتفاظ بسجلات التنزيل
   notifications:
     menu: الإشعارات
     download:

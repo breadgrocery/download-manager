@@ -7,8 +7,9 @@ common:
   cancel: Отменить
 
 unit:
-  millis: Миллисекунды
-  seconds: Секунды
+  millis: мс
+  seconds: с
+  day: д
 
 empty: Загруженные файлы появятся здесь
 
@@ -97,6 +98,10 @@ options:
         uniquify: Добавить уникальный номер
         overwrite: Перезаписать существующий файл
         prompt: Запросить новое имя у пользователя
+    cleanup:
+      title: Автоматическая очистка
+      enabled: Включить автоматическую очистку записей загрузки
+      retention: Период хранения записей загрузки
   notifications:
     menu: Уведомления
     download:

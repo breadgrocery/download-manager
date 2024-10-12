@@ -9,6 +9,7 @@ common:
 unit:
   millis: ms
   seconds: s
+  day: d
 
 empty: Files you download appear here
 
@@ -97,6 +98,10 @@ options:
         uniquify: Add a number to distinguish
         overwrite: Overwrite existing file
         prompt: Prompt user to rename
+    cleanup:
+      title: Automatic Cleanup
+      enabled: Enable automatic cleanup of download records
+      retention: Retention period for download records
   notifications:
     menu: Notifications
     download:
