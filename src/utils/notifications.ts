@@ -4,7 +4,7 @@ const playAudio = (source: string) => {
   if (chrome?.offscreen) {
     offscreenSend({ action: "audio", data: source });
   } else {
-    new Audio("/audio/completed.wav").play();
+    new Audio(source).play();
   }
 };
 

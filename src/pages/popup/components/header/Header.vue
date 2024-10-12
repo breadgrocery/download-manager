@@ -41,7 +41,7 @@
 
   // Detect long tasks and suggest the user to delete unnecessary downloads
   onMounted(() => {
-    if (PerformanceObserver) {
+    if (PerformanceObserver && "PerformanceLongTaskTiming" in globalThis) {
       const observer = new PerformanceObserver(list => {
         if (list.getEntries()[0].duration >= 1000) {
           // Wait for settings to load before showing lag warning

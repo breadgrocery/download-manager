@@ -102,7 +102,7 @@
   };
 
   const handleOpenDownloadFolder = () => browser.downloads.showDefaultFolder();
-  const handleExtensionSettings = () => browser.tabs.create({ url: "src/options.html" });
+  const handleExtensionSettings = () => browser.tabs.create({ url: "/src/options.html" });
 </script>
 
 <template>

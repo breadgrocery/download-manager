@@ -11,7 +11,7 @@
     "256": "images/icon-256.png"
   },
   "background": {
-    "service_worker": "src/background.ts"
+    "{{chrome}}.service_worker": "src/background.ts"
   },
   "action": {
     "default_popup": "src/popup.html"
@@ -21,9 +21,9 @@
     "background",
     "downloads",
     "downloads.open",
-    "downloads.shelf",
-    "downloads.ui",
-    "offscreen",
+    "{{chrome}}.downloads.shelf",
+    "{{chrome}}.downloads.ui",
+    "{{chrome}}.offscreen",
     "storage"
   ]
 }

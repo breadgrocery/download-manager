@@ -9,7 +9,7 @@ export default (): PluginOption => {
     transformManifest: manifest => {
       return { ...manifest, version: readJsonFile("package.json").version };
     },
-    browser: "chrome",
+    browser: process.env.TARGET || "chrome", // Options: "chrome", "firefox"
     skipManifestValidation: true,
     htmlViteConfig: {
       build: {
