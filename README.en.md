@@ -19,11 +19,12 @@ English | [简体中文](README.md)
 - 📥 Take over browser download management
 - 🎨 Adaptive light and dark themes, with manual switching support
 - 🔍 File search and classification for quick file location
-- 📄 Display detailed information such as download progress, size, and creation time
+- 📄 Display detailed information such as download progress, file size, and creation time
 - 🔗 Copy download links and generate sharing QR codes
 - 🗑️ Clean up files and download records based on conditions
 - ➕ Manually batch add download tasks
-- 🔔 Download process notification sounds
+- 🧹 Supports scheduled cleanup of download history
+- 🔔 Notification sound and popup
 - ☁️ Sync plugin settings
 
 # Installation
