@@ -1,6 +1,6 @@
 English | [简体中文](README.md)
 
-<p align="center"><img width="128" src="./src/public/images/icon.svg" alt="Logo" /></p>
+<p align="center"><img width="128" src="./public/images/icon.svg" alt="Logo" /></p>
 <br />
 <p align="center">
   <a href="https://vuejs.org"><img src="https://img.shields.io/badge/Vue.js-35495e.svg?logo=vuedotjs&logoColor=%234FC08D" alt="Vue.js" /></a>
@@ -34,6 +34,7 @@ English | [简体中文](README.md)
 | [Github Release](https://github.com/breadgrocery/download-manager/releases/latest)                           | <img src="https://img.shields.io/github/v/release/breadgrocery/download-manager?label=version"/> <img src="https://img.shields.io/github/downloads/breadgrocery/download-manager/total?label=downloads"/>                                                                                                                                                                                                                                                                                                                                                                                                           |
 | [Chrome Web Store](https://chrome.google.com/webstore/detail/hhmgnllgjongoenjfnbcdlangemdiodk)               | <img src="https://img.shields.io/chrome-web-store/v/hhmgnllgjongoenjfnbcdlangemdiodk?label=version"/> <img src="https://img.shields.io/chrome-web-store/d/hhmgnllgjongoenjfnbcdlangemdiodk?label=users"/> <img src="https://img.shields.io/chrome-web-store/rating/hhmgnllgjongoenjfnbcdlangemdiodk?label=rating"/>                                                                                                                                                                                                                                                                                                 |
 | [Microsoft Edge Add-ons](https://microsoftedge.microsoft.com/addons/detail/jgecopfgpbndacamabkgjhgbepmallpd) | <img src="https://img.shields.io/badge/dynamic/json?label=version&query=$.version&url=https://microsoftedge.microsoft.com/addons/getproductdetailsbycrxid/jgecopfgpbndacamabkgjhgbepmallpd"/> <img src="https://img.shields.io/badge/dynamic/json?label=users&query=$.activeInstallCount&url=https://microsoftedge.microsoft.com/addons/getproductdetailsbycrxid/jgecopfgpbndacamabkgjhgbepmallpd"/> <img src="https://img.shields.io/badge/dynamic/json?label=rating&query=$.averageRating&suffix=%2F5&url=https://microsoftedge.microsoft.com/addons/getproductdetailsbycrxid/jgecopfgpbndacamabkgjhgbepmallpd"/> |
+| [Firefox Browser Add-ons](https://addons.mozilla.org/firefox/addon/download-manager/)                        | <img src="https://img.shields.io/amo/v/download-manager?label=version"/> <img src="https://img.shields.io/amo/users/download-manager?label=users"/> <img src="https://img.shields.io/amo/rating/download-manager?label=rating"/>                                                                                                                                                                                                                                                                                                                                                                                    |
 
 # Contributing
 
@@ -49,7 +50,7 @@ English | [简体中文](README.md)
    pnpm install
    ```
 
-3. Local development (requires Google Chrome to be installed).
+3. Local development (Requires the corresponding browser to be installed).
 
    ```bash
    pnpm dev
