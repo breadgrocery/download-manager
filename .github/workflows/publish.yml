@@ -134,7 +134,7 @@ jobs:
       - uses: wdzeng/firefox-addon@v1
         with:
           xpi-path: download-manager-firefox.zip
-          source-file-path: download-manager-sources.zip
+          source-code-path: download-manager-sources.zip
           addon-guid: ${{ secrets.FIREFOX_ADDON_GUID }}
           jwt-issuer: ${{ secrets.FIREFOX_JWT_ISSUER }}
           jwt-secret: ${{ secrets.FIREFOX_JWT_SECRET }}
