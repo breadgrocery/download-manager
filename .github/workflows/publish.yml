@@ -105,7 +105,7 @@ jobs:
           client-id: ${{ secrets.CHROME_CLIENT_ID }}
           client-secret: ${{ secrets.CHROME_CLIENT_SECRET }}
           refresh-token: ${{ secrets.CHROME_REFRESH_TOKEN }}
-          upload-only: ${{ !startsWith(github.ref, 'refs/tags/') && inputs.upload_only }}
+          upload-only: ${{ !startsWith(github.ref, 'refs/tags/') && inputs.upload_only == 'true' }}
 
   microsoft-edge-add-ons:
     if: ${{ startsWith(github.ref, 'refs/tags/') || inputs.edge }}
@@ -121,10 +121,10 @@ jobs:
           product-id: ${{ secrets.EDGE_PRODUCT_ID }}
           api-key: ${{ secrets.EDGE_API_KEY }}
           client-id: ${{ secrets.EDGE_CLIENT_ID }}
-          upload-only: ${{ !startsWith(github.ref, 'refs/tags/') && inputs.upload_only }}
+          upload-only: ${{ !startsWith(github.ref, 'refs/tags/') && inputs.upload_only == 'true' }}
 
   firefox-browser-add-ons:
-    if: ${{ startsWith(github.ref, 'refs/tags/') || (inputs.firefox && !inputs.upload_only) }}
+    if: ${{ startsWith(github.ref, 'refs/tags/') || (inputs.firefox && inputs.upload_only != 'true') }}
     needs: build
     runs-on: ubuntu-latest
     steps:
