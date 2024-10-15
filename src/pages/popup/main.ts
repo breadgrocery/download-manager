@@ -1,6 +1,6 @@
 import { registerCustomDirective } from "@/directives/index";
-import Popup from "@/pages/popup/index.vue";
 import { createApp } from "vue";
+import Popup from "./App.vue";
 
 const app = createApp(Popup);
 

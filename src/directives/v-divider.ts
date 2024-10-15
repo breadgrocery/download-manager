@@ -1,4 +1,4 @@
-import { Directive, DirectiveBinding, VNodeChild, createVNode, render } from "vue";
+import { type Directive, type DirectiveBinding, type VNodeChild, createVNode, render } from "vue";
 
 /**
  * Directive Name: v-divider

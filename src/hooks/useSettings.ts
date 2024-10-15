@@ -1,5 +1,6 @@
 import { defaults, proxiedSettings } from "@/utils/settings";
-import browser from "webextension-polyfill";
+import { ref } from "vue";
+import { browser } from "wxt/browser";
 
 const settings = ref(defaults);
 

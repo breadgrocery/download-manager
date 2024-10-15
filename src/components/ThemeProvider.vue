@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  import { ConfigProviderProps, NConfigProvider, darkTheme, lightTheme } from "naive-ui";
+  import { type ConfigProviderProps, NConfigProvider, darkTheme, lightTheme } from "naive-ui";
 
   export type Picked = "theme" | "themeOverrides" | "locale" | "dateLocale";
 
@@ -21,14 +21,17 @@
   const computedTheme = computed(() => {
     if (adaptive) {
       return matches.value ? darkTheme : lightTheme;
-    } else {
-      return theme;
     }
+    return theme;
   });
 </script>
 
 <template>
-  <NConfigProvider v-bind="$props" :theme="computedTheme" class="theme-provider-wrapper">
+  <NConfigProvider
+    v-bind="$props"
+    :theme="computedTheme"
+    class="theme-provider-wrapper"
+  >
     <NLayout class="theme-provider-wrapper">
       <slot />
     </NLayout>

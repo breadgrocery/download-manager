@@ -1,9 +1,8 @@
 <script setup lang="ts">
-  import { t } from "@/utils/i18n";
   import Settings from "./components/Settings.vue";
 
   // Set document title
-  document.title = t(`toolbar_extension_settings`);
+  document.title = i18n.t("toolbar.extension_settings");
 
   // Theme and locale
   const { adaptive, theme } = useTheme();
@@ -11,10 +10,19 @@
 </script>
 
 <template>
-  <ThemeProvider :adaptive="adaptive" :theme="theme" :locale="locale" :date-locale="dateLocale">
+  <ThemeProvider
+    :adaptive="adaptive"
+    :theme="theme"
+    :locale="locale"
+    :date-locale="dateLocale"
+  >
     <NModalProvider>
       <NMessageProvider>
-        <NFlex class="options-wrapper" vertical :size="0">
+        <NFlex
+          class="options-wrapper"
+          vertical
+          :size="0"
+        >
           <Settings />
         </NFlex>
       </NMessageProvider>

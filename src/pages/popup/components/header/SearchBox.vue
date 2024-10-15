@@ -1,5 +1,4 @@
 <script setup lang="ts">
-  import { t } from "@/utils/i18n";
   import { debounce } from "lodash-es";
 
   const emit = defineEmits<{ search: [string] }>();
@@ -11,7 +10,7 @@
   <NFlex>
     <NInput
       type="text"
-      :placeholder="t(`search_placeholder`)"
+      :placeholder="i18n.t(`search.placeholder`)"
       :input-props="{ spellcheck: false }"
       clearable
       @input="handleChange"

@@ -1,5 +1,5 @@
-export const getFileName = (filename: string): string => {
-  filename = filename.replace(/\\/g, "/");
+export const getFileName = (path: string): string => {
+  const filename = path.replace(/\\/g, "/");
   const index = filename.lastIndexOf("/");
   return index >= 0 ? filename.substring(index + 1) : filename;
 };

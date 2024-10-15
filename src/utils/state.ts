@@ -1,4 +1,4 @@
-import browser from "webextension-polyfill";
+import type { Downloads } from "wxt/browser";
 
 export type State =
   | "completed"
@@ -38,7 +38,7 @@ export const is = {
 };
 
 export const state: {
-  [key in State]: (item: browser.Downloads.DownloadItem) => boolean;
+  [key in State]: (item: Downloads.DownloadItem) => boolean;
 } = {
   completed: download => is.completed(download.state),
   downloading: download => is.downloading(download.state, download.paused),

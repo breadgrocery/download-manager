@@ -1,4 +1,4 @@
-import browser from "webextension-polyfill";
+import { browser } from "wxt/browser";
 
 export type Message<T> = {
   channel: string;
@@ -29,7 +29,7 @@ const createOffscreen: () => Promise<void> = async () => {
   const hasDocument = await chrome.offscreen.hasDocument();
   if (!hasDocument) {
     await chrome.offscreen.createDocument({
-      url: "/src/offscreen.html",
+      url: "/offscreen.html",
       reasons: [chrome.offscreen.Reason.AUDIO_PLAYBACK],
       justification: "AUDIO_PLAYBACK"
     });
@@ -38,10 +38,7 @@ const createOffscreen: () => Promise<void> = async () => {
 
 export const offscreenSend = async <T>(message: OffscreenMessage<T>) => {
   await createOffscreen();
-  browser.runtime.sendMessage(browser.runtime.id, {
-    channel: "offscreen",
-    data: message
-  });
+  send({ channel: "offscreen", data: message });
 };
 
 export const offscreenListen = <T>(callback: (action: string, data: T) => void) => {

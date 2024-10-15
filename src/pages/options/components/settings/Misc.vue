@@ -1,9 +1,8 @@
 <script setup lang="ts">
   import { clearCache } from "@/utils/cache";
-  import { t } from "@/utils/i18n";
-  import Bowser from "bowser";
+  import { env } from "@/utils/env";
   import { useMessage } from "naive-ui";
-  import browser from "webextension-polyfill";
+  import { browser } from "wxt/browser";
   import MdiDatabaseRefreshOutline from "~icons/mdi/database-refresh-outline";
   import MdiHide from "~icons/mdi/hide";
   import MdiParallel from "~icons/mdi/parallel";
@@ -17,14 +16,14 @@
 
   const message = useMessage();
 
-  const agent = Bowser.getParser(window.navigator.userAgent);
-
-  const localResource = (path: string) => {
+  const preferences = (path: string) => {
     const protocol = (() => {
-      const browserName = agent.getBrowserName(true);
+      const browserName = env.browser.getBrowserName(true);
       switch (browserName) {
         case "microsoft edge":
           return "edge://";
+        case "firefox":
+          throw new Error("Not supported");
         default:
           return `${browserName}://`;
       }
@@ -34,55 +33,72 @@
 
   const handleClearCache = () => {
     clearCache();
-    message.success(t(`options_misc_storage_cache_completed`));
+    message.success(i18n.t("options.misc.storage.cache.completed"));
   };
 </script>
 
 <template>
   <SettingWrapper>
-    <SettingItem :title="t(`options_misc_browser_title`)" :icon="MdiWebAsset">
+    <SettingItem
+      v-if="env.is.chrome || env.is.edge"
+      :title="i18n.t(`options.misc.browser.title`)"
+      :icon="MdiWebAsset"
+    >
       <SettingDetail
-        :title="t(`options_misc_browser_download_title`)"
+        v-if="env.browser.satisfies({ chrome: `>=77`, edge: `>=79` })"
+        :title="i18n.t(`options.misc.browser.download.title`)"
         :icon="MdiSettingsOutline"
-        :description="t(`options_misc_browser_download_description`)"
+        :description="i18n.t(`options.misc.browser.download.description`)"
       >
-        <NButton secondary @click="localResource(`settings/downloads`)">
+        <NButton
+          secondary
+          @click="preferences(`settings/downloads`)"
+        >
           <template #icon>
             <NIcon> <IconMdiExternalLink /> </NIcon>
           </template>
         </NButton>
       </SettingDetail>
       <SettingDetail
-        v-if="agent.satisfies({ chrome: `>=64`, edge: `>=80` })"
-        :title="t(`options_misc_browser_parallel_title`)"
+        v-if="env.browser.satisfies({ chrome: `>=64`, edge: `>=80` })"
+        :title="i18n.t(`options.misc.browser.parallel.title`)"
         :icon="MdiParallel"
-        :description="t(`options_misc_browser_parallel_description`)"
+        :description="i18n.t(`options.misc.browser.parallel.description`)"
       >
-        <NButton secondary @click="localResource(`flags/#enable-parallel-downloading`)">
+        <NButton
+          secondary
+          @click="preferences(`flags/#enable-parallel-downloading`)"
+        >
           <template #icon>
             <NIcon> <IconMdiExternalLink /> </NIcon>
           </template>
         </NButton>
       </SettingDetail>
       <SettingDetail
-        v-if="agent.satisfies({ edge: `>=113` })"
-        :title="t(`options_misc_browser_toolbar_title`)"
+        v-if="env.browser.satisfies({ edge: `>=113` })"
+        :title="i18n.t(`options.misc.browser.toolbar.title`)"
         :icon="MdiHide"
-        :description="t(`options_misc_browser_toolbar_description`)"
+        :description="i18n.t(`options.misc.browser.toolbar.description`)"
       >
-        <NButton secondary @click="localResource(`settings/appearance`)">
+        <NButton
+          secondary
+          @click="preferences(`settings/appearance`)"
+        >
           <template #icon>
             <NIcon> <IconMdiExternalLink /> </NIcon>
           </template>
         </NButton>
       </SettingDetail>
       <SettingDetail
-        v-if="agent.satisfies({ edge: `>=79` })"
-        :title="t(`options_misc_browser_smartscreen_title`)"
+        v-if="env.browser.satisfies({ edge: `>=79` })"
+        :title="i18n.t(`options.misc.browser.smartscreen.title`)"
         :icon="MdiShieldHalfFull"
-        :description="t(`options_misc_browser_smartscreen_description`)"
+        :description="i18n.t(`options.misc.browser.smartscreen.description`)"
       >
-        <NButton secondary @click="localResource(`settings/?search=Smartscreen`)">
+        <NButton
+          secondary
+          @click="preferences(`settings/?search=Smartscreen`)"
+        >
           <template #icon>
             <NIcon> <IconMdiExternalLink /> </NIcon>
           </template>
@@ -90,13 +106,19 @@
       </SettingDetail>
     </SettingItem>
 
-    <SettingItem :title="t(`options_misc_storage_title`)" :icon="MdiStorage">
+    <SettingItem
+      :title="i18n.t(`options.misc.storage.title`)"
+      :icon="MdiStorage"
+    >
       <SettingDetail
-        :title="t(`options_misc_storage_cache_title`)"
+        :title="i18n.t(`options.misc.storage.cache.title`)"
         :icon="MdiDatabaseRefreshOutline"
-        :description="t(`options_misc_storage_cache_description`)"
+        :description="i18n.t(`options.misc.storage.cache.description`)"
       >
-        <NButton secondary @click="handleClearCache">
+        <NButton
+          secondary
+          @click="handleClearCache"
+        >
           <template #icon>
             <NIcon> <IconMdiRefresh /> </NIcon>
           </template>

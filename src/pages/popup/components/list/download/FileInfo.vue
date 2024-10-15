@@ -1,13 +1,12 @@
 <script setup lang="ts">
-  import { t } from "@/utils/i18n";
   import { getFileName } from "@/utils/path";
   import { state } from "@/utils/state";
   import { deletedStyle, downloadStyle } from "@/utils/styles";
   import { useThemeVars } from "naive-ui";
-  import browser from "webextension-polyfill";
+  import { type Downloads, browser } from "wxt/browser";
 
   interface Props {
-    download: browser.Downloads.DownloadItem;
+    download: Downloads.DownloadItem;
     highlights?: string[];
   }
   const { download, highlights } = defineProps<Props>();
@@ -34,7 +33,10 @@
 
 <template>
   <NFlex vertical>
-    <NTooltip :show-arrow="false" :delay="500">
+    <NTooltip
+      :show-arrow="false"
+      :delay="500"
+    >
       <template #trigger>
         <NText
           class="filename"
@@ -44,20 +46,35 @@
           v-html="html"
         />
       </template>
-      <template v-if="state.dangerous(download)" #default>
-        {{ `${t(`danger_${download.danger}`)}` }}
+      <template
+        v-if="state.dangerous(download)"
+        #default
+      >
+        {{ i18n.t(`danger.${download.danger}`) }}
       </template>
-      <template v-else-if="state.ongoing(download)" #default>
+      <template
+        v-else-if="state.ongoing(download)"
+        #default
+      >
         {{ download.filename }}
       </template>
-      <template v-else-if="state.deleted(download)" #default>
-        {{ t(`download_gone`) }}
+      <template
+        v-else-if="state.deleted(download)"
+        #default
+      >
+        {{ i18n.t(`download.gone`) }}
       </template>
-      <template v-else-if="state.completed(download)" #default>
-        {{ t(`download_open`) }}
+      <template
+        v-else-if="state.completed(download)"
+        #default
+      >
+        {{ i18n.t(`download.open`) }}
       </template>
-      <template v-else #default>
-        {{ t(`error_${download.error}`) }}
+      <template
+        v-else
+        #default
+      >
+        {{ download.error && i18n.t(`error.${download.error}`) }}
       </template>
     </NTooltip>
   </NFlex>

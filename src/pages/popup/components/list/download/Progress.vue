@@ -1,13 +1,14 @@
 <script setup lang="ts">
   import { getCacheAsync } from "@/utils/cache";
+  import { extensions } from "@/utils/mime";
   import { getFileExtension } from "@/utils/path";
   import { state } from "@/utils/state";
   import { deletedStyle, downloadStyle } from "@/utils/styles";
   import { useThemeVars } from "naive-ui";
-  import browser from "webextension-polyfill";
+  import type { Downloads } from "wxt/browser";
 
   interface Props {
-    download: browser.Downloads.DownloadItem;
+    download: Downloads.DownloadItem;
   }
 
   const { download } = defineProps<Props>();
@@ -15,26 +16,33 @@
 
   // Progress cycle
   const progressClass = computed(() => ({
-    "progress": true,
+    progress: true,
     "no-progress": !state.ongoing(download),
-    "fade": download.totalBytes === 0 && state.downloading(download)
+    fade: download.totalBytes === 0 && state.downloading(download)
   }));
   const percentage = computed(() => {
     if (download.totalBytes > 0) {
       return Math.round((download.bytesReceived / download.totalBytes) * 100);
-    } else {
-      return 100;
     }
+    return 100;
   });
 
   // File Icon
   const src = ref<string | undefined>(undefined);
   onBeforeMount(async () => {
-    const cacheKey = `file-icon:${download.mime || getFileExtension(download.filename)}`;
-    const icon = await getCacheAsync(cacheKey, () => {
-      return browser.downloads.getFileIcon(download.id, { size: 32 });
-    });
-    src.value = icon;
+    const extension = getFileExtension(download.filename);
+    const getFileIcon = () => {
+      return browser.downloads.getFileIcon(download.id, {
+        size: import.meta.env.FIREFOX ? 64 : 32
+      });
+    };
+    // Skip the cache for executables
+    if (extensions.executables.includes(extension)) {
+      src.value = await getFileIcon();
+    } else {
+      const key = `${[extension, download.mime].filter(Boolean)}`;
+      src.value = await getCacheAsync(`file-icon:${key}`, getFileIcon);
+    }
   });
 </script>
 
@@ -54,11 +62,18 @@
         :style="deletedStyle(download, colors)"
         :src="src"
       />
-      <NIcon v-else :size="32" :style="deletedStyle(download, colors)">
+      <NIcon
+        v-else
+        :size="32"
+        :style="deletedStyle(download, colors)"
+      >
         <IconMdiFileQuestionOutline />
       </NIcon>
     </NProgress>
-    <NDivider class="divider" vertical />
+    <NDivider
+      class="divider"
+      vertical
+    />
   </NFlex>
 </template>
 

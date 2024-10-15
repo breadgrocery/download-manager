@@ -1,9 +1,9 @@
 <script setup lang="ts">
   import bytes from "bytes";
-  import browser from "webextension-polyfill";
+  import type { Downloads } from "wxt/browser";
 
   interface Props {
-    download: browser.Downloads.DownloadItem;
+    download: Downloads.DownloadItem;
   }
   const { download } = defineProps<Props>();
 
@@ -21,9 +21,15 @@
 </script>
 
 <template>
-  <NFlex class="download-speed-wrapper" justify="space-between">
+  <NFlex
+    class="download-speed-wrapper"
+    justify="space-between"
+  >
     <!-- Download progress -->
-    <NFlex class="progress" :size="0">
+    <NFlex
+      class="progress"
+      :size="0"
+    >
       <NText>{{ bytes(download.bytesReceived) }}</NText>
       <span v-if="download.totalBytes > 0">
         <NDivider vertical />
@@ -32,7 +38,9 @@
     </NFlex>
 
     <!-- Download speed -->
-    <NText class="speed">{{ `${bytes(bps)}/s` }}</NText>
+    <NText class="speed">
+      {{ `${bytes(bps)}/s` }}
+    </NText>
 
     <!-- Estimated remaining -->
     <NTime

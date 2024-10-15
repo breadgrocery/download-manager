@@ -1,7 +1,5 @@
 <script setup lang="ts">
-  import { t } from "@/utils/i18n";
-  import { debounce } from "lodash-es";
-  import browser from "webextension-polyfill";
+  import { browserAction } from "@/utils/action";
   import MdiArrowExpandAll from "~icons/mdi/arrow-expand-all";
   import MdiArrowExpandHorizontal from "~icons/mdi/arrow-expand-horizontal";
   import MdiArrowExpandVertical from "~icons/mdi/arrow-expand-vertical";
@@ -13,43 +11,63 @@
 
   const settings = useSettings();
 
-  const popup = debounce(browser.action.openPopup, 200);
-
   const updateTheme = (value: typeof settings.value.appearance.theme.scheme) => {
     settings.value.appearance.theme.scheme = value;
-    popup();
+    browserAction.openPopup();
   };
 </script>
 
 <template>
   <SettingWrapper>
-    <SettingItem :title="t(`options_appearance_theme_title`)" :icon="MdiMathCompassVariant">
-      <SettingDetail :title="t(`options_appearance_theme_scheme_title`)" :icon="MdiThemeLightDark">
-        <NRadioGroup :value="settings.appearance.theme.scheme" :on-update:value="updateTheme">
-          <NRadioButton v-for="scheme in [`auto`, `light`, `dark`]" :key="scheme" :value="scheme">
-            {{ t(`options_appearance_theme_scheme_${scheme}`) }}
+    <SettingItem
+      :title="i18n.t(`options.appearance.theme.title`)"
+      :icon="MdiMathCompassVariant"
+    >
+      <SettingDetail
+        :title="i18n.t(`options.appearance.theme.scheme.title`)"
+        :icon="MdiThemeLightDark"
+      >
+        <NRadioGroup
+          :value="settings.appearance.theme.scheme"
+          :on-update:value="updateTheme"
+        >
+          <NRadioButton
+            v-for="scheme in [`auto`, `light`, `dark`] as const"
+            :key="scheme"
+            :value="scheme"
+          >
+            {{ i18n.t(`options.appearance.theme.scheme.${scheme}`) }}
           </NRadioButton>
         </NRadioGroup>
       </SettingDetail>
     </SettingItem>
 
-    <SettingItem :title="t(`options_appearance_bounds_title`)" :icon="MdiArrowExpandAll">
-      <SettingDetail :title="t(`options_appearance_bounds_width`)" :icon="MdiArrowExpandHorizontal">
+    <SettingItem
+      :title="i18n.t(`options.appearance.bounds.title`)"
+      :icon="MdiArrowExpandAll"
+    >
+      <SettingDetail
+        :title="i18n.t(`options.appearance.bounds.width`)"
+        :icon="MdiArrowExpandHorizontal"
+      >
         <NSlider
           :min="645"
           :max="800"
           :value="settings.appearance.width"
           :on-update:value="value => (settings.appearance.width = value)"
-          :on-dragend="popup"
+          :on-dragend="browserAction.openPopup"
         />
       </SettingDetail>
-      <SettingDetail :title="t(`options_appearance_bounds_height`)" :icon="MdiArrowExpandVertical">
+      <SettingDetail
+        :title="i18n.t(`options.appearance.bounds.height`)"
+        :icon="MdiArrowExpandVertical"
+      >
         <NSlider
           :min="300"
           :max="600"
           :value="settings.appearance.height"
           :on-update:value="value => (settings.appearance.height = value)"
-          :on-dragend="popup"
+          :on-dragend="browserAction.openPopup"
         />
       </SettingDetail>
     </SettingItem>

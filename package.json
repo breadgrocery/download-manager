@@ -1,25 +1,20 @@
 {
   "name": "download-manager",
-  "version": "1.0.2",
+  "description": "Lightweight and efficient download management",
+  "private": true,
+  "version": "1.0.3",
   "type": "module",
   "author": "Bread Grocery<https://github.com/breadgrocery>",
-  "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/breadgrocery/download-manager.git"
-  },
-  "bugs": {
-    "url": "https://github.com/breadgrocery/download-manager/issues"
-  },
-  "homepage": "https://github.com/breadgrocery/download-manager",
+  "license": "GPL-3.0-only",
   "scripts": {
-    "prepare": "lefthook install",
     "preinstall": "npx only-allow pnpm",
-    "clean": "rimraf dist",
-    "dev": "pnpm clean && vite --mode development",
-    "build": "pnpm clean && vue-tsc && vite build"
+    "postinstall": "wxt prepare",
+    "prepare": "lefthook install",
+    "dev": "node scripts/dev.mjs",
+    "build": "node scripts/build.mjs"
   },
   "dependencies": {
+    "@wxt-dev/i18n": "^0.2.0",
     "bowser": "^2.11.0",
     "bytes": "^3.1.2",
     "copy-to-clipboard": "^3.3.3",
@@ -32,40 +27,31 @@
     "p-timeout": "^6.1.2",
     "vue": "^3.5.11",
     "vue-router": "^4.4.5",
-    "vue-virtual-scroller": "2.0.0-beta.8",
-    "webextension-polyfill": "^0.12.0"
+    "vue-virtual-scroller": "2.0.0-beta.8"
   },
   "devDependencies": {
     "@commitlint/cli": "^19.5.0",
     "@commitlint/config-conventional": "^19.5.0",
     "@iconify-json/mdi": "^1.2.1",
-    "@rushstack/eslint-patch": "^1.10.4",
     "@trivago/prettier-plugin-sort-imports": "^4.3.0",
     "@types/bytes": "^3.1.4",
-    "@types/chrome": "^0.0.277",
-    "@types/js-yaml": "^4.0.9",
+    "@types/chrome": "^0.0.278",
     "@types/lodash-es": "^4.17.12",
     "@types/mime-db": "^1.43.5",
     "@types/node": "^22.7.5",
-    "@types/webextension-polyfill": "^0.12.1",
-    "@vitejs/plugin-vue": "^5.1.4",
-    "@vue/eslint-config-prettier": "9.0.0",
-    "@vue/eslint-config-typescript": "13.0.0",
-    "eslint": "8.57.0",
-    "eslint-plugin-vue": "^9.28.0",
-    "glob": "^11.0.0",
-    "js-yaml": "^4.1.0",
+    "@vue/eslint-config-typescript": "^14.1.1",
+    "@wxt-dev/auto-icons": "^1.0.2",
+    "@wxt-dev/module-vue": "^1.0.1",
+    "crx": "^5.0.1",
+    "eslint": "^9.12.0",
+    "eslint-plugin-vue": "^9.29.0",
+    "inquirer": "^12.0.0",
     "lefthook": "^1.7.18",
     "prettier": "^3.3.3",
-    "rimraf": "^6.0.1",
     "sass": "^1.79.5",
-    "typescript": "5.5.4",
-    "unplugin-auto-import": "^0.18.3",
     "unplugin-icons": "^0.19.3",
     "unplugin-vue-components": "^0.27.4",
-    "vite": "^5.4.8",
-    "vite-plugin-web-extension": "^4.2.0",
-    "vue-tsc": "^2.1.6"
+    "wxt": "^0.19.11"
   },
   "commitlint": {
     "extends": [

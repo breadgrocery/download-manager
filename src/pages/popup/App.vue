@@ -1,15 +1,14 @@
 <script setup lang="ts">
   import { getDownloads } from "@/utils/download";
-  import { t } from "@/utils/i18n";
   import { listen } from "@/utils/message";
   import { RecycleScroller } from "vue-virtual-scroller";
-  import browser from "webextension-polyfill";
-  import { CategoryDetails } from "./components/header/Category";
+  import type { Downloads } from "wxt/browser";
+  import type { CategoryDetails } from "./components/header/Category";
   import Header from "./components/header/Header.vue";
   import DownloadItem from "./components/list/DownloadItem.vue";
 
   // Set document title
-  document.title = t(`toolbar_extension_settings`);
+  document.title = i18n.t("toolbar.extension_settings");
 
   // Theme and locale
   const { adaptive, theme } = useTheme();
@@ -18,12 +17,12 @@
   // Width and height
   const settings = useSettings();
   const popupStyle = computed(() => ({
-    "width": `${settings.value.appearance.width}px`,
-    "height": `${settings.value.appearance.height}px`
+    width: `${settings.value.appearance.width}px`,
+    height: `${settings.value.appearance.height}px`
   }));
 
   // Raw download items
-  const downloads = ref<browser.Downloads.DownloadItem[]>([]);
+  const downloads = ref<Downloads.DownloadItem[]>([]);
   const refresh = () => getDownloads().then(data => (downloads.value = data));
   // Update download items on receiveing from background.js
   refresh().then(() => listen("background-to-popup:update", refresh));
@@ -34,9 +33,9 @@
   });
 
   // Download items filters
-  const baseFilter = (download: browser.Downloads.DownloadItem) => download.filename;
-  const searchFilter = ref<(download: browser.Downloads.DownloadItem) => boolean>(() => true);
-  const categoryFilter = ref<(download: browser.Downloads.DownloadItem) => boolean>(() => true);
+  const baseFilter = (download: Downloads.DownloadItem) => download.filename;
+  const searchFilter = ref<(download: Downloads.DownloadItem) => boolean>(() => true);
+  const categoryFilter = ref<(download: Downloads.DownloadItem) => boolean>(() => true);
   // Filtered download items
   const filtered = computed(() =>
     downloads.value.filter(download => {
@@ -60,10 +59,20 @@
 </script>
 
 <template>
-  <ThemeProvider :adaptive="adaptive" :theme="theme" :locale="locale" :date-locale="dateLocale">
+  <ThemeProvider
+    :adaptive="adaptive"
+    :theme="theme"
+    :locale="locale"
+    :date-locale="dateLocale"
+  >
     <NModalProvider>
       <NMessageProvider>
-        <NFlex class="popup-wrapper" :style="popupStyle" vertical :size="0">
+        <NFlex
+          class="popup-wrapper"
+          :style="popupStyle"
+          vertical
+          :size="0"
+        >
           <!-- Header -->
           <Header
             class="header"
@@ -82,14 +91,28 @@
               key-field="id"
               :buffer="160"
             >
-              <DownloadItem :key="item.id" class="item" :download="item" :highlights="highlights" />
+              <DownloadItem
+                :key="item.id"
+                class="item"
+                :download="item"
+                :highlights="highlights"
+              />
             </RecycleScroller>
-            <NBackTop :bottom="5" :right="15" :visibility-height="300" />
+            <NBackTop
+              :bottom="5"
+              :right="15"
+              :visibility-height="300"
+            />
           </NScrollbar>
 
           <!-- Empty Box -->
-          <NFlex v-if="filtered.length === 0" class="empty" vertical justify="space-around">
-            <NEmpty :description="t(`empty`)">
+          <NFlex
+            v-if="filtered.length === 0"
+            class="empty"
+            vertical
+            justify="space-around"
+          >
+            <NEmpty :description="i18n.t(`empty`)">
               <template #icon>
                 <NIcon><IconMdiTrayDownload /> </NIcon>
               </template>
@@ -110,8 +133,9 @@
     overflow: hidden;
     &,
     &:deep(img) {
-      user-select: none;
       -webkit-user-drag: none;
+      -webkit-user-select: none;
+      user-select: none;
     }
     .scroller {
       .item {

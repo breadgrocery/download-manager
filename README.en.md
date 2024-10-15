@@ -1,6 +1,6 @@
 English | [简体中文](README.md)
 
-<p align="center"><img width="128" src="./public/images/icon-256.png" alt="Logo" /></p>
+<p align="center"><img width="128" src="./src/public/images/icon.svg" alt="Logo" /></p>
 <br />
 <p align="center">
   <a href="https://vuejs.org"><img src="https://img.shields.io/badge/Vue.js-35495e.svg?logo=vuedotjs&logoColor=%234FC08D" alt="Vue.js" /></a>

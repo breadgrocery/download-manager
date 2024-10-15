@@ -14,6 +14,10 @@ on:
         type: boolean
         required: false
         description: Publish to Microsoft Edge Add-ons
+      firefox:
+        type: boolean
+        required: false
+        description: Publish to Firefox Browser Add-ons
       upload_only:
         type: choice
         required: true
@@ -27,71 +31,110 @@ concurrency:
   cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
 
 jobs:
-  publish:
-    env:
-      ZIP_PATH: out/download-manager.zip
+  build:
+    strategy:
+      matrix:
+        include:
+          - browser: chrome
+            manifest: mv3
+          - browser: firefox
+            manifest: mv3
     runs-on: ubuntu-latest
     steps:
       # Checkout the repository
-      - name: Checkout Repository
+      - name: Checkout
         uses: actions/checkout@v4
 
-      # Install pnpm using the version specified in the package.json `packageManager` field
+      # Install pnpm based on `packageManager` in package.json
       - name: Install pnpm
         uses: pnpm/action-setup@v4
+        with:
+          run_install: false
 
-      # Install Node.js and cache pnpm packages
+      # Install Node.js
       - name: Install Node
         uses: actions/setup-node@v4
         with:
-          node-version: "20"
-          cache: "pnpm"
+          node-version: 20
 
-      # Install dependencies and build
-      - name: Install and Build
+      # Build the extension
+      - name: Build
         run: |
           pnpm install
-          pnpm run build
+          pnpm build --browser ${{ matrix.browser }} --${{ matrix.manifest }} --zip
 
-      # Bundle the web extension
-      - name: Bundle zip
-        uses: vimtor/action-zip@v1.2
+      # Upload dist artifacts
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v4
         with:
-          files: dist
-          dest: ${{ env.ZIP_PATH }}
+          name: ${{ matrix.browser }}
+          if-no-files-found: error
+          overwrite: true
+          path: |
+            dist/*-${{ matrix.browser }}.zip
+            dist/*-${{ matrix.browser }}.crx
 
-      - name: Bundle crx
-        run: |
-          npx crx pack --crx-version 3 --output out/download-manager.crx dist
-
-      # Publish to GitHub Release (Triggered by tag)
-      - name: GitHub Release
-        uses: softprops/action-gh-release@v2
+  github-release:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+      - uses: softprops/action-gh-release@v2
         if: ${{ startsWith(github.ref, 'refs/tags/') }}
         with:
           prerelease: false
           make_latest: true
-          files: out/*
+          files: |
+            chrome/*.zip
+            firefox/*.zip
+            chrome/*.crx
+            firefox/*.crx
 
-      # Publish to Chrome Web Store (Triggered by tag or workflow_dispatch)
-      - name: Publish to Chrome Web Store
-        if: ${{ startsWith(github.ref, 'refs/tags/') || inputs.chrome }}
-        uses: wdzeng/chrome-extension@v1
+  chrome-web-store:
+    if: ${{ startsWith(github.ref, 'refs/tags/') || inputs.chrome }}
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
         with:
-          zip-path: ${{ env.ZIP_PATH }}
+          name: chrome
+      - uses: wdzeng/chrome-extension@v1
+        with:
+          zip-path: download-manager-chrome.zip
           extension-id: ${{ secrets.CHROME_EXT_ID }}
           client-id: ${{ secrets.CHROME_CLIENT_ID }}
           client-secret: ${{ secrets.CHROME_CLIENT_SECRET }}
           refresh-token: ${{ secrets.CHROME_REFRESH_TOKEN }}
           upload-only: ${{ !startsWith(github.ref, 'refs/tags/') && inputs.upload_only }}
 
-      # Publish to Microsoft Edge Add-ons (Triggered by tag or workflow_dispatch)
-      - name: Publish to Microsoft Edge Add-ons
-        if: ${{ startsWith(github.ref, 'refs/tags/') || inputs.edge }}
-        uses: wdzeng/edge-addon@v2
+  microsoft-edge-add-ons:
+    if: ${{ startsWith(github.ref, 'refs/tags/') || inputs.edge }}
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
         with:
-          zip-path: ${{ env.ZIP_PATH }}
+          name: chrome
+      - uses: wdzeng/edge-addon@v2
+        with:
+          zip-path: download-manager-chrome.zip
           product-id: ${{ secrets.EDGE_PRODUCT_ID }}
           api-key: ${{ secrets.EDGE_API_KEY }}
           client-id: ${{ secrets.EDGE_CLIENT_ID }}
           upload-only: ${{ !startsWith(github.ref, 'refs/tags/') && inputs.upload_only }}
+
+  firefox-browser-add-ons:
+    if: ${{ startsWith(github.ref, 'refs/tags/') || (inputs.firefox && !inputs.upload_only) }}
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: firefox
+      - uses: wdzeng/firefox-addon@v1
+        with:
+          xpi-path: download-manager-firefox.zip
+          source-file-path: download-manager-sources.zip
+          addon-guid: ${{ secrets.FIREFOX_ADDON_GUID }}
+          jwt-issuer: ${{ secrets.FIREFOX_JWT_ISSUER }}
+          jwt-secret: ${{ secrets.FIREFOX_JWT_SECRET }}

@@ -154,6 +154,7 @@ options:
       github: Visiter le dépôt Github
       chrome: Visiter le Chrome Web Store
       edge: Visiter le Microsoft Edge Add-ons Store
+      firefox: Visiter le Firefox Browser Add-ons
 
 messages:
   lag: Délai détecté, il est recommandé de nettoyer l'historique des téléchargements

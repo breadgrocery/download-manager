@@ -1,6 +1,6 @@
 简体中文 | [English](README.en.md)
 
-<p align="center"><img width="128" src="./public/images/icon-256.png" alt="Logo" /></p>
+<p align="center"><img width="128" src="./src/public/images/icon.svg" alt="Logo" /></p>
 <br />
 <p align="center">
   <a href="https://vuejs.org"><img src="https://img.shields.io/badge/Vue.js-35495e.svg?logo=vuedotjs&logoColor=%234FC08D" alt="Vue.js" /></a>
@@ -49,7 +49,7 @@
    pnpm install
    ```
 
-3. 项目本地调试（本地已安装Google Chrome）。
+3. 项目本地调试（本地已安装 Google Chrome）。
 
    ```bash
    pnpm dev

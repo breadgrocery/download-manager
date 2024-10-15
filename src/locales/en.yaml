@@ -154,6 +154,7 @@ options:
       github: Visit Github Repository
       chrome: Visit Chrome Web Store
       edge: Visit Microsoft Edge Add-ons
+      firefox: Visit Firefox Browser Add-ons
 
 messages:
   lag: Lag detected, consider clearing unnecessary download history

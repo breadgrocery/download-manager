@@ -1,10 +1,10 @@
 import { state } from "@/utils/state";
-import { CustomThemeCommonVars, ThemeCommonVars } from "naive-ui";
-import { CSSProperties } from "vue";
-import browser from "webextension-polyfill";
+import type { CustomThemeCommonVars, ThemeCommonVars } from "naive-ui";
+import type { CSSProperties } from "vue";
+import type { Downloads } from "wxt/browser";
 
 export const deletedStyle = (
-  download: browser.Downloads.DownloadItem,
+  download: Downloads.DownloadItem,
   colors: ThemeCommonVars & CustomThemeCommonVars
 ): CSSProperties => {
   return state.deleted(download)
@@ -17,7 +17,7 @@ export const deletedStyle = (
 };
 
 export const downloadStyle = (
-  download: browser.Downloads.DownloadItem,
+  download: Downloads.DownloadItem,
   colors: ThemeCommonVars & CustomThemeCommonVars
 ) => {
   let type = "info";

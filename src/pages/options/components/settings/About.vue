@@ -1,8 +1,8 @@
 <script setup lang="ts">
   import { constants } from "@/utils/constants";
-  import { t } from "@/utils/i18n";
-  import Bowser from "bowser";
-  import browser from "webextension-polyfill";
+  import { env } from "@/utils/env";
+  import { browser } from "wxt/browser";
+  import MdiFirefox from "~icons/mdi/firefox";
   import MdiGithub from "~icons/mdi/github";
   import MdiGoogleChrome from "~icons/mdi/google-chrome";
   import MdiLike from "~icons/mdi/like";
@@ -12,46 +12,82 @@
   import SettingWrapper from "../layout/SettingList.vue";
 
   const manifest = browser.runtime.getManifest();
-  const agent = Bowser.getParser(window.navigator.userAgent);
 
   const openUrl = (url: string) => browser.tabs.create({ url });
 </script>
 
 <template>
   <SettingWrapper>
-    <NFlex class="info" vertical>
-      <NAvatar class="logo" src="/images/icon-256.png" color="transparent" :size="128" />
-      <NText>{{ t(`extension_name`) }} </NText>
+    <NFlex
+      class="info"
+      vertical
+    >
+      <NAvatar
+        class="logo"
+        src="/images/icon.svg"
+        color="transparent"
+        :size="128"
+      />
+      <NText>{{ i18n.t(`extension.name`) }} </NText>
       <NText>
-        {{ `${t(`options_about_version`)} ${manifest.version}` }}
+        {{ `${i18n.t(`options.about.version`)} ${manifest.version}` }}
       </NText>
-      <NText>{{ t(`extension_description`) }} </NText>
+      <NText>{{ i18n.t(`extension.description`) }} </NText>
     </NFlex>
-    <SettingItem :title="t(`options_about_rate_title`)" :icon="MdiLike">
-      <SettingDetail :title="t(`options_about_rate_github`)" :icon="MdiGithub">
-        <NButton secondary @click="openUrl(constants.about.github)">
+    <SettingItem
+      :title="i18n.t(`options.about.rate.title`)"
+      :icon="MdiLike"
+    >
+      <SettingDetail
+        :title="i18n.t(`options.about.rate.github`)"
+        :icon="MdiGithub"
+      >
+        <NButton
+          secondary
+          @click="openUrl(constants.about.github)"
+        >
           <template #icon>
             <NIcon> <IconMdiExternalLink /> </NIcon>
           </template>
         </NButton>
       </SettingDetail>
       <SettingDetail
-        v-if="agent.satisfies({ chrome: `>=71` })"
-        :title="t(`options_about_rate_chrome`)"
+        v-if="env.browser.satisfies({ chrome: `>=71` })"
+        :title="i18n.t(`options.about.rate.chrome`)"
         :icon="MdiGoogleChrome"
       >
-        <NButton secondary @click="openUrl(constants.about.chrome)">
+        <NButton
+          secondary
+          @click="openUrl(constants.about.chrome)"
+        >
           <template #icon>
             <NIcon> <IconMdiExternalLink /> </NIcon>
           </template>
         </NButton>
       </SettingDetail>
       <SettingDetail
-        v-if="agent.satisfies({ edge: `>=79` })"
-        :title="t(`options_about_rate_edge`)"
+        v-if="env.browser.satisfies({ edge: `>=79` })"
+        :title="i18n.t(`options.about.rate.edge`)"
         :icon="MdiMicrosoftEdge"
       >
-        <NButton secondary @click="openUrl(constants.about.edge)">
+        <NButton
+          secondary
+          @click="openUrl(constants.about.edge)"
+        >
+          <template #icon>
+            <NIcon> <IconMdiExternalLink /> </NIcon>
+          </template>
+        </NButton>
+      </SettingDetail>
+      <SettingDetail
+        v-if="env.browser.satisfies({ firefox: `>=57` })"
+        :title="i18n.t(`options.about.rate.firefox`)"
+        :icon="MdiFirefox"
+      >
+        <NButton
+          secondary
+          @click="openUrl(constants.about.firefox)"
+        >
           <template #icon>
             <NIcon> <IconMdiExternalLink /> </NIcon>
           </template>

@@ -1,6 +1,4 @@
 <script setup lang="ts">
-  import { t } from "@/utils/i18n";
-
   interface Props {
     onConfirm?: (disk: boolean) => void;
   }
@@ -8,16 +6,27 @@
   const { onConfirm } = defineProps<Props>();
   const disk = ref<boolean>(false);
 
-  const handleConfirm = () => onConfirm && onConfirm(disk.value);
+  const handleConfirm = () => onConfirm?.(disk.value);
 </script>
 
 <template>
-  <NFlex class="delete-download-wrapper" vertical>
-    <NCheckbox v-model:checked="disk" class="delete-from-disk">
-      {{ t(`download_delete_disk`) }}
+  <NFlex
+    class="delete-download-wrapper"
+    vertical
+  >
+    <NCheckbox
+      v-model:checked="disk"
+      class="delete-from-disk"
+    >
+      {{ i18n.t(`download.delete.disk`) }}
     </NCheckbox>
     <NFlex justify="end">
-      <NButton type="primary" @click="handleConfirm">{{ t(`common_confirm`) }}</NButton>
+      <NButton
+        type="primary"
+        @click="handleConfirm"
+      >
+        {{ i18n.t(`common.confirm`) }}
+      </NButton>
     </NFlex>
   </NFlex>
 </template>

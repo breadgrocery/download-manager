@@ -1,12 +1,11 @@
 <script setup lang="ts">
-  import { DropdownIconOption } from "@/components/DropdownIcon.vue";
+  import type { DropdownIconOption } from "@/components/DropdownIcon.vue";
   import { deleteDownload } from "@/utils/download";
-  import { t } from "@/utils/i18n";
   import { state } from "@/utils/state";
   import copy from "copy-to-clipboard";
   import { useMessage } from "naive-ui";
   import { useModal } from "naive-ui";
-  import browser from "webextension-polyfill";
+  import { type Downloads, browser } from "wxt/browser";
   import MdiDelete from "~icons/mdi/delete";
   import MdiFileRestoreOutline from "~icons/mdi/file-restore-outline";
   import MdiFolderOutline from "~icons/mdi/folder-outline";
@@ -23,7 +22,7 @@
   import QRCode from "./QRCode.vue";
 
   interface Props {
-    download: browser.Downloads.DownloadItem;
+    download: Downloads.DownloadItem;
   }
   const { download } = defineProps<Props>();
   const message = useMessage();
@@ -31,8 +30,8 @@
 
   // Link select
   const linkOptions: DropdownIconOption[] = [
-    { key: "link", label: "download_link_copy", icon: MdiLink },
-    { key: "qrcode", label: "download_link_qrcode", icon: MdiQrcode }
+    { key: "link", label: i18n.t("download.link.copy"), icon: MdiLink },
+    { key: "qrcode", label: i18n.t("download.link.qrcode"), icon: MdiQrcode }
   ];
   const handleLinkSelect = (key: string) => {
     switch (key) {
@@ -46,18 +45,18 @@
   };
   const copyToClipboard = () => {
     copy(download.url, { format: "text/plain" });
-    message.success(t(`download_link_copied`));
+    message.success(i18n.t("download.link.copied"));
   };
   const createQRCode = () => {
     if (download.url.length <= 57 * 57) {
       modal.create({
         preset: "card",
         style: { width: "auto" },
-        title: t(`download_link_scan_qr_code`),
+        title: i18n.t("download.link.scan_qr_code"),
         content: () => h(QRCode, { value: download.url })
       });
     } else {
-      message.error(t(`download_link_data_too_long`));
+      message.error(i18n.t("download.link.data_too_long"));
     }
   };
 
@@ -66,8 +65,12 @@
 
   // Delete select
   const deleteOptions = [
-    { key: "history", label: "download_delete_history", icon: MdiHistory },
-    { key: "disk", label: "download_delete_disk", icon: MdiHarddisk }
+    {
+      key: "history",
+      label: i18n.t("download.delete.history"),
+      icon: MdiHistory
+    },
+    { key: "disk", label: i18n.t("download.delete.disk"), icon: MdiHarddisk }
   ];
   const handleDeleteSelect = (key: string) => {
     switch (key) {
@@ -81,12 +84,12 @@
   };
   const deleteFromHistory = () => {
     deleteDownload(download, false).finally(() => {
-      message.success(t(`download_delete_completed`));
+      message.success(i18n.t("download.delete.completed"));
     });
   };
   const deleteFromDisk = () => {
     deleteDownload(download, true).finally(() => {
-      message.success(t(`download_delete_completed`));
+      message.success(i18n.t("download.delete.completed"));
     });
   };
   const handleRetry = () => {
@@ -104,8 +107,8 @@
   };
   const handlePause = () => browser.downloads.pause(download.id);
   const handleResume = () => browser.downloads.resume(download.id);
-  const handleAcceptDanger = (aaa: browser.Downloads.DownloadItem) => {
-    chrome && chrome.downloads.acceptDanger(aaa.id);
+  const handleAcceptDanger = (download: Downloads.DownloadItem) => {
+    chrome?.downloads.acceptDanger(download.id);
   };
   const handleCancel = () => browser.downloads.cancel(download.id);
 </script>
@@ -113,56 +116,66 @@
 <template>
   <NFlex justify="end">
     <!-- Link select -->
-    <DropdownIcon :icon="MdiLinkVariant" :options="linkOptions" @select="handleLinkSelect" />
+    <DropdownIcon
+      :icon="MdiLinkVariant"
+      :options="linkOptions"
+      @select="handleLinkSelect"
+    />
 
     <!-- Show in folder -->
     <IconButton
       v-if="state.completed(download) && !state.deleted(download)"
       :icon="MdiFolderOutline"
-      :tooltip="t(`download_show`)"
+      :tooltip="i18n.t(`download.show`)"
       @click="handleShowInFolder"
     />
 
     <!-- Operations -->
-    <NFlex v-if="!state.dangerous(download)" v-assert-children>
+    <NFlex
+      v-if="!state.dangerous(download)"
+      v-assert-children
+    >
       <IconButton
         v-if="state.interrupted(download) || state.deleted(download)"
         :icon="MdiReplay"
-        :tooltip="t(`download_retry`)"
+        :tooltip="i18n.t(`download.retry`)"
         @click="handleRetry"
       />
       <IconButton
         v-if="state.downloading(download)"
         :icon="MdiPause"
-        :tooltip="t(`download_pause`)"
+        :tooltip="i18n.t(`download.pause`)"
         @click="handlePause"
       />
       <IconButton
         v-if="state.paused(download)"
         :icon="MdiPlay"
-        :tooltip="t(`download_resume`)"
+        :tooltip="i18n.t(`download.resume`)"
         @click="handleResume"
       />
       <IconButton
         v-if="state.ongoing(download)"
         :icon="MdiRemove"
-        :tooltip="t(`download_cancel`)"
+        :tooltip="i18n.t(`download.cancel`)"
         @click="handleCancel"
       />
     </NFlex>
 
     <!-- Dangerous file operations -->
-    <NFlex v-if="state.dangerous(download)" v-assert-children>
+    <NFlex
+      v-if="state.dangerous(download)"
+      v-assert-children
+    >
       <IconButton
         v-if="state.ongoing(download)"
         :icon="MdiFileRestoreOutline"
-        :tooltip="t(`download_dangerous_keep`)"
+        :tooltip="i18n.t(`download.dangerous.keep`)"
         @click="handleAcceptDanger(download)"
       />
       <IconButton
         v-if="state.ongoing(download)"
         :icon="MdiDelete"
-        :tooltip="t(`download_dangerous_remove`)"
+        :tooltip="i18n.t(`download.dangerous.remove`)"
         @click="deleteFromDisk"
       />
     </NFlex>

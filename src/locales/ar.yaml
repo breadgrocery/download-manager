@@ -154,6 +154,7 @@ options:
       github: زيارة مستودع GitHub
       chrome: زيارة متجر Chrome الإلكتروني
       edge: زيارة متجر Microsoft Edge Add-ons
+      firefox: زيارة متجر إضافات Firefox
 
 messages:
   lag: تم اكتشاف تأخير، يوصى بتفريغ سجل التنزيلات

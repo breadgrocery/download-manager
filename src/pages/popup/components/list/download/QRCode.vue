@@ -1,7 +1,4 @@
 <script setup lang="ts">
-  import { t } from "@/utils/i18n";
-  import browser from "webextension-polyfill";
-
   export interface Props {
     value: string;
   }
@@ -15,19 +12,39 @@
   const handleDownload = () => {
     const canvas = document.querySelector("#qr-code")?.querySelector<HTMLCanvasElement>("canvas");
     if (canvas) {
-      browser.downloads.download({ url: canvas.toDataURL(), filename: "QRCode.png" });
+      const url = canvas.toDataURL();
+      const filename = "QRCode.png";
+      const fallbackDownload = () => {
+        const a = document.createElement("a");
+        a.download = filename;
+        a.href = url;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+      };
+      try {
+        browser.downloads.download({ url, filename }).catch(fallbackDownload);
+      } catch {
+        fallbackDownload();
+      }
     }
   };
 </script>
 
 <template>
   <NFlex vertical>
-    <NQrCode v-if="renderable" id="qr-code" :value="value" :size="180" error-correction-level="M" />
+    <NQrCode
+      v-if="renderable"
+      id="qr-code"
+      :value="value"
+      :size="180"
+      error-correction-level="M"
+    />
     <NButton @click="handleDownload">
       <template #icon>
         <NIcon> <IconMdiTrayDownload /> </NIcon>
       </template>
-      {{ t(`download_link_download_qr_code`) }}
+      {{ i18n.t(`download.link.download_qr_code`) }}
     </NButton>
   </NFlex>
 </template>

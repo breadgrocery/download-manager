@@ -1,6 +1,6 @@
 <script setup lang="ts">
   import { useThemeVars } from "naive-ui";
-  import { Category, CategoryDetails, categoryDetails } from "./Category";
+  import { type Category, type CategoryDetails, categoryDetails } from "./Category";
 
   export interface Props {
     categories?: Category[];
@@ -25,9 +25,8 @@
     }
     if (categories.length === 1 && categories[0] === "all") {
       return list;
-    } else {
-      return list.filter(category => category.id === "all" || categories.includes(category.id));
     }
+    return list.filter(detail => detail.id === "all" || categories.includes(detail.id));
   });
 
   const current = ref(categoryButtons.value[0].id);
@@ -37,7 +36,12 @@
 <template>
   <NFlex>
     <NButtonGroup>
-      <NTooltip v-for="button in categoryButtons" :key="button.id" :show-arrow="false" :delay="500">
+      <NTooltip
+        v-for="button in categoryButtons"
+        :key="button.id"
+        :show-arrow="false"
+        :delay="500"
+      >
         <template #trigger>
           <NButton @click="handleCategoryClick(button)">
             <template #icon>
@@ -49,7 +53,9 @@
             </template>
           </NButton>
         </template>
-        <template #default> {{ button.tooltip }} </template>
+        <template #default>
+          {{ button.tooltip }}
+        </template>
       </NTooltip>
     </NButtonGroup>
   </NFlex>

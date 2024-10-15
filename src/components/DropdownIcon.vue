@@ -1,8 +1,7 @@
 <script setup lang="ts">
-  import { t } from "@/utils/i18n";
   import { NIcon } from "naive-ui";
   import { h } from "vue";
-  import { Icon } from "./IconButton.vue";
+  import type { Icon } from "./IconButton.vue";
 
   export interface DropdownIconOption extends Icon {
     key: string;
@@ -23,7 +22,7 @@
   const list = computed(() => {
     return options.map(option => ({
       key: option.key,
-      label: t(option.label),
+      label: option.label,
       ...(option.icon && {
         icon: () =>
           h(
@@ -40,9 +39,18 @@
 </script>
 
 <template>
-  <NDropdown :options="list" @select="handleSelect">
-    <NFlex class="dropdown-icon-wrapper" style="cursor: pointer">
-      <NIcon :color="color" :size="size">
+  <NDropdown
+    :options="list"
+    @select="handleSelect"
+  >
+    <NFlex
+      class="dropdown-icon-wrapper"
+      style="cursor: pointer"
+    >
+      <NIcon
+        :color="color"
+        :size="size"
+      >
         <component :is="() => h(icon)" />
       </NIcon>
     </NFlex>

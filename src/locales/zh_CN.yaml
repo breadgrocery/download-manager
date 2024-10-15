@@ -154,6 +154,7 @@ options:
       github: 访问 Github 仓库
       chrome: 访问 Chrome 应用商店
       edge: 访问 Microsoft Edge 插件市场
+      firefox: 访问 Firefox 附加组件
 
 messages:
   lag: 检测到卡顿，建议清理不必要的下载记录

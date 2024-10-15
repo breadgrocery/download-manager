@@ -1,16 +1,15 @@
 <script setup lang="ts">
   import { deleteDownload } from "@/utils/download";
-  import { t } from "@/utils/i18n";
   import { state } from "@/utils/state";
   import { useMessage } from "naive-ui";
-  import browser from "webextension-polyfill";
-  import { CategoryDetails } from "./Category";
+  import type { Downloads } from "wxt/browser";
+  import type { CategoryDetails } from "./Category";
   import CategoryBox from "./CategoryBox.vue";
   import SearchBox from "./SearchBox.vue";
   import Toolbar from "./Toolbar.vue";
 
   interface Props {
-    downloads: browser.Downloads.DownloadItem[];
+    downloads: Downloads.DownloadItem[];
   }
   const { downloads } = defineProps<Props>();
 
@@ -25,7 +24,9 @@
   const handleSearch = (value: string) => emit("search", value);
   const handleCategoryCilck = (category: CategoryDetails) => emit("categoryClick", category);
 
-  const deleteFilters: { [key: string]: (download: browser.Downloads.DownloadItem) => boolean } = {
+  const deleteFilters: {
+    [key: string]: (download: Downloads.DownloadItem) => boolean;
+  } = {
     all: () => true,
     completed: download => state.completed(download),
     failed: download => state.interrupted(download) || state.expired(download),
@@ -35,7 +36,7 @@
     const deleteFilter = deleteFilters[key] || (() => false);
     const tasks = downloads.filter(deleteFilter).map(download => deleteDownload(download, disk));
     Promise.allSettled(tasks)
-      .then(ids => message.success(t(`toolbar_delete_downloads_deleted`, [`${ids.length}`])))
+      .then(ids => message.success(i18n.t("toolbar.delete_downloads.deleted", [`${ids.length}`])))
       .finally(close);
   };
 
@@ -46,7 +47,7 @@
         if (list.getEntries()[0].duration >= 1000) {
           // Wait for settings to load before showing lag warning
           setTimeout(() => {
-            settings.value.notifications.messages.lag && message.warning(t(`messages_lag`));
+            if (settings.value.notifications.messages.lag) message.warning(i18n.t("messages.lag"));
           }, 200);
         }
       });
@@ -57,9 +58,17 @@
 </script>
 
 <template>
-  <NFlex class="popup-header-wrapper" justify="space-between" :wrap="false">
+  <NFlex
+    class="popup-header-wrapper"
+    justify="space-between"
+    :wrap="false"
+  >
     <!-- Search Box -->
-    <SearchBox v-if="settings.features.search" class="search-box" @search="handleSearch" />
+    <SearchBox
+      v-if="settings.features.search"
+      class="search-box"
+      @search="handleSearch"
+    />
 
     <!-- Category Box -->
     <CategoryBox
@@ -70,7 +79,10 @@
     />
 
     <!-- Toolbar -->
-    <Toolbar class="toolbar" @delete="handleDeleteSelect" />
+    <Toolbar
+      class="toolbar"
+      @delete="handleDeleteSelect"
+    />
   </NFlex>
 </template>
 

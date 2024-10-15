@@ -154,6 +154,7 @@ options:
       github: Посетить репозиторий на Github
       chrome: Посетить Chrome Web Store
       edge: Посетить Microsoft Edge Add-ons Store
+      firefox: Посетить Firefox Browser Add-ons
 
 messages:
   lag: Обнаружена задержка, рекомендуется очистить историю загрузок

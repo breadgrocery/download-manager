@@ -154,6 +154,7 @@ options:
       github: Visitar el repositorio en Github
       chrome: Visitar Chrome Web Store
       edge: Visitar Microsoft Edge Add-ons Store
+      firefox: Visitar Firefox Add-ons Store
 
 messages:
   lag: Retraso detectado, se recomienda limpiar el historial de descargas

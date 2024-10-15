@@ -41,8 +41,8 @@ const getCachedData = <T>(storageKey: string): T | null => {
       ) {
         return parsedData as T;
       }
-    } catch (error) {
-      // Fallback to fetcher if JSON parsing fails
+    } catch {
+      return null;
     }
   }
   return null;

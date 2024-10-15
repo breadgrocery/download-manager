@@ -1,22 +1,11 @@
 {
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "yaml.schemas": {
-    "https://json.schemastore.org/github-workflow": ".github/workflows/*.{yaml,yml}",
-    "https://json.schemastore.org/lefthook.json": "lefthook.{yaml,yml}",
-    "https://json.schemastore.org/prettierrc": ".prettierrc.{yaml,yml}"
-  },
-  "json.schemas": [
-    {
-      "url": "https://json.schemastore.org/chrome-manifest",
-      "fileMatch": ["manifest.json"]
-    }
-  ],
   "files.exclude": {
-    ".eslint*": true,
-    ".gitattributes": true,
+    "**/.wxt": true,
     ".gitignore": true,
-    ".prettier*": true,
-    "lefthook.*": true,
+    ".prettierignore": true,
+    "eslint.config.mjs": true,
+    "lefthook.yaml": true,
+    "prettier.config.mjs": true,
     "{package-lock.json,pnpm-lock.yaml,yarn.lock,bun.lockb}": true
   },
   "search.exclude": {

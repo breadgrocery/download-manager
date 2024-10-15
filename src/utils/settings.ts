@@ -1,6 +1,6 @@
-import { Category } from "@/pages/popup/components/header/Category";
+import type { Category } from "@/pages/popup/components/header/Category";
 import { cloneDeep, isArray, mergeWith, toArray } from "lodash-es";
-import browser from "webextension-polyfill";
+import { browser } from "wxt/browser";
 
 export const defaults = {
   appearance: {

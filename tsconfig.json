@@ -1,24 +1,7 @@
 {
+  "extends": "./src/.wxt/tsconfig.json",
   "compilerOptions": {
-    "target": "ESNext",
-    "useDefineForClassFields": true,
-    "module": "ESNext",
-    "moduleResolution": "Node",
-    "strict": true,
-    "jsx": "preserve",
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "esModuleInterop": true,
-    "lib": ["ESNext", "DOM", "ES2020.Promise"],
-    "skipLibCheck": true,
     "noImplicitAny": false,
-    "noEmit": true,
-    "baseUrl": ".",
-    "paths": {
-      "@/*": ["src/*"]
-    },
-    "types": ["vite/client", "naive-ui/volar", "unplugin-icons/types/vue", "@types/chrome"]
-  },
-  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue", "src/**/*.md"],
-  "references": [{ "path": "./tsconfig.node.json" }]
+    "types": ["naive-ui/volar", "unplugin-icons/types/vue", "@types/chrome"]
+  }
 }

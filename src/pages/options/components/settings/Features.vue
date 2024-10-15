@@ -1,6 +1,5 @@
 <script setup lang="ts">
-  import { Category, categoryEnums } from "@/pages/popup/components/header/Category";
-  import { t } from "@/utils/i18n";
+  import { type Category, categoryEnums } from "@/pages/popup/components/header/Category";
   import MdiCategoryPlusOutline from "~icons/mdi/category-plus-outline";
   import MdiContentDuplicate from "~icons/mdi/content-duplicate";
   import MdiDeleteClock from "~icons/mdi/delete-clock";
@@ -24,19 +23,31 @@
   };
 
   const conflicts = [
-    { value: "uniquify", label: t(`options_features_download_conflict_uniquify`) },
-    { value: "overwrite", label: t(`options_features_download_conflict_overwrite`) },
-    { value: "prompt", label: t(`options_features_download_conflict_prompt`) }
+    {
+      value: "uniquify",
+      label: i18n.t("options.features.download.conflict.uniquify")
+    },
+    {
+      value: "overwrite",
+      label: i18n.t("options.features.download.conflict.overwrite")
+    },
+    {
+      value: "prompt",
+      label: i18n.t("options.features.download.conflict.prompt")
+    }
   ];
 </script>
 
 <template>
   <SettingWrapper>
-    <SettingItem :title="t(`options_features_filter_title`)" :icon="MdiFilterOutline">
+    <SettingItem
+      :title="i18n.t(`options.features.filter.title`)"
+      :icon="MdiFilterOutline"
+    >
       <SettingDetail
-        :title="t(`options_features_filter_search_title`)"
+        :title="i18n.t(`options.features.filter.search.title`)"
         :icon="MdiFileSearchOutline"
-        :description="t(`options_features_filter_search_description`)"
+        :description="i18n.t(`options.features.filter.search.description`)"
       >
         <NSwitch
           :default-value="settings.features.search"
@@ -44,23 +55,32 @@
         />
       </SettingDetail>
       <SettingDetail
-        :title="t(`options_features_filter_categories_title`)"
+        :title="i18n.t(`options.features.filter.categories.title`)"
         :icon="MdiCategoryPlusOutline"
-        :description="t(`options_features_filter_categories_description`)"
+        :description="i18n.t(`options.features.filter.categories.description`)"
       >
-        <NCheckboxGroup :value="settings.features.categories" :on-update:value="updateCategories">
+        <NCheckboxGroup
+          :value="settings.features.categories"
+          :on-update:value="updateCategories"
+        >
           <NCheckbox
             v-for="category in categories"
             :key="category"
-            :label="t(`categories_${category}`)"
+            :label="i18n.t(`categories.${category}`)"
             :value="category"
           />
         </NCheckboxGroup>
       </SettingDetail>
     </SettingItem>
 
-    <SettingItem :title="t(`options_features_download_title`)" :icon="MdiLinkVariantPlus">
-      <SettingDetail :title="t(`options_features_download_timeout`)" :icon="MdiTimerOutline">
+    <SettingItem
+      :title="i18n.t(`options.features.download.title`)"
+      :icon="MdiLinkVariantPlus"
+    >
+      <SettingDetail
+        :title="i18n.t(`options.features.download.timeout`)"
+        :icon="MdiTimerOutline"
+      >
         <NInputNumber
           :default-value="settings.features.download.timeout"
           :min="10"
@@ -68,10 +88,15 @@
           :precision="0"
           :on-update:value="value => (settings.features.download.timeout = value || 30)"
         >
-          <template #suffix> {{ t(`unit_seconds`) }} </template>
+          <template #suffix>
+            {{ i18n.t(`unit.seconds`) }}
+          </template>
         </NInputNumber>
       </SettingDetail>
-      <SettingDetail :title="t(`options_features_download_retries`)" :icon="MdiTimerRefreshOutline">
+      <SettingDetail
+        :title="i18n.t(`options.features.download.retries`)"
+        :icon="MdiTimerRefreshOutline"
+      >
         <NInputNumber
           :default-value="settings.features.download.retries"
           :min="1"
@@ -81,7 +106,7 @@
         />
       </SettingDetail>
       <SettingDetail
-        :title="t(`options_features_download_conflict_title`)"
+        :title="i18n.t(`options.features.download.conflict.title`)"
         :icon="MdiContentDuplicate"
       >
         <NSelect
@@ -92,14 +117,23 @@
       </SettingDetail>
     </SettingItem>
 
-    <SettingItem :title="t(`options_features_cleanup_title`)" :icon="MdiRobotOutline">
-      <SettingDetail :title="t(`options_features_cleanup_enabled`)" :icon="MdiDeleteClock">
+    <SettingItem
+      :title="i18n.t(`options.features.cleanup.title`)"
+      :icon="MdiRobotOutline"
+    >
+      <SettingDetail
+        :title="i18n.t(`options.features.cleanup.enabled`)"
+        :icon="MdiDeleteClock"
+      >
         <NSwitch
           :default-value="settings.features.cleanup.enabled"
           :on-update:value="value => (settings.features.cleanup.enabled = value)"
         />
       </SettingDetail>
-      <SettingDetail :title="t(`options_features_cleanup_retention`)" :icon="MdiTimerSand">
+      <SettingDetail
+        :title="i18n.t(`options.features.cleanup.retention`)"
+        :icon="MdiTimerSand"
+      >
         <NInputNumber
           :disabled="!settings.features.cleanup.enabled"
           :default-value="settings.features.cleanup.retention"
@@ -108,10 +142,15 @@
           :precision="0"
           :on-update:value="value => (settings.features.cleanup.retention = value || 30)"
         >
-          <template #suffix> {{ t(`unit_day`) }} </template>
+          <template #suffix>
+            {{ i18n.t(`unit.day`) }}
+          </template>
         </NInputNumber>
       </SettingDetail>
-      <SettingDetail :title="t(`download_delete_disk`)" :icon="MdiHarddisk">
+      <SettingDetail
+        :title="i18n.t(`download.delete.disk`)"
+        :icon="MdiHarddisk"
+      >
         <NSwitch
           :disabled="!settings.features.cleanup.enabled"
           :default-value="settings.features.cleanup.revmove"
