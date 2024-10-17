@@ -1,7 +1,7 @@
 <script setup lang="ts">
   import { getDownloads } from "@/utils/download";
   import { listen } from "@/utils/message";
-  import { RecycleScroller } from "vue-virtual-scroller";
+  import { useVirtualList } from "@vueuse/core";
   import type { Downloads } from "wxt/browser";
   import type { CategoryDetails } from "./components/header/Category";
   import Header from "./components/header/Header.vue";
@@ -42,6 +42,10 @@
       return baseFilter(download) && searchFilter.value(download) && categoryFilter.value(download);
     })
   );
+  const { list, containerProps, wrapperProps } = useVirtualList(filtered, {
+    itemHeight: 80,
+    overscan: 5
+  });
   // Download item highlight content
   const highlights = ref<string[]>();
 
@@ -82,29 +86,29 @@
           />
 
           <!-- Download List -->
-          <NScrollbar v-if="filtered.length > 0">
-            <RecycleScroller
-              v-slot="{ item }"
-              class="scroller"
-              :items="filtered"
-              :item-size="80"
-              key-field="id"
-              :buffer="160"
-            >
-              <DownloadItem
-                :key="item.id"
+          <div
+            v-if="filtered.length > 0"
+            v-bind="containerProps"
+            class="scroller"
+          >
+            <div v-bind="wrapperProps">
+              <div
+                v-for="item in list"
+                :key="item.data.id"
                 class="item"
-                :download="item"
-                :highlights="highlights"
-              />
-            </RecycleScroller>
+              >
+                <DownloadItem
+                  :download="item.data"
+                  :highlights="highlights"
+                />
+              </div>
+            </div>
             <NBackTop
               :bottom="5"
-              :right="15"
+              :right="10"
               :visibility-height="300"
             />
-          </NScrollbar>
-
+          </div>
           <!-- Empty Box -->
           <NFlex
             v-if="filtered.length === 0"
@@ -138,12 +142,24 @@
       user-select: none;
     }
     .scroller {
-      .item {
-        position: absolute;
-        width: 100%;
+      scroll-behavior: auto;
+      &::-webkit-scrollbar {
+        width: 8px;
       }
-      :deep(.resize-observer) {
-        display: none;
+      &::-webkit-scrollbar-thumb {
+        border-radius: 5px;
+        cursor: pointer;
+        background-color: transparent;
+        &:hover {
+          background-color: rgba(0, 0, 0, 0.4);
+        }
+        transition: background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      &:hover::-webkit-scrollbar-thumb {
+        background: rgba(0, 0, 0, 0.25);
+      }
+      .item {
+        margin: 2px;
       }
     }
     .empty {

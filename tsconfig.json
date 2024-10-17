@@ -1,7 +1,6 @@
 {
   "extends": "./src/.wxt/tsconfig.json",
   "compilerOptions": {
-    "noImplicitAny": false,
     "types": ["naive-ui/volar", "unplugin-icons/types/vue", "@types/chrome"]
   }
 }
