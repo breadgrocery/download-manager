@@ -6,9 +6,9 @@ import MdiFileDocument from "~icons/mdi/file-document";
 import MdiFolderZip from "~icons/mdi/folder-zip";
 import MdiFormatListBulleted from "~icons/mdi/format-list-bulleted";
 import MdiImage from "~icons/mdi/image";
-import MdiJigsaw from "~icons/mdi/jigsaw";
 import MdiMovie from "~icons/mdi/movie";
 import MdiMusic from "~icons/mdi/music";
+import MdiPuzzle from "~icons/mdi/puzzle";
 
 export const categoryEnums = [
   "all",
@@ -85,7 +85,7 @@ export const categoryDetails = (categories?: Category[]): CategoryDetails[] => {
     },
     {
       id: "executables",
-      icon: MdiJigsaw,
+      icon: MdiPuzzle,
       tooltip: i18n.t("categories.executables"),
       match: (filename, mime) => {
         const exts = [getFileExtension(filename), ...(mime ? getAllExtensions([mime]) : [])];

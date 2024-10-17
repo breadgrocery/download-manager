@@ -1,5 +1,6 @@
 <script setup lang="ts">
   import { type Category, categoryEnums } from "@/pages/popup/components/header/Category";
+  import MdiAutoAwesomeOutline from "~icons/mdi/auto-awesome-outline";
   import MdiCategoryPlusOutline from "~icons/mdi/category-plus-outline";
   import MdiContentDuplicate from "~icons/mdi/content-duplicate";
   import MdiDeleteClock from "~icons/mdi/delete-clock";
@@ -7,7 +8,6 @@
   import MdiFilterOutline from "~icons/mdi/filter-outline";
   import MdiHarddisk from "~icons/mdi/harddisk";
   import MdiLinkVariantPlus from "~icons/mdi/link-variant-plus";
-  import MdiRobotOutline from "~icons/mdi/robot-outline";
   import MdiTimerOutline from "~icons/mdi/timer-outline";
   import MdiTimerRefreshOutline from "~icons/mdi/timer-refresh-outline";
   import MdiTimerSand from "~icons/mdi/timer-sand";
@@ -105,7 +105,7 @@
       </SettingDetail>
     </SettingItem>
 
-    <SettingItem :title="i18n.t(`options.features.cleanup.title`)" :icon="MdiRobotOutline">
+    <SettingItem :title="i18n.t(`options.features.cleanup.title`)" :icon="MdiAutoAwesomeOutline">
       <SettingDetail :title="i18n.t(`options.features.cleanup.enabled`)" :icon="MdiDeleteClock">
         <NSwitch
           :default-value="settings.features.cleanup.enabled"

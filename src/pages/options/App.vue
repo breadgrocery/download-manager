@@ -6,11 +6,16 @@
 
   // Theme and locale
   const { adaptive, theme } = useTheme();
-  const { locale, dateLocale } = useLocale();
+  const { ui } = useLocale();
 </script>
 
 <template>
-  <ThemeProvider :adaptive="adaptive" :theme="theme" :locale="locale" :date-locale="dateLocale">
+  <ThemeProvider
+    :adaptive="adaptive"
+    :theme="theme"
+    :locale="ui.locale"
+    :date-locale="ui.dateLocale"
+  >
     <NModalProvider>
       <NMessageProvider>
         <NFlex class="options-wrapper" vertical :size="0">

@@ -1,27 +1,32 @@
+import { type Locale, arDZ, enUS, es, fr, ru, zhCN } from "date-fns/locale";
 import {
   type NDateLocale,
   type NLocale,
-  arDZ,
-  dateArDZ,
-  dateEnUS,
-  dateEsAR,
-  dateFrFR,
-  dateRuRU,
-  dateZhCN,
-  enUS,
-  esAR,
-  frFR,
-  ruRU,
-  zhCN
+  arDZ as uiArDZ,
+  dateArDZ as uiDateArDZ,
+  dateEnUS as uiDateEnUS,
+  dateEsAR as uiDateEsAR,
+  dateFrFR as uiDateFrFR,
+  dateRuRU as uiDateRuRU,
+  dateZhCN as uiDateZhCN,
+  enUS as uiEnUS,
+  esAR as uiEsAR,
+  frFR as uiFrFR,
+  ruRU as uiRuRU,
+  zhCN as uiZhCN
 } from "naive-ui";
 
-const locales: { [key: string]: { locale: NLocale; dateLocale: NDateLocale } } = {
-  ar: { locale: arDZ, dateLocale: dateArDZ },
-  en: { locale: enUS, dateLocale: dateEnUS },
-  es: { locale: esAR, dateLocale: dateEsAR },
-  fr: { locale: frFR, dateLocale: dateFrFR },
-  ru: { locale: ruRU, dateLocale: dateRuRU },
-  zh: { locale: zhCN, dateLocale: dateZhCN }
+export type Entry = {
+  [key: string]: { locale: Locale; ui: { locale: NLocale; dateLocale: NDateLocale } };
+};
+
+const locales: Entry = {
+  ar: { locale: arDZ, ui: { locale: uiArDZ, dateLocale: uiDateArDZ } },
+  en: { locale: enUS, ui: { locale: uiEnUS, dateLocale: uiDateEnUS } },
+  es: { locale: es, ui: { locale: uiEsAR, dateLocale: uiDateEsAR } },
+  fr: { locale: fr, ui: { locale: uiFrFR, dateLocale: uiDateFrFR } },
+  ru: { locale: ru, ui: { locale: uiRuRU, dateLocale: uiDateRuRU } },
+  zh: { locale: zhCN, ui: { locale: uiZhCN, dateLocale: uiDateZhCN } }
 };
 
 export const getLocale = (lang: string) => {

@@ -12,7 +12,7 @@
 
   // Theme and locale
   const { adaptive, theme } = useTheme();
-  const { locale, dateLocale } = useLocale();
+  const { ui } = useLocale();
 
   // Width and height
   const settings = useSettings();
@@ -63,7 +63,12 @@
 </script>
 
 <template>
-  <ThemeProvider :adaptive="adaptive" :theme="theme" :locale="locale" :date-locale="dateLocale">
+  <ThemeProvider
+    :adaptive="adaptive"
+    :theme="theme"
+    :locale="ui.locale"
+    :date-locale="ui.dateLocale"
+  >
     <NModalProvider>
       <NMessageProvider>
         <NFlex class="popup-wrapper" :style="popupStyle" vertical :size="0">

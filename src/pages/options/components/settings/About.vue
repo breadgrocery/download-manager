@@ -27,7 +27,11 @@
       <NText>{{ i18n.t(`extension.description`) }} </NText>
     </NFlex>
     <SettingItem :title="i18n.t(`options.about.rate.title`)" :icon="MdiLike">
-      <SettingDetail :title="i18n.t(`options.about.rate.github`)" :icon="MdiGithub">
+      <SettingDetail
+        :title="i18n.t(`options.about.rate.github`)"
+        :icon="MdiGithub"
+        :description="constants.about.github"
+      >
         <NButton secondary @click="openUrl(constants.about.github)">
           <template #icon>
             <NIcon> <IconMdiExternalLink /> </NIcon>
@@ -38,6 +42,7 @@
         v-if="env.browser.satisfies({ chrome: `>=71` })"
         :title="i18n.t(`options.about.rate.chrome`)"
         :icon="MdiGoogleChrome"
+        :description="constants.about.chrome"
       >
         <NButton secondary @click="openUrl(constants.about.chrome)">
           <template #icon>
@@ -49,6 +54,7 @@
         v-if="env.browser.satisfies({ edge: `>=79` })"
         :title="i18n.t(`options.about.rate.edge`)"
         :icon="MdiMicrosoftEdge"
+        :description="constants.about.edge"
       >
         <NButton secondary @click="openUrl(constants.about.edge)">
           <template #icon>
@@ -60,6 +66,7 @@
         v-if="env.browser.satisfies({ firefox: `>=57` })"
         :title="i18n.t(`options.about.rate.firefox`)"
         :icon="MdiFirefox"
+        :description="constants.about.firefox"
       >
         <NButton secondary @click="openUrl(constants.about.firefox)">
           <template #icon>

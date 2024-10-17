@@ -2,11 +2,11 @@ import { registerCustomDirective } from "@/directives/index";
 import { createApp } from "vue";
 import { createMemoryHistory, createRouter } from "vue-router";
 import MdiAboutCircleOutline from "~icons/mdi/about-circle-outline";
+import MdiBoxVariant from "~icons/mdi/box-variant";
 import MdiCloudSyncOutline from "~icons/mdi/cloud-sync-outline";
-import MdiFeatureHighlight from "~icons/mdi/feature-highlight";
 import MdiNotificationSettingsOutline from "~icons/mdi/notification-settings-outline";
 import MdiPaintOutline from "~icons/mdi/paint-outline";
-import MdiToolboxOutline from "~icons/mdi/toolbox-outline";
+import MdiPuzzleOutline from "~icons/mdi/puzzle-outline";
 import Options from "./App.vue";
 
 const router = createRouter({
@@ -22,7 +22,7 @@ const router = createRouter({
       component: () => import("@/pages/options/components/settings/Features.vue"),
       meta: {
         name: i18n.t("options.features.menu"),
-        icon: MdiFeatureHighlight
+        icon: MdiPuzzleOutline
       }
     },
     {
@@ -41,7 +41,7 @@ const router = createRouter({
     {
       path: "/misc",
       component: () => import("@/pages/options/components/settings/Misc.vue"),
-      meta: { name: i18n.t("options.misc.menu"), icon: MdiToolboxOutline }
+      meta: { name: i18n.t("options.misc.menu"), icon: MdiBoxVariant }
     },
     {
       path: "/about",
