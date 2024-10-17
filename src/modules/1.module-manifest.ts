@@ -9,14 +9,17 @@ const permissions = {
 
 export default defineWxtModule(wxt => {
   const { browser } = wxt.config;
-  Object.assign(wxt.config.manifest, {
+  wxt.config.manifest = {
     name: "__MSG_extension_name__",
     description: "__MSG_extension_description__",
     default_locale: "en",
     version: process.env.npm_package_version,
     permissions: [...permissions.common, ...permissions[browser]].filter(Boolean),
-    browser_specific_settings: {
-      gecko: { id: "download-manager@breadgrocery.github.com" }
-    }
-  });
+    ...(browser === "firefox" && {
+      browser_specific_settings: {
+        gecko: { id: "download-manager@breadgrocery.github.com" }
+      }
+    }),
+    ...wxt.config.manifest
+  };
 });
