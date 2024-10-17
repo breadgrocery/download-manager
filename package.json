@@ -60,7 +60,7 @@
     ]
   },
   "browserslist": [
-    "chrome >= 73",
+    "chrome >= 88",
     "edge >= 79",
     "firefox >= 101"
   ],

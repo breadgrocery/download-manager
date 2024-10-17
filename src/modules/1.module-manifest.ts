@@ -2,7 +2,7 @@ import process from "node:process";
 import { defineWxtModule } from "wxt/modules";
 
 const permissions = {
-  common: ["downloads", "downloads.open", "storage"],
+  common: ["downloads", "downloads.open", "storage", "tabs"],
   chrome: ["background", "downloads.shelf", "downloads.ui", "offscreen"],
   firefox: []
 };
@@ -19,7 +19,7 @@ export default defineWxtModule(wxt => {
       ...permissions[browser as keyof typeof permissions]
     ].filter(Boolean),
     ...(browser === "chrome" && {
-      "minimum_chrome_version": "71"
+      "minimum_chrome_version": "88"
     }),
     ...(browser === "firefox" && {
       "browser_specific_settings": {
