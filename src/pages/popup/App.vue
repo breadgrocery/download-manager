@@ -50,11 +50,11 @@
   const highlights = ref<string[]>();
 
   const handleSearch = (value: string) => {
-    const search = value.trim().toLocaleLowerCase();
+    const search = value.trim().toLowerCase();
     searchFilter.value = search
-      ? download => download.filename.toLocaleLowerCase().includes(search)
+      ? download => download.filename.toLowerCase().includes(search)
       : () => true;
-    highlights.value = [value];
+    highlights.value = [search];
   };
 
   const handleCategoryCilck = (category: CategoryDetails) => {

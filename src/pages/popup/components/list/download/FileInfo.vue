@@ -12,16 +12,19 @@
   const { download, highlights } = defineProps<Props>();
   const colors = useThemeVars();
 
-  const wrapper = (highlight: string) => `<span class="highlight">${highlight}</span>`;
-  const html = computed(() => {
+  // Split filename into parts for highlighting
+  const filenameParts = computed(() => {
     const filename = getFileName(download.filename);
-    if (highlights) {
+    if (highlights && download.exists) {
       const escaped = highlights.map(h => h.replace(/([.*+?^${}()|[\]\\])/g, "\\$1"));
       const pattern = `(${escaped.join("|")})`;
-      const regex = new RegExp(pattern, "gi");
-      return filename.replace(regex, wrapper);
+      const parts = filename.split(new RegExp(pattern, "gi")).filter(Boolean);
+      return parts.map(part => ({
+        text: part,
+        highlight: highlights.some(highlight => highlight.toLowerCase() === part.toLowerCase())
+      }));
     }
-    return filename;
+    return [{ text: filename, highlight: false }];
   });
 
   const handleOpenFile = () => {
@@ -40,8 +43,15 @@
           :style="deletedStyle(download, colors)"
           :type="downloadStyle(download, colors).type"
           :onclick="handleOpenFile"
-          v-html="html"
-        />
+        >
+          <!-- Render each part with or without highlight -->
+          <template v-for="(part, index) in filenameParts" :key="index">
+            <span v-if="part.highlight">
+              <span class="highlight">{{ part.text }}</span>
+            </span>
+            <span v-else>{{ part.text }}</span>
+          </template>
+        </NText>
       </template>
       <template v-if="state.dangerous(download)" #default>
         {{ i18n.t(`danger.${download.danger}`) }}
