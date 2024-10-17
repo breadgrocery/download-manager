@@ -19,18 +19,12 @@
 
 <template>
   <SettingWrapper>
-    <SettingItem
-      :title="i18n.t(`options.appearance.theme.title`)"
-      :icon="MdiMathCompassVariant"
-    >
+    <SettingItem :title="i18n.t(`options.appearance.theme.title`)" :icon="MdiMathCompassVariant">
       <SettingDetail
         :title="i18n.t(`options.appearance.theme.scheme.title`)"
         :icon="MdiThemeLightDark"
       >
-        <NRadioGroup
-          :value="settings.appearance.theme.scheme"
-          :on-update:value="updateTheme"
-        >
+        <NRadioGroup :value="settings.appearance.theme.scheme" :on-update:value="updateTheme">
           <NRadioButton
             v-for="scheme in [`auto`, `light`, `dark`] as const"
             :key="scheme"
@@ -42,10 +36,7 @@
       </SettingDetail>
     </SettingItem>
 
-    <SettingItem
-      :title="i18n.t(`options.appearance.bounds.title`)"
-      :icon="MdiArrowExpandAll"
-    >
+    <SettingItem :title="i18n.t(`options.appearance.bounds.title`)" :icon="MdiArrowExpandAll">
       <SettingDetail
         :title="i18n.t(`options.appearance.bounds.width`)"
         :icon="MdiArrowExpandHorizontal"

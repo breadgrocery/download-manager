@@ -27,11 +27,7 @@
 </script>
 
 <template>
-  <NConfigProvider
-    v-bind="$props"
-    :theme="computedTheme"
-    class="theme-provider-wrapper"
-  >
+  <NConfigProvider v-bind="$props" :theme="computedTheme" class="theme-provider-wrapper">
     <NLayout class="theme-provider-wrapper">
       <slot />
     </NLayout>

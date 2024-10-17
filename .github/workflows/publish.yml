@@ -71,8 +71,8 @@ jobs:
           if-no-files-found: error
           overwrite: true
           path: |
-            dist/*-${{ matrix.browser }}.zip
-            dist/*-${{ matrix.browser }}.crx
+            dist/*.zip
+            dist/*.crx
 
   github-release:
     needs: build
@@ -134,7 +134,7 @@ jobs:
       - uses: wdzeng/firefox-addon@v1
         with:
           xpi-path: download-manager-firefox.zip
-          source-code-path: download-manager-sources.zip
+          source-file-path: download-manager-sources.zip
           addon-guid: ${{ secrets.FIREFOX_ADDON_GUID }}
           jwt-issuer: ${{ secrets.FIREFOX_JWT_ISSUER }}
           jwt-secret: ${{ secrets.FIREFOX_JWT_SECRET }}

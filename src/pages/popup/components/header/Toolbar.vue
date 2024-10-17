@@ -120,20 +120,13 @@
 </script>
 
 <template>
-  <NFlex
-    justify="end"
-    :wrap="false"
-  >
+  <NFlex justify="end" :wrap="false">
     <IconButton
       :icon="MdiLinkVariantPlus"
       :tooltip="i18n.t(`toolbar.create_downloads.tooltip`)"
       @click="handleCreateNewDownload"
     />
-    <DropdownIcon
-      :icon="MdiDeleteForever"
-      :options="deleteOptions"
-      @select="handleDeleteSelect"
-    />
+    <DropdownIcon :icon="MdiDeleteForever" :options="deleteOptions" @select="handleDeleteSelect" />
     <IconButton
       :icon="MdiFolderArrowDownOutline"
       :tooltip="i18n.t(`toolbar.open_download_folder`)"

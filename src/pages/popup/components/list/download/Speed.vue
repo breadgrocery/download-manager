@@ -28,15 +28,9 @@
 </script>
 
 <template>
-  <NFlex
-    class="download-speed-wrapper"
-    justify="space-between"
-  >
+  <NFlex class="download-speed-wrapper" justify="space-between">
     <!-- Download progress -->
-    <NFlex
-      class="progress"
-      :size="0"
-    >
+    <NFlex class="progress" :size="0">
       <NText>{{ bytes(download.bytesReceived) }}</NText>
       <span v-if="download.totalBytes > 0">
         <NDivider vertical />

@@ -13,39 +13,20 @@
 </script>
 
 <template>
-  <NFlex
-    class="setting-detail-wrapper"
-    justify="space-between"
-  >
-    <NFlex
-      class="info"
-      vertical
-    >
+  <NFlex class="setting-detail-wrapper" justify="space-between">
+    <NFlex class="info" vertical>
       <NFlex :size="5">
-        <NIcon
-          v-if="icon"
-          class="icon"
-        >
+        <NIcon v-if="icon" class="icon">
           <component :is="() => h(icon || MdiQuestionMarkCircle)" />
         </NIcon>
         <NText>{{ title }}</NText>
-        <IconButton
-          v-if="tooltip"
-          :icon="MdiQuestionMarkCircle"
-          :tooltip="tooltip"
-        />
+        <IconButton v-if="tooltip" :icon="MdiQuestionMarkCircle" :tooltip="tooltip" />
       </NFlex>
-      <span
-        v-if="description"
-        class="description"
-      >
+      <span v-if="description" class="description">
         {{ description }}
       </span>
     </NFlex>
-    <NFlex
-      class="actions"
-      justify="end"
-    >
+    <NFlex class="actions" justify="end">
       <slot />
     </NFlex>
   </NFlex>

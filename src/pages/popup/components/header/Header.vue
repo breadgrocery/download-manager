@@ -58,17 +58,9 @@
 </script>
 
 <template>
-  <NFlex
-    class="popup-header-wrapper"
-    justify="space-between"
-    :wrap="false"
-  >
+  <NFlex class="popup-header-wrapper" justify="space-between" :wrap="false">
     <!-- Search Box -->
-    <SearchBox
-      v-if="settings.features.search"
-      class="search-box"
-      @search="handleSearch"
-    />
+    <SearchBox v-if="settings.features.search" class="search-box" @search="handleSearch" />
 
     <!-- Category Box -->
     <CategoryBox
@@ -79,10 +71,7 @@
     />
 
     <!-- Toolbar -->
-    <Toolbar
-      class="toolbar"
-      @delete="handleDeleteSelect"
-    />
+    <Toolbar class="toolbar" @delete="handleDeleteSelect" />
   </NFlex>
 </template>
 

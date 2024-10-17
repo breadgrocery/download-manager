@@ -19,10 +19,7 @@
 
 <template>
   <SettingWrapper>
-    <SettingItem
-      :title="i18n.t(`options.sync.menu`)"
-      :icon="MdiWebSync"
-    >
+    <SettingItem :title="i18n.t(`options.sync.menu`)" :icon="MdiWebSync">
       <SettingDetail
         :title="i18n.t(`options.sync.enabled.title`)"
         :icon="MdiMonitorAccount"
@@ -38,10 +35,7 @@
         :icon="MdiRestore"
         :description="i18n.t(`options.sync.reset.description`)"
       >
-        <NButton
-          type="error"
-          @click="resetSetting"
-        >
+        <NButton type="error" @click="resetSetting">
           <template #icon>
             <NIcon> <IconMdiRestore /> </NIcon>
           </template>

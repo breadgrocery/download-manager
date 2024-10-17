@@ -20,7 +20,7 @@ export default {
   vueIndentScriptAndStyle: true,
   endOfLine: "lf",
   embeddedLanguageFormatting: "auto",
-  singleAttributePerLine: true,
+  singleAttributePerLine: false,
   plugins: ["@trivago/prettier-plugin-sort-imports"],
   // @trivago/prettier-plugin-sort-imports
   importOrder: ["^@core/(.*)$", "^@server/(.*)$", "^@ui/(.*)$", "^[./]"],

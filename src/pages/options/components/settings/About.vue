@@ -18,34 +18,17 @@
 
 <template>
   <SettingWrapper>
-    <NFlex
-      class="info"
-      vertical
-    >
-      <NAvatar
-        class="logo"
-        src="/images/icon.svg"
-        color="transparent"
-        :size="128"
-      />
+    <NFlex class="info" vertical>
+      <NAvatar class="logo" src="/images/icon.svg" color="transparent" :size="128" />
       <NText>{{ i18n.t(`extension.name`) }} </NText>
       <NText>
         {{ `${i18n.t(`options.about.version`)} ${manifest.version}` }}
       </NText>
       <NText>{{ i18n.t(`extension.description`) }} </NText>
     </NFlex>
-    <SettingItem
-      :title="i18n.t(`options.about.rate.title`)"
-      :icon="MdiLike"
-    >
-      <SettingDetail
-        :title="i18n.t(`options.about.rate.github`)"
-        :icon="MdiGithub"
-      >
-        <NButton
-          secondary
-          @click="openUrl(constants.about.github)"
-        >
+    <SettingItem :title="i18n.t(`options.about.rate.title`)" :icon="MdiLike">
+      <SettingDetail :title="i18n.t(`options.about.rate.github`)" :icon="MdiGithub">
+        <NButton secondary @click="openUrl(constants.about.github)">
           <template #icon>
             <NIcon> <IconMdiExternalLink /> </NIcon>
           </template>
@@ -56,10 +39,7 @@
         :title="i18n.t(`options.about.rate.chrome`)"
         :icon="MdiGoogleChrome"
       >
-        <NButton
-          secondary
-          @click="openUrl(constants.about.chrome)"
-        >
+        <NButton secondary @click="openUrl(constants.about.chrome)">
           <template #icon>
             <NIcon> <IconMdiExternalLink /> </NIcon>
           </template>
@@ -70,10 +50,7 @@
         :title="i18n.t(`options.about.rate.edge`)"
         :icon="MdiMicrosoftEdge"
       >
-        <NButton
-          secondary
-          @click="openUrl(constants.about.edge)"
-        >
+        <NButton secondary @click="openUrl(constants.about.edge)">
           <template #icon>
             <NIcon> <IconMdiExternalLink /> </NIcon>
           </template>
@@ -84,10 +61,7 @@
         :title="i18n.t(`options.about.rate.firefox`)"
         :icon="MdiFirefox"
       >
-        <NButton
-          secondary
-          @click="openUrl(constants.about.firefox)"
-        >
+        <NButton secondary @click="openUrl(constants.about.firefox)">
           <template #icon>
             <NIcon> <IconMdiExternalLink /> </NIcon>
           </template>

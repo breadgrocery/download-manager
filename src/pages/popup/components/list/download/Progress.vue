@@ -62,18 +62,11 @@
         :style="deletedStyle(download, colors)"
         :src="src"
       />
-      <NIcon
-        v-else
-        :size="32"
-        :style="deletedStyle(download, colors)"
-      >
+      <NIcon v-else :size="32" :style="deletedStyle(download, colors)">
         <IconMdiFileQuestionOutline />
       </NIcon>
     </NProgress>
-    <NDivider
-      class="divider"
-      vertical
-    />
+    <NDivider class="divider" vertical />
   </NFlex>
 </template>
 

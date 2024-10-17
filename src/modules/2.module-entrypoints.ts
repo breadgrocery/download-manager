@@ -8,6 +8,9 @@ const entrypoints = {
 
 export default defineWxtModule(wxt => {
   const { browser } = wxt.config;
-  const filterEntrypoints = [...entrypoints.common, ...entrypoints[browser]].filter(Boolean);
+  const filterEntrypoints = [
+    ...entrypoints.common,
+    ...entrypoints[browser as keyof typeof entrypoints]
+  ].filter(Boolean);
   wxt.config.filterEntrypoints = new Set(filterEntrypoints);
 });

@@ -40,10 +40,7 @@
 
 <template>
   <SettingWrapper>
-    <SettingItem
-      :title="i18n.t(`options.features.filter.title`)"
-      :icon="MdiFilterOutline"
-    >
+    <SettingItem :title="i18n.t(`options.features.filter.title`)" :icon="MdiFilterOutline">
       <SettingDetail
         :title="i18n.t(`options.features.filter.search.title`)"
         :icon="MdiFileSearchOutline"
@@ -59,10 +56,7 @@
         :icon="MdiCategoryPlusOutline"
         :description="i18n.t(`options.features.filter.categories.description`)"
       >
-        <NCheckboxGroup
-          :value="settings.features.categories"
-          :on-update:value="updateCategories"
-        >
+        <NCheckboxGroup :value="settings.features.categories" :on-update:value="updateCategories">
           <NCheckbox
             v-for="category in categories"
             :key="category"
@@ -73,14 +67,8 @@
       </SettingDetail>
     </SettingItem>
 
-    <SettingItem
-      :title="i18n.t(`options.features.download.title`)"
-      :icon="MdiLinkVariantPlus"
-    >
-      <SettingDetail
-        :title="i18n.t(`options.features.download.timeout`)"
-        :icon="MdiTimerOutline"
-      >
+    <SettingItem :title="i18n.t(`options.features.download.title`)" :icon="MdiLinkVariantPlus">
+      <SettingDetail :title="i18n.t(`options.features.download.timeout`)" :icon="MdiTimerOutline">
         <NInputNumber
           :default-value="settings.features.download.timeout"
           :min="10"
@@ -117,23 +105,14 @@
       </SettingDetail>
     </SettingItem>
 
-    <SettingItem
-      :title="i18n.t(`options.features.cleanup.title`)"
-      :icon="MdiRobotOutline"
-    >
-      <SettingDetail
-        :title="i18n.t(`options.features.cleanup.enabled`)"
-        :icon="MdiDeleteClock"
-      >
+    <SettingItem :title="i18n.t(`options.features.cleanup.title`)" :icon="MdiRobotOutline">
+      <SettingDetail :title="i18n.t(`options.features.cleanup.enabled`)" :icon="MdiDeleteClock">
         <NSwitch
           :default-value="settings.features.cleanup.enabled"
           :on-update:value="value => (settings.features.cleanup.enabled = value)"
         />
       </SettingDetail>
-      <SettingDetail
-        :title="i18n.t(`options.features.cleanup.retention`)"
-        :icon="MdiTimerSand"
-      >
+      <SettingDetail :title="i18n.t(`options.features.cleanup.retention`)" :icon="MdiTimerSand">
         <NInputNumber
           :disabled="!settings.features.cleanup.enabled"
           :default-value="settings.features.cleanup.retention"
@@ -147,10 +126,7 @@
           </template>
         </NInputNumber>
       </SettingDetail>
-      <SettingDetail
-        :title="i18n.t(`download.delete.disk`)"
-        :icon="MdiHarddisk"
-      >
+      <SettingDetail :title="i18n.t(`download.delete.disk`)" :icon="MdiHarddisk">
         <NSwitch
           :disabled="!settings.features.cleanup.enabled"
           :default-value="settings.features.cleanup.revmove"

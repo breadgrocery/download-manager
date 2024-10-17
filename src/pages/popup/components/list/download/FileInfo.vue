@@ -33,10 +33,7 @@
 
 <template>
   <NFlex vertical>
-    <NTooltip
-      :show-arrow="false"
-      :delay="500"
-    >
+    <NTooltip :show-arrow="false" :delay="500">
       <template #trigger>
         <NText
           class="filename"
@@ -46,34 +43,19 @@
           v-html="html"
         />
       </template>
-      <template
-        v-if="state.dangerous(download)"
-        #default
-      >
+      <template v-if="state.dangerous(download)" #default>
         {{ i18n.t(`danger.${download.danger}`) }}
       </template>
-      <template
-        v-else-if="state.ongoing(download)"
-        #default
-      >
+      <template v-else-if="state.ongoing(download)" #default>
         {{ download.filename }}
       </template>
-      <template
-        v-else-if="state.deleted(download)"
-        #default
-      >
+      <template v-else-if="state.deleted(download)" #default>
         {{ i18n.t(`download.gone`) }}
       </template>
-      <template
-        v-else-if="state.completed(download)"
-        #default
-      >
+      <template v-else-if="state.completed(download)" #default>
         {{ i18n.t(`download.open`) }}
       </template>
-      <template
-        v-else
-        #default
-      >
+      <template v-else #default>
         {{ download.error && i18n.t(`error.${download.error}`) }}
       </template>
     </NTooltip>

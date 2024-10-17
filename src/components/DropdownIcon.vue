@@ -39,18 +39,9 @@
 </script>
 
 <template>
-  <NDropdown
-    :options="list"
-    @select="handleSelect"
-  >
-    <NFlex
-      class="dropdown-icon-wrapper"
-      style="cursor: pointer"
-    >
-      <NIcon
-        :color="color"
-        :size="size"
-      >
+  <NDropdown :options="list" @select="handleSelect">
+    <NFlex class="dropdown-icon-wrapper" style="cursor: pointer">
+      <NIcon :color="color" :size="size">
         <component :is="() => h(icon)" />
       </NIcon>
     </NFlex>

@@ -10,19 +10,10 @@
 </script>
 
 <template>
-  <ThemeProvider
-    :adaptive="adaptive"
-    :theme="theme"
-    :locale="locale"
-    :date-locale="dateLocale"
-  >
+  <ThemeProvider :adaptive="adaptive" :theme="theme" :locale="locale" :date-locale="dateLocale">
     <NModalProvider>
       <NMessageProvider>
-        <NFlex
-          class="options-wrapper"
-          vertical
-          :size="0"
-        >
+        <NFlex class="options-wrapper" vertical :size="0">
           <Settings />
         </NFlex>
       </NMessageProvider>

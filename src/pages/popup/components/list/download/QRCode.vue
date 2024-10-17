@@ -33,13 +33,7 @@
 
 <template>
   <NFlex vertical>
-    <NQrCode
-      v-if="renderable"
-      id="qr-code"
-      :value="value"
-      :size="180"
-      error-correction-level="M"
-    />
+    <NQrCode v-if="renderable" id="qr-code" :value="value" :size="180" error-correction-level="M" />
     <NButton @click="handleDownload">
       <template #icon>
         <NIcon> <IconMdiTrayDownload /> </NIcon>

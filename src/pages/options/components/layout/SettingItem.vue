@@ -16,10 +16,7 @@
   <NCard class="setting-item-wrapper">
     <template #header>
       <NFlex>
-        <NIcon
-          v-if="icon"
-          class="icon"
-        >
+        <NIcon v-if="icon" class="icon">
           <component :is="() => h(icon || MdiQuestionMarkCircle)" />
         </NIcon>
         <NText>{{ title }}</NText>

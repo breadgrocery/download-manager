@@ -10,6 +10,7 @@ export default [
   { ignores: ["dist/", "**/.wxt/"] },
   {
     rules: {
+      "vue/max-attributes-per-line": "off",
       "vue/multi-word-component-names": "off",
       "vue/no-v-html": "off",
       "vue/no-v-text-v-html-on-component": "off"

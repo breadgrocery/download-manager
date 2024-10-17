@@ -30,23 +30,13 @@
         bordered
         show-trigger
       >
-        <NFlex
-          class="header"
-          justify="center"
-        >
-          <NAvatar
-            class="logo"
-            src="/images/icon.svg"
-            color="transparent"
-          />
+        <NFlex class="header" justify="center">
+          <NAvatar class="logo" src="/images/icon.svg" color="transparent" />
           <NH3 :class="titleClass">
             {{ i18n.t(`extension.name`) }}
           </NH3>
         </NFlex>
-        <NMenu
-          :options="menuOptions"
-          :default-value="menuOptions[0].key"
-        />
+        <NMenu :options="menuOptions" :default-value="menuOptions[0].key" />
       </NLayoutSider>
       <NLayout>
         <RouterView />

@@ -18,10 +18,7 @@
 
 <template>
   <NSpin :show="loading">
-    <NFlex
-      class="new-download-wrapper"
-      vertical
-    >
+    <NFlex class="new-download-wrapper" vertical>
       <NInput
         v-model:value="text"
         class="input"
@@ -30,10 +27,7 @@
         :autosize="{ minRows: 3, maxRows: 5 }"
       />
       <NFlex justify="end">
-        <NButton
-          type="primary"
-          @click="handleConfirm"
-        >
+        <NButton type="primary" @click="handleConfirm">
           {{ i18n.t(`common.confirm`) }}
         </NButton>
       </NFlex>

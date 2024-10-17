@@ -10,14 +10,23 @@ const permissions = {
 export default defineWxtModule(wxt => {
   const { browser } = wxt.config;
   wxt.config.manifest = {
-    name: "__MSG_extension_name__",
-    description: "__MSG_extension_description__",
-    default_locale: "en",
-    version: process.env.npm_package_version,
-    permissions: [...permissions.common, ...permissions[browser]].filter(Boolean),
+    "name": "__MSG_extension_name__",
+    "description": "__MSG_extension_description__",
+    "default_locale": "en",
+    "version": process.env.npm_package_version,
+    "permissions": [
+      ...permissions.common,
+      ...permissions[browser as keyof typeof permissions]
+    ].filter(Boolean),
+    ...(browser === "chrome" && {
+      "minimum_chrome_version": "71"
+    }),
     ...(browser === "firefox" && {
-      browser_specific_settings: {
-        gecko: { id: "download-manager@breadgrocery.github.com" }
+      "browser_specific_settings": {
+        "gecko": {
+          "id": "download-manager@breadgrocery.github.com",
+          "strict_min_version": "101.0"
+        }
       }
     }),
     ...wxt.config.manifest

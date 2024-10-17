@@ -116,11 +116,7 @@
 <template>
   <NFlex justify="end">
     <!-- Link select -->
-    <DropdownIcon
-      :icon="MdiLinkVariant"
-      :options="linkOptions"
-      @select="handleLinkSelect"
-    />
+    <DropdownIcon :icon="MdiLinkVariant" :options="linkOptions" @select="handleLinkSelect" />
 
     <!-- Show in folder -->
     <IconButton
@@ -131,10 +127,7 @@
     />
 
     <!-- Operations -->
-    <NFlex
-      v-if="!state.dangerous(download)"
-      v-assert-children
-    >
+    <NFlex v-if="!state.dangerous(download)" v-assert-children>
       <IconButton
         v-if="state.interrupted(download) || state.deleted(download)"
         :icon="MdiReplay"
@@ -162,10 +155,7 @@
     </NFlex>
 
     <!-- Dangerous file operations -->
-    <NFlex
-      v-if="state.dangerous(download)"
-      v-assert-children
-    >
+    <NFlex v-if="state.dangerous(download)" v-assert-children>
       <IconButton
         v-if="state.ongoing(download)"
         :icon="MdiFileRestoreOutline"

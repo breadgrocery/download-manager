@@ -21,20 +21,10 @@
 </script>
 
 <template>
-  <NTooltip
-    :show-arrow="showArrow"
-    :delay="500"
-    :disabled="tooltip === undefined"
-  >
+  <NTooltip :show-arrow="showArrow" :delay="500" :disabled="tooltip === undefined">
     <template #trigger>
-      <NButton
-        text
-        @click="handleClick"
-      >
-        <NIcon
-          :color="color"
-          :size="size"
-        >
+      <NButton text @click="handleClick">
+        <NIcon :color="color" :size="size">
           <component :is="() => h(icon)" />
         </NIcon>
       </NButton>

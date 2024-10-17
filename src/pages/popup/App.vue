@@ -63,20 +63,10 @@
 </script>
 
 <template>
-  <ThemeProvider
-    :adaptive="adaptive"
-    :theme="theme"
-    :locale="locale"
-    :date-locale="dateLocale"
-  >
+  <ThemeProvider :adaptive="adaptive" :theme="theme" :locale="locale" :date-locale="dateLocale">
     <NModalProvider>
       <NMessageProvider>
-        <NFlex
-          class="popup-wrapper"
-          :style="popupStyle"
-          vertical
-          :size="0"
-        >
+        <NFlex class="popup-wrapper" :style="popupStyle" vertical :size="0">
           <!-- Header -->
           <Header
             class="header"
@@ -86,36 +76,16 @@
           />
 
           <!-- Download List -->
-          <div
-            v-if="filtered.length > 0"
-            v-bind="containerProps"
-            class="scroller"
-          >
+          <div v-if="filtered.length > 0" v-bind="containerProps" class="scroller">
             <div v-bind="wrapperProps">
-              <div
-                v-for="item in list"
-                :key="item.data.id"
-                class="item"
-              >
-                <DownloadItem
-                  :download="item.data"
-                  :highlights="highlights"
-                />
+              <div v-for="item in list" :key="item.data.id" class="item">
+                <DownloadItem :download="item.data" :highlights="highlights" />
               </div>
             </div>
-            <NBackTop
-              :bottom="5"
-              :right="10"
-              :visibility-height="300"
-            />
+            <NBackTop :bottom="5" :right="10" :visibility-height="300" />
           </div>
           <!-- Empty Box -->
-          <NFlex
-            v-if="filtered.length === 0"
-            class="empty"
-            vertical
-            justify="space-around"
-          >
+          <NFlex v-if="filtered.length === 0" class="empty" vertical justify="space-around">
             <NEmpty :description="i18n.t(`empty`)">
               <template #icon>
                 <NIcon><IconMdiTrayDownload /> </NIcon>

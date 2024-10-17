@@ -10,21 +10,12 @@
 </script>
 
 <template>
-  <NFlex
-    class="delete-download-wrapper"
-    vertical
-  >
-    <NCheckbox
-      v-model:checked="disk"
-      class="delete-from-disk"
-    >
+  <NFlex class="delete-download-wrapper" vertical>
+    <NCheckbox v-model:checked="disk" class="delete-from-disk">
       {{ i18n.t(`download.delete.disk`) }}
     </NCheckbox>
     <NFlex justify="end">
-      <NButton
-        type="primary"
-        @click="handleConfirm"
-      >
+      <NButton type="primary" @click="handleConfirm">
         {{ i18n.t(`common.confirm`) }}
       </NButton>
     </NFlex>

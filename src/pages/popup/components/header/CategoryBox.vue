@@ -36,12 +36,7 @@
 <template>
   <NFlex>
     <NButtonGroup>
-      <NTooltip
-        v-for="button in categoryButtons"
-        :key="button.id"
-        :show-arrow="false"
-        :delay="500"
-      >
+      <NTooltip v-for="button in categoryButtons" :key="button.id" :show-arrow="false" :delay="500">
         <template #trigger>
           <NButton @click="handleCategoryClick(button)">
             <template #icon>

@@ -50,10 +50,7 @@
         :icon="MdiSettingsOutline"
         :description="i18n.t(`options.misc.browser.download.description`)"
       >
-        <NButton
-          secondary
-          @click="preferences(`settings/downloads`)"
-        >
+        <NButton secondary @click="preferences(`settings/downloads`)">
           <template #icon>
             <NIcon> <IconMdiExternalLink /> </NIcon>
           </template>
@@ -65,10 +62,7 @@
         :icon="MdiParallel"
         :description="i18n.t(`options.misc.browser.parallel.description`)"
       >
-        <NButton
-          secondary
-          @click="preferences(`flags/#enable-parallel-downloading`)"
-        >
+        <NButton secondary @click="preferences(`flags/#enable-parallel-downloading`)">
           <template #icon>
             <NIcon> <IconMdiExternalLink /> </NIcon>
           </template>
@@ -80,10 +74,7 @@
         :icon="MdiHide"
         :description="i18n.t(`options.misc.browser.toolbar.description`)"
       >
-        <NButton
-          secondary
-          @click="preferences(`settings/appearance`)"
-        >
+        <NButton secondary @click="preferences(`settings/appearance`)">
           <template #icon>
             <NIcon> <IconMdiExternalLink /> </NIcon>
           </template>
@@ -95,10 +86,7 @@
         :icon="MdiShieldHalfFull"
         :description="i18n.t(`options.misc.browser.smartscreen.description`)"
       >
-        <NButton
-          secondary
-          @click="preferences(`settings/?search=Smartscreen`)"
-        >
+        <NButton secondary @click="preferences(`settings/?search=Smartscreen`)">
           <template #icon>
             <NIcon> <IconMdiExternalLink /> </NIcon>
           </template>
@@ -106,19 +94,13 @@
       </SettingDetail>
     </SettingItem>
 
-    <SettingItem
-      :title="i18n.t(`options.misc.storage.title`)"
-      :icon="MdiStorage"
-    >
+    <SettingItem :title="i18n.t(`options.misc.storage.title`)" :icon="MdiStorage">
       <SettingDetail
         :title="i18n.t(`options.misc.storage.cache.title`)"
         :icon="MdiDatabaseRefreshOutline"
         :description="i18n.t(`options.misc.storage.cache.description`)"
       >
-        <NButton
-          secondary
-          @click="handleClearCache"
-        >
+        <NButton secondary @click="handleClearCache">
           <template #icon>
             <NIcon> <IconMdiRefresh /> </NIcon>
           </template>
