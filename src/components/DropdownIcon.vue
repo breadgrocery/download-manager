@@ -1,7 +1,7 @@
 <script setup lang="ts">
+  import type { Icon } from "@/components/IconButton.vue";
   import { NIcon } from "naive-ui";
   import { h } from "vue";
-  import type { Icon } from "./IconButton.vue";
 
   export interface DropdownIconOption extends Icon {
     key: string;

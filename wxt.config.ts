@@ -1,4 +1,4 @@
-import "@wxt-dev/auto-icons";
+import autoprefixer from "autoprefixer";
 import { resolve } from "node:path";
 import process from "node:process";
 import IconsResolver from "unplugin-icons/resolver";
@@ -38,7 +38,10 @@ export default defineConfig({
       }),
       Icons()
     ],
-    css: { preprocessorOptions: { scss: { api: "modern-compiler" } } },
+    css: {
+      preprocessorOptions: { scss: { api: "modern-compiler" } },
+      postcss: { plugins: [autoprefixer()] }
+    },
     build: {
       sourcemap: env.development,
       minify: env.production

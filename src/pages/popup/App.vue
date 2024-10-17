@@ -138,7 +138,6 @@
     &,
     &:deep(img) {
       -webkit-user-drag: none;
-      -webkit-user-select: none;
       user-select: none;
     }
     .scroller {

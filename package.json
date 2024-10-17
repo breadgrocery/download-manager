@@ -42,6 +42,7 @@
     "@vue/eslint-config-typescript": "^14.1.1",
     "@wxt-dev/auto-icons": "^1.0.2",
     "@wxt-dev/module-vue": "^1.0.1",
+    "autoprefixer": "^10.4.20",
     "crx": "^5.0.1",
     "eslint": "^9.12.0",
     "eslint-plugin-vue": "^9.29.0",
@@ -58,5 +59,10 @@
       "@commitlint/config-conventional"
     ]
   },
+  "browserslist": [
+    "chrome >= 73",
+    "edge >= 79",
+    "firefox >= 101"
+  ],
   "packageManager": "pnpm@9.12.0"
 }
