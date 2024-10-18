@@ -2,7 +2,7 @@
   "name": "download-manager",
   "description": "Lightweight and efficient download management",
   "private": true,
-  "version": "1.0.4",
+  "version": "1.0.5",
   "type": "module",
   "author": "Bread Grocery<https://github.com/breadgrocery>",
   "license": "GPL-3.0-only",

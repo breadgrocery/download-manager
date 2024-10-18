@@ -2,7 +2,7 @@ import process from "node:process";
 import { defineWxtModule } from "wxt/modules";
 
 const permissions = {
-  common: ["downloads", "downloads.open", "storage", "tabs"],
+  common: ["downloads", "downloads.open", "storage"],
   chrome: ["background", "downloads.shelf", "downloads.ui", "offscreen"],
   firefox: []
 };
