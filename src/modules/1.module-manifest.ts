@@ -25,7 +25,7 @@ export default defineWxtModule(wxt => {
       "browser_specific_settings": {
         "gecko": {
           "id": "download-manager@breadgrocery.github.com",
-          "strict_min_version": "101.0"
+          "strict_min_version": "109.0"
         }
       }
     }),

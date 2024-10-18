@@ -62,7 +62,7 @@
   "browserslist": [
     "chrome >= 88",
     "edge >= 79",
-    "firefox >= 101"
+    "firefox >= 109"
   ],
   "packageManager": "pnpm@9.12.0"
 }
