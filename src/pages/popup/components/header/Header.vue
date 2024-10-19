@@ -2,8 +2,8 @@
   import { deleteDownload } from "@/utils/download";
   import { state } from "@/utils/state";
   import { useMessage } from "naive-ui";
-  import type { Downloads } from "wxt/browser";
-  import type { CategoryDetails } from "./Category";
+  import { type Downloads } from "wxt/browser";
+  import { type CategoryDetails } from "./Category";
   import CategoryBox from "./CategoryBox.vue";
   import SearchBox from "./SearchBox.vue";
   import Toolbar from "./Toolbar.vue";

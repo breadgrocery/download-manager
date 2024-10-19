@@ -1,4 +1,4 @@
-import type { Downloads } from "wxt/browser";
+import { type Downloads } from "wxt/browser";
 
 export type State =
   | "completed"

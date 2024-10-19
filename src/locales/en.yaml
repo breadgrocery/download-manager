@@ -75,6 +75,11 @@ options:
         auto: Auto
         light: Light
         dark: Dark
+      icon:
+        title: Icon style
+        general: Application icon
+        badge: Task count indicator
+        animated: Animated progress indicator
     bounds:
       title: Popup bounds
       width: Width

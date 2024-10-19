@@ -1,7 +1,7 @@
 import { state } from "@/utils/state";
-import type { CustomThemeCommonVars, ThemeCommonVars } from "naive-ui";
-import type { CSSProperties } from "vue";
-import type { Downloads } from "wxt/browser";
+import { type CustomThemeCommonVars, type ThemeCommonVars } from "naive-ui";
+import { type CSSProperties } from "vue";
+import { type Downloads } from "wxt/browser";
 
 export const deletedStyle = (
   download: Downloads.DownloadItem,

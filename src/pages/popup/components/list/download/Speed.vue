@@ -1,7 +1,7 @@
 <script setup lang="ts">
   import bytes from "bytes";
   import { differenceInMilliseconds } from "date-fns";
-  import type { Downloads } from "wxt/browser";
+  import { type Downloads } from "wxt/browser";
 
   interface Props {
     download: Downloads.DownloadItem;

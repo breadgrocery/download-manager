@@ -5,6 +5,7 @@
   import MdiArrowExpandVertical from "~icons/mdi/arrow-expand-vertical";
   import MdiMathCompassVariant from "~icons/mdi/math-compass-variant";
   import MdiThemeLightDark from "~icons/mdi/theme-light-dark";
+  import MdiToysOutline from "~icons/mdi/toys-outline";
   import SettingDetail from "../layout/SettingDetail.vue";
   import SettingItem from "../layout/SettingItem.vue";
   import SettingWrapper from "../layout/SettingList.vue";
@@ -15,6 +16,21 @@
     settings.value.appearance.theme.scheme = value;
     browserAction.openPopup();
   };
+
+  const iconStyles = [
+    {
+      value: "general",
+      label: i18n.t("options.appearance.theme.icon.general")
+    },
+    {
+      value: "badge",
+      label: i18n.t("options.appearance.theme.icon.badge")
+    },
+    {
+      value: "animated",
+      label: i18n.t("options.appearance.theme.icon.animated")
+    }
+  ];
 </script>
 
 <template>
@@ -33,6 +49,13 @@
             {{ i18n.t(`options.appearance.theme.scheme.${scheme}`) }}
           </NRadioButton>
         </NRadioGroup>
+      </SettingDetail>
+      <SettingDetail :title="i18n.t(`options.appearance.theme.icon.title`)" :icon="MdiToysOutline">
+        <NSelect
+          :options="iconStyles"
+          :default-value="settings.appearance.icon"
+          :on-update:value="value => (settings.appearance.icon = value)"
+        />
       </SettingDetail>
     </SettingItem>
 

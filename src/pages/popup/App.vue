@@ -2,8 +2,8 @@
   import { getDownloads } from "@/utils/download";
   import { listen } from "@/utils/message";
   import { useVirtualList } from "@vueuse/core";
-  import type { Downloads } from "wxt/browser";
-  import type { CategoryDetails } from "./components/header/Category";
+  import { type Downloads } from "wxt/browser";
+  import { type CategoryDetails } from "./components/header/Category";
   import Header from "./components/header/Header.vue";
   import DownloadItem from "./components/list/DownloadItem.vue";
 

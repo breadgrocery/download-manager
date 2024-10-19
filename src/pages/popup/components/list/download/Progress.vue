@@ -5,7 +5,7 @@
   import { state } from "@/utils/state";
   import { deletedStyle, downloadStyle } from "@/utils/styles";
   import { useThemeVars } from "naive-ui";
-  import type { Downloads } from "wxt/browser";
+  import { type Downloads } from "wxt/browser";
 
   interface Props {
     download: Downloads.DownloadItem;

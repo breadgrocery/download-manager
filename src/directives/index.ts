@@ -1,6 +1,6 @@
 import vAssertChildren from "@/directives/v-assert-children";
 import vDivider from "@/directives/v-divider";
-import type { App } from "vue";
+import { type App } from "vue";
 
 declare module "vue" {
   export interface ComponentCustomProperties {

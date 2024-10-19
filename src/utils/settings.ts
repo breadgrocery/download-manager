@@ -1,4 +1,4 @@
-import type { Category } from "@/pages/popup/components/header/Category";
+import { type Category } from "@/pages/popup/components/header/Category";
 import { cloneDeep, isArray, mergeWith, toArray } from "lodash-es";
 import { browser } from "wxt/browser";
 
@@ -8,7 +8,8 @@ export const defaults = {
       scheme: "auto" as "auto" | "light" | "dark"
     },
     width: 665,
-    height: 400
+    height: 400,
+    icon: "badge" as "general" | "badge" | "animated"
   },
   features: {
     search: true,

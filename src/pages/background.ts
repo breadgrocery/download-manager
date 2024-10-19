@@ -8,7 +8,7 @@ import {
 import { send } from "@/utils/message";
 import { audio } from "@/utils/notifications";
 import { type Settings, mergedSettings } from "@/utils/settings";
-import type { State } from "@/utils/state";
+import { updateToolbarIcon } from "@/utils/toolbar";
 import { differenceInDays } from "date-fns";
 import { debounce } from "lodash-es";
 import { browser } from "wxt/browser";
@@ -22,54 +22,33 @@ export default defineBackground({
 
     // Load extension settings
     let settings: Settings;
-    const loadSettings = () => mergedSettings().then(_settings => (settings = _settings));
+    const loadSettings = () =>
+      mergedSettings()
+        .then(_settings => (settings = _settings))
+        .then(() => updateToolbarIcon(settings.appearance.icon, undefined));
     loadSettings().then(() => {
       // Reload extension settings on storage changed
       browser.storage.onChanged.addListener(loadSettings);
 
-      // Cache the last toolbar icon to minimize redundant network requests
-      let lastIcon = "/images/icon-idle.png";
-
-      // Define download listeners
       const notifyPopup = debounce(() => send({ channel: "background-to-popup:update" }), 200, {
         maxWait: 1000
       });
+      const notifyIfNecessary = (type: keyof typeof settings.notifications.download) => {
+        if (settings.notifications.download[type].sound) audio[type]();
+        if (settings.notifications.download[type].popup) browserAction.openPopup();
+        notifyPopup();
+      };
+      // Define download listeners
       addDownloadListeners({
-        onCreated: () => {
-          if (settings.notifications.download.created.sound) audio.created();
-          if (settings.notifications.download.created.popup) browserAction.openPopup();
-          notifyPopup();
-        },
+        onCreated: () => notifyIfNecessary("created"),
         onErased: () => notifyPopup(),
         onChanged: () => notifyPopup(),
-        onCompleted: () => {
-          if (settings.notifications.download.completed.sound) audio.completed();
-          if (settings.notifications.download.completed.popup) browserAction.openPopup();
-        },
-        onInterrupted: () => {
-          if (settings.notifications.download.interrupted.sound) audio.interrupted();
-          if (settings.notifications.download.interrupted.popup) browserAction.openPopup();
-          notifyPopup();
-        },
-        onDangerous: () => {
-          if (settings.notifications.download.dangerous.sound) audio.dangerous();
-          if (settings.notifications.download.dangerous.popup) browserAction.openPopup();
-          notifyPopup();
-        },
-        onStatistics: statistics => {
-          // Update the badge displayed on the toolbar icon to reflect the current status
-          const statusArray = ["dangerous", "downloading", "paused"] as State[];
-          const iconStatus = statusArray.find(status => statistics[status] > 0) || "idle";
-          const icon = `/images/icon-${iconStatus}.png`;
-          const active = statistics.downloading + statistics.paused;
-          const text = active > 0 ? `${active}` : null;
-          if (icon !== lastIcon) {
-            browserAction.setIcon({ path: icon });
-            lastIcon = icon;
-          }
-          browserAction.setBadgeText({ text });
-          browserAction.setBadgeTextColor({ color: "#FFFFFF" });
-          browserAction.setBadgeBackgroundColor({ color: "#2C4E5F" });
+        onCompleted: () => notifyIfNecessary("completed"),
+        onInterrupted: () => notifyIfNecessary("interrupted"),
+        onDangerous: () => notifyIfNecessary("dangerous"),
+        onStatistics: (statistics, downloads) => {
+          // Update toolbar icon
+          updateToolbarIcon(settings.appearance.icon, { statistics, downloads });
 
           // Check for downloads that need to be automatically deleted
           if (settings.features.cleanup.enabled) {

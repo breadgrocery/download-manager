@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  import type { Icon } from "@/components/IconButton.vue";
+  import { type Icon } from "@/components/IconButton.vue";
   import { NIcon } from "naive-ui";
   import { h } from "vue";
 

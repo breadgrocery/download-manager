@@ -75,6 +75,11 @@ options:
         auto: 自动
         light: 浅色
         dark: 深色
+      icon:
+        title: 图标样式
+        general: 应用程序图标
+        badge: 下载数量角标
+        animated: 下载进度动效
     bounds:
       title: 页面大小
       width: 宽度

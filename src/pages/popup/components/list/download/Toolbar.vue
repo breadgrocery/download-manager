@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  import type { DropdownIconOption } from "@/components/DropdownIcon.vue";
+  import { type DropdownIconOption } from "@/components/DropdownIcon.vue";
   import { deleteDownload } from "@/utils/download";
   import { state } from "@/utils/state";
   import copy from "copy-to-clipboard";

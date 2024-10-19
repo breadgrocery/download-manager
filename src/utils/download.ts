@@ -16,7 +16,7 @@ export interface Listeners {
   onCompleted?: (downloads: Downloads.OnChangedDownloadDeltaType) => void;
   onInterrupted?: (downloads: Downloads.OnChangedDownloadDeltaType) => void;
   onDangerous?: (downloads: Downloads.OnChangedDownloadDeltaType) => void;
-  onStatistics?: (statistics: Record<State, number>) => void;
+  onStatistics?: (statistics: Record<State, number>, downloads: Downloads.DownloadItem[]) => void;
 }
 
 export const addDownloadListeners = (listeners: Listeners) => {
@@ -41,26 +41,30 @@ export const addDownloadListeners = (listeners: Listeners) => {
     };
     // Notify listeners based on state changes
     listeners.onChanged?.(change);
-    if (states.completed && listeners.onCompleted) listeners.onCompleted(change);
-    if (states.interrupted && listeners.onInterrupted) listeners.onInterrupted(change);
-    if (states.dangerous && listeners.onDangerous) listeners.onDangerous(change);
+    if (states.completed) listeners.onCompleted?.(change);
+    if (states.interrupted) listeners.onInterrupted?.(change);
+    if (states.dangerous) listeners.onDangerous?.(change);
 
     updateStatistics(listeners.onStatistics);
   });
   // Periodically update statistics for missed background events
-  setInterval(() => updateStatistics(listeners.onStatistics), 10 * 1000);
+  setInterval(() => updateStatistics(listeners.onStatistics), 5 * 1000);
 };
 
 const updateStatistics = debounce(
-  async (callback?: (statistics: Record<State, number>) => void) => {
-    const downloads = await getDownloads();
-    const statistics = Object.fromEntries(
-      Object.entries(state).map(([status, predicate]) => {
-        const fulfilled = downloads.filter(predicate).length;
-        return [status, fulfilled];
-      })
-    ) as Record<State, number>;
-    callback?.(statistics);
+  async (
+    callback?: (statistics: Record<State, number>, downloads: Downloads.DownloadItem[]) => void
+  ) => {
+    if (callback) {
+      const downloads = await getDownloads();
+      const statistics = Object.fromEntries(
+        Object.entries(state).map(([status, predicate]) => {
+          const fulfilled = downloads.filter(predicate).length;
+          return [status, fulfilled];
+        })
+      ) as Record<State, number>;
+      callback(statistics, downloads);
+    }
   },
   500,
   { maxWait: 1000 }

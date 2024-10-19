@@ -5,7 +5,7 @@
   import bytes from "bytes";
   import { formatDistance } from "date-fns";
   import { useThemeVars } from "naive-ui";
-  import type { Downloads } from "wxt/browser";
+  import { type Downloads } from "wxt/browser";
   import FileInfo from "./download/FileInfo.vue";
   import Progress from "./download/Progress.vue";
   import Speed from "./download/Speed.vue";
