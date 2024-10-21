@@ -10,12 +10,12 @@ export const setDownloadManagerState = (enabled: boolean) => {
 };
 
 export interface Listeners {
-  onCreated?: (downloads: Downloads.DownloadItem) => void;
+  onCreated?: (download: Downloads.DownloadItem) => void;
   onErased?: (downloadId: number) => void;
-  onChanged?: (downloads: Downloads.OnChangedDownloadDeltaType) => void;
-  onCompleted?: (downloads: Downloads.OnChangedDownloadDeltaType) => void;
-  onInterrupted?: (downloads: Downloads.OnChangedDownloadDeltaType) => void;
-  onDangerous?: (downloads: Downloads.OnChangedDownloadDeltaType) => void;
+  onChanged?: (download: Downloads.OnChangedDownloadDeltaType) => void;
+  onCompleted?: (download: Downloads.OnChangedDownloadDeltaType) => void;
+  onInterrupted?: (download: Downloads.OnChangedDownloadDeltaType) => void;
+  onDangerous?: (download: Downloads.OnChangedDownloadDeltaType) => void;
   onStatistics?: (statistics: Record<State, number>, downloads: Downloads.DownloadItem[]) => void;
 }
 

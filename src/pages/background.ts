@@ -44,7 +44,11 @@ export default defineBackground({
         onErased: () => notifyPopup(),
         onChanged: () => notifyPopup(),
         onCompleted: () => notifyIfNecessary("completed"),
-        onInterrupted: () => notifyIfNecessary("interrupted"),
+        onInterrupted: download => {
+          const error = download.error?.current;
+          if (error && ["USER_CANCELED", "USER_SHUTDOWN"].includes(error)) return;
+          notifyIfNecessary("interrupted");
+        },
         onDangerous: () => notifyIfNecessary("dangerous"),
         onStatistics: (statistics, downloads) => {
           // Update toolbar icon
