@@ -71,17 +71,17 @@ options:
     theme:
       title: Theme
       scheme:
-        title: Color scheme
+        title: Color Scheme
         auto: Auto
         light: Light
         dark: Dark
       icon:
-        title: Icon style
+        title: Icon Style
         general: Application icon
         badge: Task count indicator
         animated: Animated progress indicator
     bounds:
-      title: Popup bounds
+      title: Popup Bounds
       width: Width
       height: Height
   features:
@@ -155,7 +155,7 @@ options:
     menu: About
     version: Version
     rate:
-      title: Rate us
+      title: Rate Us
       github: Visit Github Repository
       chrome: Visit Chrome Web Store
       edge: Visit Microsoft Edge Add-ons
