@@ -79,11 +79,11 @@ options:
         auto: Automatique
         light: Clair
         dark: Sombre
-    icon:
-      title: Style d'icône
-      general: Icône d'application
-      badge: Indicateur du nombre de tâches
-      animated: Indicateur de progression animé
+      icon:
+        title: Style d'icône
+        general: Icône d'application
+        badge: Indicateur du nombre de tâches
+        animated: Indicateur de progression animé
     bounds:
       title: Taille de la page
       width: Largeur

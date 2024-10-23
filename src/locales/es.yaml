@@ -79,11 +79,11 @@ options:
         auto: Automático
         light: Claro
         dark: Oscuro
-    icon:
-      title: Estilo de icono
-      general: Icono de la aplicación
-      badge: Indicador de cantidad de tareas
-      animated: Indicador de progreso animado
+      icon:
+        title: Estilo de icono
+        general: Icono de la aplicación
+        badge: Indicador de cantidad de tareas
+        animated: Indicador de progreso animado
     bounds:
       title: Tamaño de página
       width: Ancho
