@@ -3,8 +3,7 @@
   import { deleteDownload } from "@/utils/download";
   import { state } from "@/utils/state";
   import copy from "copy-to-clipboard";
-  import { useMessage, useThemeVars } from "naive-ui";
-  import { useModal } from "naive-ui";
+  import { useMessage, useModal, useThemeVars } from "naive-ui";
   import { type Downloads, browser } from "wxt/browser";
   import MdiBlock from "~icons/mdi/block";
   import MdiCheckboxMarkedCircleOutline from "~icons/mdi/checkbox-marked-circle-outline";
@@ -31,8 +30,18 @@
 
   // Link select
   const linkOptions: DropdownIconOption[] = [
-    { key: "link", label: i18n.t("download.link.copy"), icon: MdiLink },
-    { key: "qrcode", label: i18n.t("download.link.qrcode"), icon: MdiQrcode }
+    {
+      key: "link",
+      label: i18n.t("download.link.copy"),
+      icon: MdiLink,
+      color: colors.value.infoColor
+    },
+    {
+      key: "qrcode",
+      label: i18n.t("download.link.qrcode"),
+      icon: MdiQrcode,
+      color: colors.value.successColor
+    }
   ];
   const handleLinkSelect = (key: string) => {
     switch (key) {
@@ -69,9 +78,15 @@
     {
       key: "history",
       label: i18n.t("download.delete.history"),
-      icon: MdiHistory
+      icon: MdiHistory,
+      color: colors.value.warningColor
     },
-    { key: "disk", label: i18n.t("download.delete.disk"), icon: MdiHarddisk }
+    {
+      key: "disk",
+      label: i18n.t("download.delete.disk"),
+      icon: MdiHarddisk,
+      color: colors.value.errorColor
+    }
   ];
   const handleDeleteSelect = (key: string) => {
     switch (key) {

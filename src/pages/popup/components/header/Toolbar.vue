@@ -1,11 +1,9 @@
 <script setup lang="ts">
-  import { useModal } from "naive-ui";
-  import { useMessage } from "naive-ui";
+  import { useMessage, useModal, useThemeVars } from "naive-ui";
   import pQueue from "p-queue";
   import pRetry from "p-retry";
   import pTimeout from "p-timeout";
   import { browser } from "wxt/browser";
-  import MdiDeleteForever from "~icons/mdi/delete-forever";
   import MdiFileCheckOutline from "~icons/mdi/file-check-outline";
   import MdiFileHidden from "~icons/mdi/file-hidden";
   import MdiFileOutline from "~icons/mdi/file-outline";
@@ -13,6 +11,7 @@
   import MdiFolderArrowDownOutline from "~icons/mdi/folder-arrow-down-outline";
   import MdiLinkVariantPlus from "~icons/mdi/link-variant-plus";
   import MdiSettingsOutline from "~icons/mdi/settings-outline";
+  import MdiTrashCanOutline from "~icons/mdi/trash-can-outline";
   import DeleteDownload from "./DeleteDownload.vue";
   import NewDownload from "./NewDownload.vue";
 
@@ -23,29 +22,34 @@
   const modal = useModal();
   const message = useMessage();
   const settings = useSettings();
+  const colors = useThemeVars();
 
   const deleteOptions = [
     {
       key: "all",
       label: i18n.t("toolbar.delete_downloads.all"),
-      icon: MdiFileOutline
+      icon: MdiFileOutline,
+      color: colors.value.warningColor
     },
     {
       key: "completed",
       label: i18n.t("toolbar.delete_downloads.completed"),
-      icon: MdiFileCheckOutline
+      icon: MdiFileCheckOutline,
+      color: colors.value.successColor
     },
     {
       key: "failed",
       label: i18n.t("toolbar.delete_downloads.failed"),
-      icon: MdiFileRemoveOutline
+      icon: MdiFileRemoveOutline,
+      color: colors.value.errorColor
     },
     {
       key: "missing",
       label: i18n.t("toolbar.delete_downloads.missing"),
-      icon: MdiFileHidden
+      icon: MdiFileHidden,
+      color: colors.value.iconColorDisabled
     }
-  ] as const;
+  ];
 
   const handleCreateNewDownload = () => {
     const handleConfirm = (links: string[], loading: (value: boolean) => void) => {
@@ -126,7 +130,11 @@
       :tooltip="i18n.t(`toolbar.create_downloads.tooltip`)"
       @click="handleCreateNewDownload"
     />
-    <DropdownIcon :icon="MdiDeleteForever" :options="deleteOptions" @select="handleDeleteSelect" />
+    <DropdownIcon
+      :icon="MdiTrashCanOutline"
+      :options="deleteOptions"
+      @select="handleDeleteSelect"
+    />
     <IconButton
       :icon="MdiFolderArrowDownOutline"
       :tooltip="i18n.t(`toolbar.open_download_folder`)"

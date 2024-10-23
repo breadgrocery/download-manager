@@ -1,6 +1,5 @@
 <script setup lang="ts">
-  import { NText } from "naive-ui";
-  import { NDivider } from "naive-ui";
+  import { NDivider, NText } from "naive-ui";
   import { h } from "vue";
   import MdiQuestionMarkCircle from "~icons/mdi/question-mark-circle";
 

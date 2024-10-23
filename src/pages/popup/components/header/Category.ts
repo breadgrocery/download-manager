@@ -3,12 +3,12 @@ import { getFileExtension } from "@/utils/path";
 import { intersection } from "lodash-es";
 import MdiEllipsisHorizontal from "~icons/mdi/ellipsis-horizontal";
 import MdiFileDocument from "~icons/mdi/file-document";
-import MdiFolderZip from "~icons/mdi/folder-zip";
 import MdiFormatListBulleted from "~icons/mdi/format-list-bulleted";
 import MdiImage from "~icons/mdi/image";
 import MdiMovie from "~icons/mdi/movie";
 import MdiMusic from "~icons/mdi/music";
 import MdiPuzzle from "~icons/mdi/puzzle";
+import MdiZipBox from "~icons/mdi/zip-box";
 
 export const categoryEnums = [
   "all",
@@ -76,7 +76,7 @@ export const categoryDetails = (categories?: Category[]): CategoryDetails[] => {
     },
     {
       id: "archives",
-      icon: MdiFolderZip,
+      icon: MdiZipBox,
       tooltip: i18n.t("categories.archives"),
       match: (filename, mime) => {
         const exts = [getFileExtension(filename), ...(mime ? getAllExtensions([mime]) : [])];

@@ -4,7 +4,10 @@
 
   const routes = useRouter().getRoutes();
 
-  const collapsed = ref(false);
+  const collapsed = ref(window.innerWidth <= 600);
+  window.matchMedia("(max-width: 600px)").addEventListener("change", e => {
+    collapsed.value = e.matches;
+  });
   const titleClass = computed(() => ({
     title: true,
     collapsed: collapsed.value
