@@ -17,7 +17,7 @@ export default defineWxtModule(wxt => {
       plugins: [
         Components({
           resolvers: [NaiveUiResolver(), IconsResolver({ prefix: "icon" })],
-          dirs: ["components"],
+          dirs: ["src/components"],
           dts: resolve(typesDir, "components.d.ts")
         }),
         Icons()

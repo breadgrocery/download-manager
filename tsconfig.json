@@ -1,7 +1,6 @@
 {
-  "extends": "./src/.wxt/tsconfig.json",
+  "extends": "./.wxt/tsconfig.json",
   "compilerOptions": {
     "types": ["naive-ui/volar", "unplugin-icons/types/vue", "@types/chrome"]
-  },
-  "files": ["./wxt.config.ts"]
+  }
 }

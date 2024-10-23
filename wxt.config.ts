@@ -4,7 +4,7 @@ import { defineConfig } from "wxt";
 
 // See https://wxt.dev/api/config.html
 export default defineConfig({
-  root: resolve("src"),
+  srcDir: resolve("src"),
   publicDir: resolve("public"),
   entrypointsDir: resolve("src/pages"),
   modulesDir: resolve("plugins"),
