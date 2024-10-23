@@ -1,12 +1,10 @@
 {
-  "files.exclude": {
-    "**/.wxt": true,
-    ".gitignore": true,
-    ".prettierignore": true,
-    "eslint.config.mjs": true,
-    "lefthook.yaml": true,
-    "prettier.config.mjs": true,
-    "{package-lock.json,pnpm-lock.yaml,yarn.lock,bun.lockb}": true
+  "explorer.fileNesting.enabled": true,
+  "explorer.fileNesting.patterns": {
+    ".gitignore": ".git*,lefthook.*,eslint.config.*,prettier.config.*,.prettierignore,LICENSE",
+    "README.md": "README.*.md",
+    "tsconfig.json": "tsconfig.*.json",
+    "package.json": "package-lock.json,yarn.lock,pnpm-lock.yaml,bun.lockb"
   },
   "search.exclude": {
     "dist": true
