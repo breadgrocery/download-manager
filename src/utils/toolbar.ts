@@ -66,7 +66,7 @@ const getAnimatedIcon = (
     }
     status = statusArray.find(status => statistics[status] > 0) || "idle";
   }
-  return createImageData(progress, status as "idle") as Action.ImageDataType;
+  return createImageData(Math.floor(progress), status as "idle") as Action.ImageDataType;
 };
 
 const getBadgeText = (statistics?: Record<State, number>) => {

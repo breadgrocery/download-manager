@@ -3,8 +3,12 @@ extension:
   description: 轻量、高效的下载管理
 
 common:
+  info: 提示
+  warning: 警告
+  error: 错误
   confirm: 确认
   cancel: 取消
+  restart: 重启插件以生效
 
 unit:
   millis: 毫秒

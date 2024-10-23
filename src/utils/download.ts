@@ -3,7 +3,7 @@ import { debounce } from "lodash-es";
 import { type Downloads, browser } from "wxt/browser";
 
 export const setDownloadManagerState = (enabled: boolean) => {
-  if (import.meta.env.CHROME) {
+  if (chrome) {
     chrome.downloads.setUiOptions({ enabled });
     chrome.downloads.setShelfEnabled(enabled);
   }
@@ -19,7 +19,7 @@ export interface Listeners {
   onStatistics?: (statistics: Record<State, number>, downloads: Downloads.DownloadItem[]) => void;
 }
 
-export const addDownloadListeners = (listeners: Listeners) => {
+export const addDownloadListeners = (listeners: Listeners, pulse: number = 5 * 1000) => {
   // Listen for the creation of new downloads
   browser.downloads.onCreated.addListener(download => {
     listeners.onCreated?.(download);
@@ -47,8 +47,12 @@ export const addDownloadListeners = (listeners: Listeners) => {
 
     updateStatistics(listeners.onStatistics);
   });
-  // Periodically update statistics for missed background events
-  setInterval(() => updateStatistics(listeners.onStatistics), 5 * 1000);
+  // Avoid missing events due to reduced sensitivity of background scripts by the browser
+  const deamon = () => {
+    updateStatistics(listeners.onStatistics);
+    setTimeout(deamon, pulse);
+  };
+  deamon();
 };
 
 const updateStatistics = debounce(

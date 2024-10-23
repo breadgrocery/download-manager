@@ -11,10 +11,15 @@
   import SettingWrapper from "../layout/SettingList.vue";
 
   const settings = useSettings();
+  const restart = useRestart();
 
   const updateTheme = (value: typeof settings.value.appearance.theme.scheme) => {
     settings.value.appearance.theme.scheme = value;
     browserAction.openPopup();
+  };
+  const updateIconStyle = (value: typeof settings.value.appearance.icon) => {
+    settings.value.appearance.icon = value;
+    restart();
   };
 
   const iconStyles = [
@@ -54,7 +59,7 @@
         <NSelect
           :options="iconStyles"
           :default-value="settings.appearance.icon"
-          :on-update:value="value => (settings.appearance.icon = value)"
+          :on-update:value="updateIconStyle"
         />
       </SettingDetail>
     </SettingItem>

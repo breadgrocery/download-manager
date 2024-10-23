@@ -3,11 +3,11 @@
   import { deleteDownload } from "@/utils/download";
   import { state } from "@/utils/state";
   import copy from "copy-to-clipboard";
-  import { useMessage } from "naive-ui";
+  import { useMessage, useThemeVars } from "naive-ui";
   import { useModal } from "naive-ui";
   import { type Downloads, browser } from "wxt/browser";
-  import MdiDelete from "~icons/mdi/delete";
-  import MdiFileRestoreOutline from "~icons/mdi/file-restore-outline";
+  import MdiBlock from "~icons/mdi/block";
+  import MdiCheckboxMarkedCircleOutline from "~icons/mdi/checkbox-marked-circle-outline";
   import MdiFolderOutline from "~icons/mdi/folder-outline";
   import MdiGarbage from "~icons/mdi/garbage";
   import MdiHarddisk from "~icons/mdi/harddisk";
@@ -27,6 +27,7 @@
   const { download } = defineProps<Props>();
   const message = useMessage();
   const modal = useModal();
+  const colors = useThemeVars();
 
   // Link select
   const linkOptions: DropdownIconOption[] = [
@@ -158,13 +159,15 @@
     <NFlex v-if="state.dangerous(download)" v-assert-children>
       <IconButton
         v-if="state.ongoing(download)"
-        :icon="MdiFileRestoreOutline"
+        :icon="MdiCheckboxMarkedCircleOutline"
+        :color="colors.successColor"
         :tooltip="i18n.t(`download.dangerous.keep`)"
         @click="handleAcceptDanger(download)"
       />
       <IconButton
         v-if="state.ongoing(download)"
-        :icon="MdiDelete"
+        :icon="MdiBlock"
+        :color="colors.errorColor"
         :tooltip="i18n.t(`download.dangerous.remove`)"
         @click="deleteFromDisk"
       />

@@ -3,8 +3,12 @@ extension:
   description: Легкий и эффективный менеджер загрузок
 
 common:
+  info: Информация
+  warning: Предупреждение
+  error: Ошибка
   confirm: Подтвердить
   cancel: Отменить
+  restart: Перезапустите расширение, чтобы изменения вступили в силу
 
 unit:
   millis: мс

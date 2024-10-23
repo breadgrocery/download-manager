@@ -3,8 +3,12 @@ extension:
   description: مدير تنزيل خفيف وفعال
 
 common:
+  info: معلومات
+  warning: تحذير
+  error: خطأ
   confirm: تأكيد
   cancel: إلغاء
+  restart: أعد تشغيل الامتداد للتفعيل
 
 unit:
   millis: مللي ثانية

@@ -10,7 +10,7 @@ pre-commit:
   commands:
     eslint:
       glob: "*.{js,jsx,cjs,mjs,ts,tsx,cts,mts,vue}"
-      run: npx eslint {staged_files}
+      run: npx eslint {staged_files} --fix
     prettier:
       glob: "*.*"
       run: npx prettier {staged_files} --write --ignore-unknown

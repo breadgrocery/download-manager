@@ -39,35 +39,41 @@ export default defineBackground({
         notifyPopup();
       };
       // Define download listeners
-      addDownloadListeners({
-        onCreated: () => notifyIfNecessary("created"),
-        onErased: () => notifyPopup(),
-        onChanged: () => notifyPopup(),
-        onCompleted: () => notifyIfNecessary("completed"),
-        onInterrupted: download => {
-          const error = download.error?.current;
-          if (error && ["USER_CANCELED", "USER_SHUTDOWN"].includes(error)) return;
-          notifyIfNecessary("interrupted");
-        },
-        onDangerous: () => notifyIfNecessary("dangerous"),
-        onStatistics: (statistics, downloads) => {
-          // Update toolbar icon
-          updateToolbarIcon(settings.appearance.icon, { statistics, downloads });
+      addDownloadListeners(
+        {
+          onCreated: () => notifyIfNecessary("created"),
+          onErased: () => notifyPopup(),
+          onChanged: () => notifyPopup(),
+          onCompleted: () => notifyIfNecessary("completed"),
+          onInterrupted: download => {
+            const error = download.error?.current;
+            if (error && ["USER_CANCELED", "USER_SHUTDOWN"].includes(error)) return;
+            notifyIfNecessary("interrupted");
+          },
+          onDangerous: () => notifyIfNecessary("dangerous"),
+          onStatistics: (statistics, downloads) => {
+            // Update toolbar icon
+            updateToolbarIcon(settings.appearance.icon, { statistics, downloads });
 
-          // Check for downloads that need to be automatically deleted
-          if (settings.features.cleanup.enabled) {
-            getDownloads().then(downloads => {
-              for (const download of downloads) {
-                const diff = differenceInDays(Date.now(), download.startTime);
-                if (diff >= settings.features.cleanup.retention) {
-                  deleteDownload(download, settings.features.cleanup.revmove);
+            // Check for downloads that need to be automatically deleted
+            if (settings.features.cleanup.enabled) {
+              getDownloads().then(downloads => {
+                for (const download of downloads) {
+                  const diff = differenceInDays(Date.now(), download.startTime);
+                  if (diff >= settings.features.cleanup.retention) {
+                    deleteDownload(download, settings.features.cleanup.revmove);
+                  }
                 }
-              }
-            });
+              });
+            }
+            notifyPopup();
           }
-          notifyPopup();
-        }
-      });
+        },
+        (() => {
+          if (settings.appearance.icon === "animated") return 1000;
+          return settings.misc.performance.pulse;
+        })()
+      );
     });
   }
 });

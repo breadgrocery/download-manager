@@ -3,8 +3,12 @@ extension:
   description: Gestión de descargas ligera y eficiente
 
 common:
+  info: Información
+  warning: Advertencia
+  error: Error
   confirm: Confirmar
   cancel: Cancelar
+  restart: Reinicia la extensión para que los cambios surtan efecto
 
 unit:
   millis: ms

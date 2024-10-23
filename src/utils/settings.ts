@@ -50,6 +50,11 @@ export const defaults = {
   },
   sync: {
     enabled: false
+  },
+  misc: {
+    performance: {
+      pulse: 5 * 1000
+    }
   }
 };
 

@@ -3,8 +3,12 @@ extension:
   description: Lightweight and efficient download management
 
 common:
+  info: Info
+  warning: Warning
+  error: Error
   confirm: Confirm
   cancel: Cancel
+  restart: Restart the extension to take effect
 
 unit:
   millis: ms
