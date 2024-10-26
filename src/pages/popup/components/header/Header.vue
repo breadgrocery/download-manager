@@ -80,6 +80,7 @@
     padding: 10px;
     .search-box {
       flex-grow: 1;
+      max-width: 50%;
     }
     .toolbar {
       margin-left: auto;

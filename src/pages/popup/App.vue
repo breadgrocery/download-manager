@@ -74,7 +74,6 @@
         <NFlex class="popup-wrapper" :style="popupStyle" vertical :size="0">
           <!-- Header -->
           <Header
-            class="header"
             :downloads="downloads"
             @search="handleSearch"
             @category-click="handleCategoryCilck"
