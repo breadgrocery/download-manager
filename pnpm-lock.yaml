@@ -12,8 +12,8 @@ importers:
         specifier: ^11.1.0
         version: 11.1.0(vue@3.5.12(typescript@5.5.4))
       '@wxt-dev/i18n':
-        specifier: ^0.2.2
-        version: 0.2.2(wxt@0.19.13(@types/node@22.8.1)(rollup@4.24.0)(sass@1.80.4))
+        specifier: ^0.2.3
+        version: 0.2.3(wxt@0.19.13(@types/node@22.8.1)(rollup@4.24.0)(sass@1.80.4))
       bowser:
         specifier: ^2.11.0
         version: 2.11.0
@@ -80,7 +80,7 @@ importers:
         version: 22.8.1
       '@vue/eslint-config-typescript':
         specifier: ^14.1.3
-        version: 14.1.3(@typescript-eslint/parser@8.9.0(eslint@9.13.0(jiti@1.21.6))(typescript@5.5.4))(eslint-plugin-vue@9.29.1(eslint@9.13.0(jiti@1.21.6)))(eslint@9.13.0(jiti@1.21.6))(typescript@5.5.4)
+        version: 14.1.3(@typescript-eslint/parser@8.9.0(eslint@9.13.0(jiti@1.21.6))(typescript@5.5.4))(eslint-plugin-vue@9.30.0(eslint@9.13.0(jiti@1.21.6)))(eslint@9.13.0(jiti@1.21.6))(typescript@5.5.4)
       '@wxt-dev/auto-icons':
         specifier: ^1.0.2
         version: 1.0.2(wxt@0.19.13(@types/node@22.8.1)(rollup@4.24.0)(sass@1.80.4))
@@ -97,8 +97,8 @@ importers:
         specifier: ^9.13.0
         version: 9.13.0(jiti@1.21.6)
       eslint-plugin-vue:
-        specifier: ^9.29.1
-        version: 9.29.1(eslint@9.13.0(jiti@1.21.6))
+        specifier: ^9.30.0
+        version: 9.30.0(eslint@9.13.0(jiti@1.21.6))
       inquirer:
         specifier: ^12.0.1
         version: 12.0.1(@types/node@22.8.1)
@@ -1101,8 +1101,8 @@ packages:
     peerDependencies:
       wxt: '>=0.19.0'
 
-  '@wxt-dev/i18n@0.2.2':
-    resolution: {integrity: sha512-ElSY9xZ53L8Rm2/j6+WT4rkYif8UDC4nR7h2NODX2fmbz9Nl8X2A56BoYfrcs5i7bF5DZ+k0M69HrhzGBVLNcg==}
+  '@wxt-dev/i18n@0.2.3':
+    resolution: {integrity: sha512-2X005PB1r+6sDYMOuZD5hxSOPkogEZZTLB5HEsOotQ5RYXF3c/OOMD+DffVeq+S0yKY2Dmg4Ujfu0Pq4busJYQ==}
     peerDependencies:
       wxt: '>=0.19.7'
     peerDependenciesMeta:
@@ -1747,8 +1747,8 @@ packages:
     resolution: {integrity: sha512-/veY75JbMK4j1yjvuUxuVsiS/hr/4iHs9FTT6cgTexxdE0Ly/glccBAkloH/DofkjRbZU3bnoj38mOmhkZ0lHw==}
     engines: {node: '>=12'}
 
-  eslint-plugin-vue@9.29.1:
-    resolution: {integrity: sha512-MH/MbVae4HV/tM8gKAVWMPJbYgW04CK7SuzYRrlNERpxbO0P3+Zdsa2oAcFBW6xNu7W6lIkGOsFAMCRTYmrlWQ==}
+  eslint-plugin-vue@9.30.0:
+    resolution: {integrity: sha512-CyqlRgShvljFkOeYK8wN5frh/OGTvkj1S7wlr2Q2pUvwq+X5VYiLd6ZjujpgSgLnys2W8qrBLkXQ41SUYaoPIQ==}
     engines: {node: ^14.17.0 || >=16.0.0}
     peerDependencies:
       eslint: ^6.2.0 || ^7.0.0 || ^8.0.0 || ^9.0.0
@@ -4529,11 +4529,11 @@ snapshots:
 
   '@vue/devtools-api@6.6.4': {}
 
-  '@vue/eslint-config-typescript@14.1.3(@typescript-eslint/parser@8.9.0(eslint@9.13.0(jiti@1.21.6))(typescript@5.5.4))(eslint-plugin-vue@9.29.1(eslint@9.13.0(jiti@1.21.6)))(eslint@9.13.0(jiti@1.21.6))(typescript@5.5.4)':
+  '@vue/eslint-config-typescript@14.1.3(@typescript-eslint/parser@8.9.0(eslint@9.13.0(jiti@1.21.6))(typescript@5.5.4))(eslint-plugin-vue@9.30.0(eslint@9.13.0(jiti@1.21.6)))(eslint@9.13.0(jiti@1.21.6))(typescript@5.5.4)':
     dependencies:
       '@typescript-eslint/eslint-plugin': 8.9.0(@typescript-eslint/parser@8.9.0(eslint@9.13.0(jiti@1.21.6))(typescript@5.5.4))(eslint@9.13.0(jiti@1.21.6))(typescript@5.5.4)
       eslint: 9.13.0(jiti@1.21.6)
-      eslint-plugin-vue: 9.29.1(eslint@9.13.0(jiti@1.21.6))
+      eslint-plugin-vue: 9.30.0(eslint@9.13.0(jiti@1.21.6))
       fast-glob: 3.3.2
       typescript-eslint: 8.9.0(eslint@9.13.0(jiti@1.21.6))(typescript@5.5.4)
       vue-eslint-parser: 9.4.3(eslint@9.13.0(jiti@1.21.6))
@@ -4603,7 +4603,7 @@ snapshots:
       sharp: 0.33.5
       wxt: 0.19.13(@types/node@22.8.1)(rollup@4.24.0)(sass@1.80.4)
 
-  '@wxt-dev/i18n@0.2.2(wxt@0.19.13(@types/node@22.8.1)(rollup@4.24.0)(sass@1.80.4))':
+  '@wxt-dev/i18n@0.2.3(wxt@0.19.13(@types/node@22.8.1)(rollup@4.24.0)(sass@1.80.4))':
     dependencies:
       chokidar: 3.6.0
       confbox: 0.1.8
@@ -5277,7 +5277,7 @@ snapshots:
 
   escape-string-regexp@5.0.0: {}
 
-  eslint-plugin-vue@9.29.1(eslint@9.13.0(jiti@1.21.6)):
+  eslint-plugin-vue@9.30.0(eslint@9.13.0(jiti@1.21.6)):
     dependencies:
       '@eslint-community/eslint-utils': 4.4.0(eslint@9.13.0(jiti@1.21.6))
       eslint: 9.13.0(jiti@1.21.6)

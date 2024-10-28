@@ -15,7 +15,7 @@
   },
   "dependencies": {
     "@vueuse/core": "^11.1.0",
-    "@wxt-dev/i18n": "^0.2.2",
+    "@wxt-dev/i18n": "^0.2.3",
     "bowser": "^2.11.0",
     "bytes": "^3.1.2",
     "copy-to-clipboard": "^3.3.3",
@@ -45,7 +45,7 @@
     "autoprefixer": "^10.4.20",
     "crx": "^5.0.1",
     "eslint": "^9.13.0",
-    "eslint-plugin-vue": "^9.29.1",
+    "eslint-plugin-vue": "^9.30.0",
     "inquirer": "^12.0.1",
     "lefthook": "^1.8.1",
     "prettier": "^3.3.3",
@@ -62,7 +62,7 @@
   "browserslist": [
     "chrome >= 88",
     "edge >= 79",
-    "firefox >= 109"
+    "firefox >= 112"
   ],
   "packageManager": "pnpm@9.12.0"
 }
