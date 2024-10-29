@@ -60,8 +60,7 @@
     ]
   },
   "browserslist": [
-    "chrome >= 88",
-    "edge >= 79",
+    "chrome >= 105",
     "firefox >= 112"
   ],
   "engines": {

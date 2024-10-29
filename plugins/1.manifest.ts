@@ -24,7 +24,7 @@ export default defineWxtModule(wxt => {
         ...permissions[browser as keyof typeof permissions]
       ].filter(Boolean),
       ...(browser === "chrome" && {
-        "minimum_chrome_version": "88"
+        "minimum_chrome_version": "105"
       }),
       ...(browser === "firefox" && {
         "browser_specific_settings": {
