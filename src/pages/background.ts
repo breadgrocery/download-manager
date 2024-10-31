@@ -22,10 +22,7 @@ export default defineBackground({
 
     // Load extension settings
     let settings: Settings;
-    const loadSettings = () =>
-      mergedSettings()
-        .then(_settings => (settings = _settings))
-        .then(() => updateToolbarIcon(settings.appearance.icon, undefined));
+    const loadSettings = () => mergedSettings().then(_settings => (settings = _settings));
     loadSettings().then(() => {
       // Reload extension settings on storage changed
       browser.storage.onChanged.addListener(loadSettings);
