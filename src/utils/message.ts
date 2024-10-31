@@ -5,8 +5,12 @@ export type Message<T> = {
   data?: T;
 };
 
-export const send = <T>(message: Message<T>) => {
-  return browser.runtime.sendMessage(browser.runtime.id, message);
+export const send = async <T>(message: Message<T>) => {
+  try {
+    return await browser.runtime.sendMessage(browser.runtime.id, message);
+  } catch (error) {
+    return console.debug(error);
+  }
 };
 
 export const listen = <T>(channel: string, callback: (data?: T) => void) => {

@@ -1,4 +1,4 @@
-import { browserAction } from "@/utils/action";
+import { openPopup } from "@/utils/action";
 import {
   addDownloadListeners,
   deleteDownload,
@@ -35,7 +35,7 @@ export default defineBackground({
       });
       const notifyIfNecessary = (type: keyof typeof settings.notifications.download) => {
         if (settings.notifications.download[type].sound) audio[type]();
-        if (settings.notifications.download[type].popup) browserAction.openPopup();
+        if (settings.notifications.download[type].popup) openPopup();
         notifyPopup();
       };
       // Define download listeners

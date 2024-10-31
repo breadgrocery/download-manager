@@ -3,6 +3,7 @@
   "explorer.fileNesting.patterns": {
     ".gitignore": ".git*,lefthook.*,eslint.config.*,prettier.config.*,.prettierignore,LICENSE",
     "README.md": "README.*.md",
+    "privacy.md": "privacy.*.md",
     "tsconfig.json": "tsconfig.*.json",
     "package.json": "package-lock.json,yarn.lock,pnpm-lock.yaml,bun.lockb"
   },

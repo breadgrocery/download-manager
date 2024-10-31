@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  import { browserAction } from "@/utils/action";
+  import { openPopup } from "@/utils/action";
   import MdiArrowExpandAll from "~icons/mdi/arrow-expand-all";
   import MdiArrowExpandHorizontal from "~icons/mdi/arrow-expand-horizontal";
   import MdiArrowExpandVertical from "~icons/mdi/arrow-expand-vertical";
@@ -15,7 +15,7 @@
 
   const updateTheme = (value: typeof settings.value.appearance.theme.scheme) => {
     settings.value.appearance.theme.scheme = value;
-    browserAction.openPopup();
+    openPopup();
   };
   const updateIconStyle = (value: typeof settings.value.appearance.icon) => {
     settings.value.appearance.icon = value;
@@ -74,7 +74,7 @@
           :max="800"
           :value="settings.appearance.width"
           :on-update:value="value => (settings.appearance.width = value)"
-          :on-dragend="browserAction.openPopup"
+          :on-dragend="openPopup"
         />
       </SettingDetail>
       <SettingDetail
@@ -86,7 +86,7 @@
           :max="600"
           :value="settings.appearance.height"
           :on-update:value="value => (settings.appearance.height = value)"
-          :on-dragend="browserAction.openPopup"
+          :on-dragend="openPopup"
         />
       </SettingDetail>
     </SettingItem>
