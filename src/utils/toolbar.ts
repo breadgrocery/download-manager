@@ -1,4 +1,4 @@
-import { browserAction } from "@/utils/action";
+import { setBadgeBackgroundColor, setBadgeText, setBadgeTextColor, setIcon } from "@/utils/action";
 import { createImageData } from "@/utils/image";
 import { type Settings } from "@/utils/settings";
 import { type State, state } from "@/utils/state";
@@ -103,31 +103,27 @@ const updateIfNessesary = <T>(
 };
 
 const updateIcon = (icon?: string) => {
-  return updateIfNessesary<string>(path => browserAction.setIcon({ path }), "icon", icon);
+  return updateIfNessesary<string>(path => setIcon({ path }), "icon", icon);
 };
 
 const updateAnimatedIcon = (imageData?: Action.ImageDataType) => {
   return updateIfNessesary<Action.ImageDataType>(
-    imageData => browserAction.setIcon({ imageData }),
+    imageData => setIcon({ imageData }),
     "icon",
     imageData
   );
 };
 
 const updateBadgeText = (text?: string) => {
-  return updateIfNessesary<string>(text => browserAction.setBadgeText({ text }), "text", text);
+  return updateIfNessesary<string>(text => setBadgeText({ text }), "text", text);
 };
 
 const updateBadgeTextColor = (color?: string) => {
-  return updateIfNessesary<string>(
-    color => browserAction.setBadgeTextColor({ color }),
-    "textColor",
-    color
-  );
+  return updateIfNessesary<string>(color => setBadgeTextColor({ color }), "textColor", color);
 };
 const updateBadgeBackgroundColor = (color?: string) => {
   return updateIfNessesary<string>(
-    color => browserAction.setBadgeBackgroundColor({ color }),
+    color => setBadgeBackgroundColor({ color }),
     "backgroundColor",
     color
   );
