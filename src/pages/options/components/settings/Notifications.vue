@@ -53,7 +53,7 @@
       <SettingDetail v-for="(sound, index) in sounds" :key="index" :title="sound.title">
         <IconButton :icon="MdiVolumeHigh" @click="sound.audio" />
         <NSwitch
-          :default-value="sound.proxy.sound"
+          :value="sound.proxy.sound"
           :on-update:value="value => (sound.proxy.sound = value)"
         />
       </SettingDetail>
@@ -66,7 +66,7 @@
     >
       <SettingDetail v-for="(popup, index) in popups" :key="index" :title="popup.title">
         <NSwitch
-          :default-value="popup.proxy.popup"
+          :value="popup.proxy.popup"
           :on-update:value="value => (popup.proxy.popup = value)"
         />
       </SettingDetail>
@@ -78,7 +78,7 @@
     >
       <SettingDetail v-for="(message, index) in messages" :key="index" :title="message.title">
         <NSwitch
-          :default-value="message.proxy[message.type]"
+          :value="message.proxy[message.type]"
           :on-update:value="value => (message.proxy[message.type] = value)"
         />
       </SettingDetail>

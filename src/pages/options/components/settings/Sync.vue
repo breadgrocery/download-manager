@@ -26,7 +26,7 @@
         :description="i18n.t(`options.sync.enabled.description`)"
       >
         <NSwitch
-          :default-value="settings.sync.enabled"
+          :value="settings.sync.enabled"
           :on-update:value="value => (settings.sync.enabled = value)"
         />
       </SettingDetail>

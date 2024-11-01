@@ -58,7 +58,7 @@
       <SettingDetail :title="i18n.t(`options.appearance.theme.icon.title`)" :icon="MdiToysOutline">
         <NSelect
           :options="iconStyles"
-          :default-value="settings.appearance.icon"
+          :value="settings.appearance.icon"
           :on-update:value="updateIconStyle"
         />
       </SettingDetail>

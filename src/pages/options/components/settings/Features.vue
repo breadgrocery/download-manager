@@ -47,7 +47,7 @@
         :description="i18n.t(`options.features.filter.search.description`)"
       >
         <NSwitch
-          :default-value="settings.features.search"
+          :value="settings.features.search"
           :on-update:value="value => (settings.features.search = value)"
         />
       </SettingDetail>
@@ -70,7 +70,7 @@
     <SettingItem :title="i18n.t(`options.features.download.title`)" :icon="MdiLinkVariantPlus">
       <SettingDetail :title="i18n.t(`options.features.download.timeout`)" :icon="MdiTimerOutline">
         <NInputNumber
-          :default-value="settings.features.download.timeout"
+          :value="settings.features.download.timeout"
           :min="10"
           :max="60"
           :precision="0"
@@ -86,7 +86,7 @@
         :icon="MdiTimerRefreshOutline"
       >
         <NInputNumber
-          :default-value="settings.features.download.retries"
+          :value="settings.features.download.retries"
           :min="1"
           :max="5"
           :precision="0"
@@ -99,7 +99,7 @@
       >
         <NSelect
           :options="conflicts"
-          :default-value="settings.features.download.conflict"
+          :value="settings.features.download.conflict"
           :on-update:value="value => (settings.features.download.conflict = value)"
         />
       </SettingDetail>
@@ -108,14 +108,14 @@
     <SettingItem :title="i18n.t(`options.features.cleanup.title`)" :icon="MdiAutoAwesomeOutline">
       <SettingDetail :title="i18n.t(`options.features.cleanup.enabled`)" :icon="MdiDeleteClock">
         <NSwitch
-          :default-value="settings.features.cleanup.enabled"
+          :value="settings.features.cleanup.enabled"
           :on-update:value="value => (settings.features.cleanup.enabled = value)"
         />
       </SettingDetail>
       <SettingDetail :title="i18n.t(`options.features.cleanup.retention`)" :icon="MdiTimerSand">
         <NInputNumber
           :disabled="!settings.features.cleanup.enabled"
-          :default-value="settings.features.cleanup.retention"
+          :value="settings.features.cleanup.retention"
           :min="1"
           :max="9999"
           :precision="0"
@@ -129,7 +129,7 @@
       <SettingDetail :title="i18n.t(`download.delete.disk`)" :icon="MdiHarddisk">
         <NSwitch
           :disabled="!settings.features.cleanup.enabled"
-          :default-value="settings.features.cleanup.revmove"
+          :value="settings.features.cleanup.revmove"
           :on-update:value="value => (settings.features.cleanup.revmove = value)"
         />
       </SettingDetail>
