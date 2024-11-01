@@ -14,7 +14,8 @@ export default [
       "spaced-comment": ["warn", "always", { "markers": ["/"] }],
       "capitalized-comments": ["warn", "always"],
       "vue/max-attributes-per-line": "off",
-      "vue/multi-word-component-names": "off"
+      "vue/multi-word-component-names": "off",
+      "vue/singleline-html-element-content-newline": "off"
     }
   }
 ];
