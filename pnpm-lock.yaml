@@ -13,7 +13,7 @@ importers:
         version: 11.2.0(vue@3.5.12(typescript@5.5.4))
       '@wxt-dev/i18n':
         specifier: ^0.2.3
-        version: 0.2.3(wxt@0.19.13(@types/node@22.8.6)(rollup@4.24.3)(sass@1.80.5))
+        version: 0.2.3(wxt@0.19.13(@types/node@22.8.6)(rollup@4.24.3)(sass@1.80.6))
       bowser:
         specifier: ^2.11.0
         version: 2.11.0
@@ -83,10 +83,10 @@ importers:
         version: 14.1.3(@typescript-eslint/parser@8.12.2(eslint@9.13.0(jiti@1.21.6))(typescript@5.5.4))(eslint-plugin-vue@9.30.0(eslint@9.13.0(jiti@1.21.6)))(eslint@9.13.0(jiti@1.21.6))(typescript@5.5.4)
       '@wxt-dev/auto-icons':
         specifier: ^1.0.2
-        version: 1.0.2(wxt@0.19.13(@types/node@22.8.6)(rollup@4.24.3)(sass@1.80.5))
+        version: 1.0.2(wxt@0.19.13(@types/node@22.8.6)(rollup@4.24.3)(sass@1.80.6))
       '@wxt-dev/module-vue':
         specifier: ^1.0.1
-        version: 1.0.1(vite@5.4.10(@types/node@22.8.6)(sass@1.80.5))(vue@3.5.12(typescript@5.5.4))(wxt@0.19.13(@types/node@22.8.6)(rollup@4.24.3)(sass@1.80.5))
+        version: 1.0.1(vite@5.4.10(@types/node@22.8.6)(sass@1.80.6))(vue@3.5.12(typescript@5.5.4))(wxt@0.19.13(@types/node@22.8.6)(rollup@4.24.3)(sass@1.80.6))
       autoprefixer:
         specifier: ^10.4.20
         version: 10.4.20(postcss@8.4.47)
@@ -109,8 +109,8 @@ importers:
         specifier: ^3.3.3
         version: 3.3.3
       sass:
-        specifier: ^1.80.5
-        version: 1.80.5
+        specifier: ^1.80.6
+        version: 1.80.6
       unplugin-icons:
         specifier: ^0.20.0
         version: 0.20.0(@vue/compiler-sfc@3.5.12)
@@ -119,7 +119,7 @@ importers:
         version: 0.27.4(@babel/parser@7.26.2)(rollup@4.24.3)(vue@3.5.12(typescript@5.5.4))
       wxt:
         specifier: ^0.19.13
-        version: 0.19.13(@types/node@22.8.6)(rollup@4.24.3)(sass@1.80.5)
+        version: 0.19.13(@types/node@22.8.6)(rollup@4.24.3)(sass@1.80.6)
 
 packages:
 
@@ -3013,8 +3013,8 @@ packages:
   safer-buffer@2.1.2:
     resolution: {integrity: sha512-YZo3K82SD7Riyi0E1EQPojLz7kpepnSQI9IyPbHHg1XXXevb5dJI7tpyN2ADxGcQbHG7vcyRHk0cbwqcQriUtg==}
 
-  sass@1.80.5:
-    resolution: {integrity: sha512-TQd2aoQl/+zsxRMEDSxVdpPIqeq9UFc6pr7PzkugiTx3VYCFPUaa3P4RrBQsqok4PO200Vkz0vXQBNlg7W907g==}
+  sass@1.80.6:
+    resolution: {integrity: sha512-ccZgdHNiBF1NHBsWvacvT5rju3y1d/Eu+8Ex6c21nHp2lZGLBEtuwc415QfiI1PJa1TpCo3iXwwSRjRpn2Ckjg==}
     engines: {node: '>=14.0.0'}
     hasBin: true
 
@@ -4246,6 +4246,7 @@ snapshots:
       '@parcel/watcher-win32-arm64': 2.4.1
       '@parcel/watcher-win32-ia32': 2.4.1
       '@parcel/watcher-win32-x64': 2.4.1
+    optional: true
 
   '@pnpm/config.env-replace@1.1.0': {}
 
@@ -4479,9 +4480,9 @@ snapshots:
       '@typescript-eslint/types': 8.12.2
       eslint-visitor-keys: 3.4.3
 
-  '@vitejs/plugin-vue@5.1.4(vite@5.4.10(@types/node@22.8.6)(sass@1.80.5))(vue@3.5.12(typescript@5.5.4))':
+  '@vitejs/plugin-vue@5.1.4(vite@5.4.10(@types/node@22.8.6)(sass@1.80.6))(vue@3.5.12(typescript@5.5.4))':
     dependencies:
-      vite: 5.4.10(@types/node@22.8.6)(sass@1.80.5)
+      vite: 5.4.10(@types/node@22.8.6)(sass@1.80.6)
       vue: 3.5.12(typescript@5.5.4)
 
   '@vue/compiler-core@3.5.12':
@@ -4583,25 +4584,25 @@ snapshots:
 
   '@webext-core/match-patterns@1.0.3': {}
 
-  '@wxt-dev/auto-icons@1.0.2(wxt@0.19.13(@types/node@22.8.6)(rollup@4.24.3)(sass@1.80.5))':
+  '@wxt-dev/auto-icons@1.0.2(wxt@0.19.13(@types/node@22.8.6)(rollup@4.24.3)(sass@1.80.6))':
     dependencies:
       defu: 6.1.4
       fs-extra: 11.2.0
       sharp: 0.33.5
-      wxt: 0.19.13(@types/node@22.8.6)(rollup@4.24.3)(sass@1.80.5)
+      wxt: 0.19.13(@types/node@22.8.6)(rollup@4.24.3)(sass@1.80.6)
 
-  '@wxt-dev/i18n@0.2.3(wxt@0.19.13(@types/node@22.8.6)(rollup@4.24.3)(sass@1.80.5))':
+  '@wxt-dev/i18n@0.2.3(wxt@0.19.13(@types/node@22.8.6)(rollup@4.24.3)(sass@1.80.6))':
     dependencies:
       chokidar: 3.6.0
       confbox: 0.1.8
       fast-glob: 3.3.2
     optionalDependencies:
-      wxt: 0.19.13(@types/node@22.8.6)(rollup@4.24.3)(sass@1.80.5)
+      wxt: 0.19.13(@types/node@22.8.6)(rollup@4.24.3)(sass@1.80.6)
 
-  '@wxt-dev/module-vue@1.0.1(vite@5.4.10(@types/node@22.8.6)(sass@1.80.5))(vue@3.5.12(typescript@5.5.4))(wxt@0.19.13(@types/node@22.8.6)(rollup@4.24.3)(sass@1.80.5))':
+  '@wxt-dev/module-vue@1.0.1(vite@5.4.10(@types/node@22.8.6)(sass@1.80.6))(vue@3.5.12(typescript@5.5.4))(wxt@0.19.13(@types/node@22.8.6)(rollup@4.24.3)(sass@1.80.6))':
     dependencies:
-      '@vitejs/plugin-vue': 5.1.4(vite@5.4.10(@types/node@22.8.6)(sass@1.80.5))(vue@3.5.12(typescript@5.5.4))
-      wxt: 0.19.13(@types/node@22.8.6)(rollup@4.24.3)(sass@1.80.5)
+      '@vitejs/plugin-vue': 5.1.4(vite@5.4.10(@types/node@22.8.6)(sass@1.80.6))(vue@3.5.12(typescript@5.5.4))
+      wxt: 0.19.13(@types/node@22.8.6)(rollup@4.24.3)(sass@1.80.6)
     transitivePeerDependencies:
       - vite
       - vue
@@ -5149,7 +5150,8 @@ snapshots:
 
   destr@2.0.3: {}
 
-  detect-libc@1.0.3: {}
+  detect-libc@1.0.3:
+    optional: true
 
   detect-libc@2.0.3: {}
 
@@ -6122,7 +6124,8 @@ snapshots:
   ncp@2.0.0:
     optional: true
 
-  node-addon-api@7.1.1: {}
+  node-addon-api@7.1.1:
+    optional: true
 
   node-fetch-native@1.6.4: {}
 
@@ -6554,12 +6557,13 @@ snapshots:
 
   safer-buffer@2.1.2: {}
 
-  sass@1.80.5:
+  sass@1.80.6:
     dependencies:
-      '@parcel/watcher': 2.4.1
       chokidar: 4.0.1
       immutable: 4.3.7
       source-map-js: 1.2.1
+    optionalDependencies:
+      '@parcel/watcher': 2.4.1
 
   sax@1.4.1: {}
 
@@ -6923,12 +6927,12 @@ snapshots:
       evtd: 0.2.4
       vue: 3.5.12(typescript@5.5.4)
 
-  vite-node@2.1.4(@types/node@22.8.6)(sass@1.80.5):
+  vite-node@2.1.4(@types/node@22.8.6)(sass@1.80.6):
     dependencies:
       cac: 6.7.14
       debug: 4.3.7
       pathe: 1.1.2
-      vite: 5.4.10(@types/node@22.8.6)(sass@1.80.5)
+      vite: 5.4.10(@types/node@22.8.6)(sass@1.80.6)
     transitivePeerDependencies:
       - '@types/node'
       - less
@@ -6940,7 +6944,7 @@ snapshots:
       - supports-color
       - terser
 
-  vite@5.4.10(@types/node@22.8.6)(sass@1.80.5):
+  vite@5.4.10(@types/node@22.8.6)(sass@1.80.6):
     dependencies:
       esbuild: 0.21.5
       postcss: 8.4.47
@@ -6948,7 +6952,7 @@ snapshots:
     optionalDependencies:
       '@types/node': 22.8.6
       fsevents: 2.3.3
-      sass: 1.80.5
+      sass: 1.80.6
 
   vooks@0.2.12(vue@3.5.12(typescript@5.5.4)):
     dependencies:
@@ -7096,7 +7100,7 @@ snapshots:
 
   ws@8.18.0: {}
 
-  wxt@0.19.13(@types/node@22.8.6)(rollup@4.24.3)(sass@1.80.5):
+  wxt@0.19.13(@types/node@22.8.6)(rollup@4.24.3)(sass@1.80.6):
     dependencies:
       '@aklinker1/rollup-plugin-visualizer': 5.12.0(rollup@4.24.3)
       '@types/chrome': 0.0.269
@@ -7139,8 +7143,8 @@ snapshots:
       publish-browser-extension: 2.2.2
       scule: 1.3.0
       unimport: 3.13.1(rollup@4.24.3)
-      vite: 5.4.10(@types/node@22.8.6)(sass@1.80.5)
-      vite-node: 2.1.4(@types/node@22.8.6)(sass@1.80.5)
+      vite: 5.4.10(@types/node@22.8.6)(sass@1.80.6)
+      vite-node: 2.1.4(@types/node@22.8.6)(sass@1.80.6)
       web-ext-run: 0.2.1
       webextension-polyfill: 0.12.0
     transitivePeerDependencies:
