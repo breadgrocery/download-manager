@@ -1,5 +1,6 @@
 {
   "explorer.fileNesting.enabled": true,
+  "explorer.fileNesting.expand": false,
   "explorer.fileNesting.patterns": {
     ".gitignore": ".git*,lefthook.*,eslint.config.*,prettier.config.*,.prettierignore,LICENSE",
     "README.md": "README.*.md",
