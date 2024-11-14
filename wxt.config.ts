@@ -10,8 +10,7 @@ export default defineConfig({
   modulesDir: resolve("plugins"),
   outDir: resolve("dist"),
   runner: {
-    openDevtools: true,
-    chromiumArgs: ["--unsafely-disable-devtools-self-xss-warnings"]
+    openDevtools: true
   },
   imports: {
     presets: ["vue", "vue-router"],
