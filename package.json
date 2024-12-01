@@ -45,7 +45,7 @@
     "autoprefixer": "^10.4.20",
     "crx": "^5.0.1",
     "eslint": "^9.15.0",
-    "eslint-plugin-vue": "^9.31.0",
+    "eslint-plugin-vue": "^9.32.0",
     "inquirer": "^12.1.0",
     "lefthook": "^1.8.4",
     "prettier": "^3.4.1",
