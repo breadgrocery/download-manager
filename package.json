@@ -44,7 +44,7 @@
     "@wxt-dev/module-vue": "^1.0.2",
     "autoprefixer": "^10.4.20",
     "crx": "^5.0.1",
-    "eslint": "^9.15.0",
+    "eslint": "^9.16.0",
     "eslint-plugin-vue": "^9.32.0",
     "inquirer": "^12.1.0",
     "lefthook": "^1.8.4",
