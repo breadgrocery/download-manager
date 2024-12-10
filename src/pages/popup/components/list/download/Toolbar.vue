@@ -1,6 +1,7 @@
 <script setup lang="ts">
   import { type DropdownIconOption } from "@/components/DropdownIcon.vue";
   import { deleteDownload } from "@/utils/download";
+  import { env } from "@/utils/env";
   import { state } from "@/utils/state";
   import copy from "copy-to-clipboard";
   import { useMessage, useModal, useThemeVars } from "naive-ui";
@@ -124,7 +125,9 @@
   const handlePause = () => browser.downloads.pause(download.id);
   const handleResume = () => browser.downloads.resume(download.id);
   const handleAcceptDanger = (download: Downloads.DownloadItem) => {
-    chrome?.downloads.acceptDanger(download.id);
+    if (env.is.chrome || env.is.edge) {
+      chrome?.downloads?.acceptDanger?.(download.id);
+    }
   };
   const handleCancel = () => browser.downloads.cancel(download.id);
 </script>

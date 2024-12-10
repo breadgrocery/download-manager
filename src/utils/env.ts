@@ -1,9 +1,7 @@
 import Bowser from "bowser";
 
-const browser = Bowser.getParser(window.navigator.userAgent);
-
 export const env = {
-  browser: browser,
+  browser: Bowser.getParser((navigator || window.navigator).userAgent),
   is: {
     chrome: import.meta.env.CHROME,
     firefox: import.meta.env.FIREFOX,

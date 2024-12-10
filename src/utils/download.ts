@@ -1,11 +1,12 @@
+import { env } from "@/utils/env";
 import { type State, is, state } from "@/utils/state";
 import { debounce } from "lodash-es";
 import { type Downloads, browser } from "wxt/browser";
 
 export const setDownloadManagerState = (enabled: boolean) => {
-  if (chrome) {
-    chrome.downloads.setUiOptions({ enabled });
-    chrome.downloads.setShelfEnabled(enabled);
+  if (env.is.chrome || env.is.edge) {
+    chrome?.downloads?.setUiOptions?.({ enabled });
+    chrome?.downloads?.setShelfEnabled?.(enabled);
   }
 };
 

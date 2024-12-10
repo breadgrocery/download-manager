@@ -30,9 +30,9 @@ export type OffscreenMessage<T> = {
 };
 
 const createOffscreen: () => Promise<void> = async () => {
-  const hasDocument = await chrome.offscreen.hasDocument();
+  const hasDocument = await chrome?.offscreen?.hasDocument?.();
   if (!hasDocument) {
-    await chrome.offscreen.createDocument({
+    await chrome?.offscreen?.createDocument?.({
       url: "/offscreen.html",
       reasons: [chrome.offscreen.Reason.AUDIO_PLAYBACK],
       justification: "AUDIO_PLAYBACK"
