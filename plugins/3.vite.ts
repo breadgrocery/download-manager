@@ -23,7 +23,6 @@ export default defineWxtModule(wxt => {
         Icons()
       ],
       css: {
-        preprocessorOptions: { scss: { api: "modern-compiler" } },
         postcss: { plugins: [autoprefixer()] }
       },
       build: {
