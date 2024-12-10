@@ -10,6 +10,10 @@ export default defineConfig({
   modulesDir: resolve("plugins"),
   outDir: resolve("dist"),
   runner: {
+    binaries: {
+      // Channels: "firefox", "beta", "firefoxdeveloperedition", "nightly"
+      firefox: "firefox"
+    },
     openDevtools: true
   },
   imports: {
