@@ -82,7 +82,7 @@
           <!-- Download List -->
           <div v-if="filtered.length > 0" v-bind="containerProps" class="scroller">
             <div v-bind="wrapperProps">
-              <div v-for="item in list" :key="item.data.id" class="item">
+              <div v-for="item in list" :key="item.data.id" class="list-item">
                 <DownloadItem :download="item.data" :highlights="highlights" />
               </div>
             </div>
@@ -115,7 +115,11 @@
       user-select: none;
     }
     .scroller {
+      .list-item {
+        margin: 2px;
+      }
       scroll-behavior: auto;
+      // WebKit
       &::-webkit-scrollbar {
         width: 8px;
       }
@@ -131,8 +135,10 @@
       &:hover::-webkit-scrollbar-thumb {
         background: rgba(0, 0, 0, 0.25);
       }
-      .item {
-        margin: 2px;
+      // Gecko
+      @-moz-document url-prefix() {
+        scrollbar-width: thin;
+        scrollbar-color: rgba(0, 0, 0, 0.25) transparent;
       }
     }
     .empty {
