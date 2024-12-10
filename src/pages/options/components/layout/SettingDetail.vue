@@ -54,10 +54,10 @@
       }
     }
     :deep(.n-input-wrapper) {
-      width: 200px;
+      width: 220px;
     }
     :deep(.n-select) {
-      width: 220px;
+      width: 240px;
     }
   }
 </style>
