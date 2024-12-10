@@ -33,7 +33,7 @@
     "@commitlint/cli": "^19.6.0",
     "@commitlint/config-conventional": "^19.6.0",
     "@iconify-json/mdi": "^1.2.1",
-    "@trivago/prettier-plugin-sort-imports": "^4.3.0",
+    "@trivago/prettier-plugin-sort-imports": "^5.2.0",
     "@types/bytes": "^3.1.5",
     "@types/chrome": "^0.0.287",
     "@types/lodash-es": "^4.17.12",
@@ -52,7 +52,7 @@
     "sass": "^1.82.0",
     "unplugin-icons": "^0.21.0",
     "unplugin-vue-components": "^0.27.5",
-    "wxt": "^0.19.20"
+    "wxt": "^0.19.22"
   },
   "commitlint": {
     "extends": [
@@ -67,5 +67,5 @@
     "node": ">=18",
     "pnpm": ">=9"
   },
-  "packageManager": "pnpm@9.13.2"
+  "packageManager": "pnpm@9.15.0"
 }
