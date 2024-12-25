@@ -1,5 +1,5 @@
 import { setBadgeBackgroundColor, setBadgeText, setBadgeTextColor, setIcon } from "@/utils/action";
-import { createImageData } from "@/utils/image";
+import { createImageData } from "@/utils/icon";
 import { type Settings } from "@/utils/settings";
 import { type State, state } from "@/utils/state";
 import { type Action, type Downloads } from "wxt/browser";
@@ -19,6 +19,11 @@ export const updateToolbarIcon = (
 ) => {
   const updates = (() => {
     switch (style) {
+      case "general":
+        return {
+          text: updateBadgeText(""),
+          icon: updateIcon(getIcon(data?.statistics))
+        };
       case "badge":
         return {
           text: updateBadgeText(getBadgeText(data?.statistics)),
@@ -26,15 +31,21 @@ export const updateToolbarIcon = (
           backgroundColor: updateBadgeBackgroundColor(getBadgeBackgroundColor(data?.statistics)),
           icon: updateIcon(getIcon(data?.statistics))
         };
-      case "general":
-        return {
-          text: updateBadgeText(""),
-          icon: updateIcon(getIcon(data?.statistics))
-        };
       case "animated":
+      case "animated_stroke":
+      case "animated_pie":
         return {
           text: updateBadgeText(""),
-          icon: updateAnimatedIcon(getAnimatedIcon(data?.statistics, data?.downloads))
+          icon: () => {
+            const state = getAnimatedState(data?.statistics, data?.downloads);
+            createImageData({
+              progress: state.progress,
+              colorName: state.status as AnimatedIconInfo["colorName"],
+              style
+            }).then(imageData => {
+              if (imageData) updateAnimatedIcon(imageData as Action.ImageDataType)();
+            });
+          }
         };
     }
   })();
@@ -50,10 +61,10 @@ const getIcon = (statistics?: Record<State, number>) => {
   return "/images/icon-idle.png";
 };
 
-const getAnimatedIcon = (
+const getAnimatedState = (
   statistics?: Record<State, number>,
   downloads?: Downloads.DownloadItem[]
-): Action.ImageDataType => {
+) => {
   let progress = 0;
   let status = "idle";
   if (statistics && downloads) {
@@ -62,11 +73,13 @@ const getAnimatedIcon = (
       .map(({ totalBytes, bytesReceived }) => [totalBytes, bytesReceived])
       .reduce(([tAcc, rCur], [t, r]) => [tAcc + t, rCur + r], [0, 0]);
     if (statistics.ongoing > 0) {
-      progress = totalBytes === 0 ? 90 : Math.max((bytesReceived / totalBytes) * 100, 1);
+      progress = Math.floor(
+        totalBytes === 0 ? 90 : Math.max((bytesReceived / totalBytes) * 100, 1)
+      );
     }
     status = statusArray.find(status => statistics[status] > 0) || "idle";
   }
-  return createImageData(Math.floor(progress), status as "idle") as Action.ImageDataType;
+  return { progress, status };
 };
 
 const getBadgeText = (statistics?: Record<State, number>) => {

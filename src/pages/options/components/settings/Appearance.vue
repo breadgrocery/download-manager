@@ -34,6 +34,14 @@
     {
       value: "animated",
       label: i18n.t("options.appearance.theme.icon.animated")
+    },
+    {
+      value: "animated_stroke",
+      label: i18n.t("options.appearance.theme.icon.animated_stroke")
+    },
+    {
+      value: "animated_pie",
+      label: i18n.t("options.appearance.theme.icon.animated_pie")
     }
   ];
 </script>

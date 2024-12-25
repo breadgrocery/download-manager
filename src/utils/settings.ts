@@ -9,7 +9,7 @@ export const defaults = {
     },
     width: 665,
     height: 400,
-    icon: "badge" as "general" | "badge" | "animated"
+    icon: "animated_stroke" as "general" | "badge" | "animated" | "animated_stroke" | "animated_pie"
   },
   features: {
     search: true,

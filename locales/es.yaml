@@ -82,8 +82,10 @@ options:
       icon:
         title: Estilo de icono
         general: Icono de la aplicación
-        badge: Indicador de cantidad de tareas
-        animated: Indicador de progreso animado
+        badge: Contador de tareas
+        animated: Progreso de relleno animado
+        animated_stroke: Progreso de trazo animado
+        animated_pie: Progreso de gráfico circular animado
     bounds:
       title: Tamaño de página
       width: Ancho

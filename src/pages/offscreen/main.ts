@@ -1,9 +1,10 @@
 import { offscreenListen } from "@/utils/message";
 
-offscreenListen((action: string, data: unknown) => {
-  switch (action) {
-    case "audio":
-      if (data) new Audio(data as string).play();
-      break;
-  }
+offscreenListen<string, void>("playAudio", message => {
+  if (message) new Audio(message).play();
+});
+
+offscreenListen<void, boolean>("isDarkMode", (message, sender, sendResponse) => {
+  const isDarkMode = matchMedia("(prefers-color-scheme: dark)").matches;
+  sendResponse(isDarkMode);
 });

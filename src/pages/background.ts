@@ -27,9 +27,11 @@ export default defineBackground({
       // Reload extension settings on storage changed
       browser.storage.onChanged.addListener(loadSettings);
 
-      const notifyPopup = debounce(() => send({ channel: "background-to-popup:update" }), 200, {
-        maxWait: 1000
-      });
+      const notifyPopup = debounce(
+        () => send({ channel: "background-to-popup:update", data: undefined }),
+        200,
+        { maxWait: 1000 }
+      );
       const notifyIfNecessary = (type: keyof typeof settings.notifications.download) => {
         if (settings.notifications.download[type].sound) audio[type]();
         if (settings.notifications.download[type].popup) openPopup();
@@ -67,7 +69,7 @@ export default defineBackground({
           }
         },
         (() => {
-          if (settings.appearance.icon === "animated") return 1000;
+          if (settings.appearance.icon.startsWith("animated")) return 1000;
           return settings.misc.performance.pulse;
         })()
       );

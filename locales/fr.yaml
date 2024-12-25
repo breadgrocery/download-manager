@@ -81,9 +81,11 @@ options:
         dark: Sombre
       icon:
         title: Style d'icône
-        general: Icône d'application
-        badge: Indicateur du nombre de tâches
-        animated: Indicateur de progression animé
+        general: Icône de l'application
+        badge: Compteur de tâches
+        animated: Progression de remplissage animé
+        animated_stroke: Progression de contour animé
+        animated_pie: Progression du graphique circulaire animé
     bounds:
       title: Taille de la page
       width: Largeur

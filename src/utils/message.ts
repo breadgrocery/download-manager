@@ -1,30 +1,34 @@
-import { browser } from "wxt/browser";
+import { type Runtime, browser } from "wxt/browser";
 
-export type Message<T> = {
+export type Payload<T> = {
   channel: string;
-  data?: T;
+  data: T;
 };
 
-export const send = async <T>(message: Message<T>) => {
+export const send = <T, R>(payload: Payload<T>): Promise<R> => {
   try {
-    return await browser.runtime.sendMessage(browser.runtime.id, message);
+    return browser.runtime.sendMessage(browser.runtime.id, payload);
   } catch (error) {
-    return console.debug(error);
+    console.debug(error);
+    return Promise.reject(error);
   }
 };
 
-export const listen = <T>(channel: string, callback: (data?: T) => void) => {
-  browser.runtime.onMessage.addListener((message): undefined => {
+export const listen = <T, R>(
+  channel: string,
+  callback: (message: T, sender: Runtime.MessageSender, sendResponse: (message: R) => void) => void
+) => {
+  browser.runtime.onMessage.addListener((message, sender, sendResponse): undefined => {
     if (message && typeof message === "object") {
-      const msg = message as Message<T>;
-      if (msg.channel && msg.channel === channel) {
-        callback(msg.data);
+      const payload = message as Payload<T>;
+      if (payload.channel && payload.channel === channel) {
+        callback(payload.data, sender, sendResponse);
       }
     }
   });
 };
 
-export type OffscreenMessage<T> = {
+export type OffscreenPayload<T> = {
   action: string;
   data: T;
 };
@@ -34,23 +38,26 @@ const createOffscreen: () => Promise<void> = async () => {
   if (!hasDocument) {
     await chrome?.offscreen?.createDocument?.({
       url: "/offscreen.html",
-      reasons: [chrome.offscreen.Reason.AUDIO_PLAYBACK],
-      justification: "AUDIO_PLAYBACK"
+      reasons: [chrome.offscreen.Reason.AUDIO_PLAYBACK, chrome.offscreen.Reason.MATCH_MEDIA],
+      justification: "AUDIO_PLAYBACK, MATCH_MEDIA"
     });
   }
 };
 
-export const offscreenSend = async <T>(message: OffscreenMessage<T>) => {
+export const offscreenSend = async <P, R>(payload: OffscreenPayload<P>): Promise<R> => {
   await createOffscreen();
-  send({ channel: "offscreen", data: message });
+  return await send({ channel: "offscreen", data: payload });
 };
 
-export const offscreenListen = <T>(callback: (action: string, data: T) => void) => {
-  listen("offscreen", message => {
+export const offscreenListen = <T, R>(
+  action: string,
+  callback: (message: T, sender: Runtime.MessageSender, sendResponse: (message: R) => void) => void
+) => {
+  listen("offscreen", (message, sender, sendResponse) => {
     if (message && typeof message === "object") {
-      const msg = message as OffscreenMessage<T>;
-      if (msg.action) {
-        callback(msg.action, msg.data);
+      const payload = message as OffscreenPayload<T>;
+      if (payload.action && payload.action === action) {
+        callback(payload.data, sender, sendResponse);
       }
     }
   });

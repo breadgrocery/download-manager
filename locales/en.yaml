@@ -82,8 +82,10 @@ options:
       icon:
         title: Icon Style
         general: Application icon
-        badge: Task count indicator
-        animated: Animated progress indicator
+        badge: Task Count Badge
+        animated: Animated fill progress
+        animated_stroke: Animated stroke progress
+        animated_pie: Animated pie chart progress
     bounds:
       title: Popup Bounds
       width: Width

@@ -9,7 +9,7 @@ export const audio = {
 
 const playAudio = (source: string) => {
   if (chrome?.offscreen) {
-    offscreenSend({ action: "audio", data: source });
+    offscreenSend({ action: "playAudio", data: source });
   } else {
     new Audio(source).play();
   }

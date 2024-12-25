@@ -80,10 +80,12 @@ options:
         light: فاتح
         dark: داكن
       icon:
-        title: نمط الأيقونة
-        general: أيقونة التطبيق
-        badge: مؤشر عدد المهام
-        animated: مؤشر التقدم المتحرك
+        title: سبک آیکون
+        general: آیکون برنامه
+        badge: شمارنده وظایف
+        animated: پیشرفت پر شدن انیمیشنی
+        animated_stroke: پیشرفت خطی انیمیشنی
+        animated_pie: پیشرفت نمودار دایره‌ای انیمیشنی
     bounds:
       title: حجم الصفحة
       width: العرض
