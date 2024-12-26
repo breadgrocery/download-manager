@@ -6,12 +6,9 @@ export type Payload<T> = {
 };
 
 export const send = <T, R>(payload: Payload<T>): Promise<R> => {
-  try {
-    return browser.runtime.sendMessage(browser.runtime.id, payload);
-  } catch (error) {
-    console.debug(error);
-    return Promise.reject(error);
-  }
+  return browser.runtime
+    .sendMessage(browser.runtime.id, payload)
+    .catch(console.debug) as Promise<R>;
 };
 
 export const listen = <T, R>(
