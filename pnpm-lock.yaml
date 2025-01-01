@@ -42,8 +42,8 @@ importers:
         specifier: ^6.2.1
         version: 6.2.1
       p-timeout:
-        specifier: ^6.1.3
-        version: 6.1.3
+        specifier: ^6.1.4
+        version: 6.1.4
       vue:
         specifier: ^3.5.13
         version: 3.5.13(typescript@5.5.4)
@@ -2916,8 +2916,8 @@ packages:
     resolution: {integrity: sha512-hEt02O4hUct5wtwg4H4KcWgDdm+l1bOaEy/hWzd8xtXB9BqxTWBBhb+2ImAtH4Cv4rPjV76xN3Zumqk3k3AhhQ==}
     engines: {node: '>=16.17'}
 
-  p-timeout@6.1.3:
-    resolution: {integrity: sha512-UJUyfKbwvr/uZSV6btANfb+0t/mOhKV/KXcCUTp8FcQI+v/0d+wXqH4htrW0E4rR6WiEO/EPvUFiV9D5OI4vlw==}
+  p-timeout@6.1.4:
+    resolution: {integrity: sha512-MyIV3ZA/PmyBN/ud8vV9XzwTrNtR4jFrObymZYnZqMmW0zA8Z17vnT0rBgFE/TlohB+YCHqXMgZzb3Csp49vqg==}
     engines: {node: '>=14.16'}
 
   package-json@8.1.1:
@@ -6551,7 +6551,7 @@ snapshots:
   p-queue@8.0.1:
     dependencies:
       eventemitter3: 5.0.1
-      p-timeout: 6.1.3
+      p-timeout: 6.1.4
 
   p-retry@6.2.1:
     dependencies:
@@ -6559,7 +6559,7 @@ snapshots:
       is-network-error: 1.1.0
       retry: 0.13.1
 
-  p-timeout@6.1.3: {}
+  p-timeout@6.1.4: {}
 
   package-json@8.1.1:
     dependencies:
