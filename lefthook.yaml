@@ -1,16 +1,18 @@
 assert_lefthook_installed: true
 
 commit-msg:
-  commands:
-    commitlint:
+  jobs:
+    - name: commitlint
       run: npx --no-install commitlint --edit
 
 pre-commit:
   parallel: true
-  commands:
-    eslint:
-      glob: "*.{js,jsx,cjs,mjs,ts,tsx,cts,mts,vue}"
+  jobs:
+    - name: eslint
       run: npx eslint {staged_files} --fix
-    prettier:
-      glob: "*.*"
+      glob: "*.{js,jsx,cjs,mjs,ts,tsx,cts,mts,vue}"
+      stage_fixed: true
+    - name: prettier
       run: npx prettier {staged_files} --write --ignore-unknown
+      glob: "*.*"
+      stage_fixed: true
