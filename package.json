@@ -32,7 +32,7 @@
   "devDependencies": {
     "@commitlint/cli": "^19.6.1",
     "@commitlint/config-conventional": "^19.6.0",
-    "@iconify-json/mdi": "^1.2.2",
+    "@iconify-json/mdi": "^1.2.3",
     "@trivago/prettier-plugin-sort-imports": "^5.2.1",
     "@types/bytes": "^3.1.5",
     "@types/chrome": "^0.0.289",
